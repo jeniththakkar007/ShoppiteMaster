@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aaa1d553d1a34f74a5b689b9ccfe8282" Name="Diagram1">
+        <EntityTypeShape EntityType="AMMultivendor2Model.Ads_Detail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Ads_PageName" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Ads_Placement" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Attributes_Setup" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Brand" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.category_master" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Category_One" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Category_Three" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Category_Two" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Currency" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Customer_Wishlist" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.MainPageCategory" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.NewsLetter" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Order_Detail" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.PageCategory" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.PageCategoryDetail" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Attribute" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Basic" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Brands" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Category" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Images" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Price" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_SEO" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Specification" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Status" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Tags" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Review" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.SocialMedia" Width="1.5" PointX="14.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Specification_Setup" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Status" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.UserActivation" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Users_Profile" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Discount" Width="1.5" PointX="7.375" PointY="16.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Website_Setup" Width="1.5" PointX="9.375" PointY="16.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Logo" Width="1.5" PointX="11.375" PointY="16.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Order_Master" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Country" Width="1.5" PointX="17.375" PointY="10.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Order_Basic" Width="1.5" PointX="17.375" PointY="13.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Donation_Master" Width="1.5" PointX="3.375" PointY="18.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Donation_Received" Width="1.5" PointX="13.375" PointY="18.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Users_Membership" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Order_Disbursement" Width="1.5" PointX="19.375" PointY="5.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Order_Status" Width="1.5" PointX="19.375" PointY="9.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Order_Variation" Width="1.5" PointX="19.375" PointY="12.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Vendor_Membership_Package" Width="1.5" PointX="19.375" PointY="15.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Order_Shipping" Width="1.5" PointX="15.375" PointY="19.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Recently_Viewed" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.User" Width="1.5" PointX="17.375" PointY="19.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Message" Width="1.5" PointX="19.375" PointY="19.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Product_Inventory" Width="1.5" PointX="0.75" PointY="20.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Website_Setup_Script" Width="1.5" PointX="5.75" PointY="20.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Email_Setup" Width="1.5" PointX="8.375" PointY="20.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.organization" Width="1.5" PointX="21.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="21.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetRole" Width="1.5" PointX="21.375" PointY="8.5" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetUserClaim" Width="1.5" PointX="25.875" PointY="7" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetUserLogin" Width="1.5" PointX="25.875" PointY="9.75" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetUser" Width="1.5" PointX="23.625" PointY="7.375" />
+        <AssociationConnector Association="AMMultivendor2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="AMMultivendor2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="AMMultivendor2Model.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AMMultivendor2ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Ads_Detail">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Ads_Detail">
+        <MappingFragment StoreEntitySet="Ads_Detail">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="AdId" ColumnName="AdId" />
+          <ScalarProperty Name="AdsPlacementId" ColumnName="AdsPlacementId" />
+          <ScalarProperty Name="AdsPageId" ColumnName="AdsPageId" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ads_PageName">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Ads_PageName">
+        <MappingFragment StoreEntitySet="Ads_PageName">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="AdsPageId" ColumnName="AdsPageId" />
+          <ScalarProperty Name="AdsPlacementId" ColumnName="AdsPlacementId" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ads_Placement">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Ads_Placement">
+        <MappingFragment StoreEntitySet="Ads_Placement">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="AdsPlacementId" ColumnName="AdsPlacementId" />
+          <ScalarProperty Name="PlacementName" ColumnName="PlacementName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attributes_Setup">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Attributes_Setup">
+        <MappingFragment StoreEntitySet="Attributes_Setup">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+          <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+          <ScalarProperty Name="AttributeDescription" ColumnName="AttributeDescription" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Brand">
+        <MappingFragment StoreEntitySet="Brands">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="BrandURLPath" ColumnName="BrandURLPath" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="BrandDescription" ColumnName="BrandDescription" />
+          <ScalarProperty Name="BrandImage" ColumnName="BrandImage" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="category_master">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.category_master">
+        <MappingFragment StoreEntitySet="category_master">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="parent_category_id" ColumnName="parent_category_id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="IsShowHomePage" ColumnName="IsShowHomePage" />
+          <ScalarProperty Name="IsIncludeMenu" ColumnName="IsIncludeMenu" />
+          <ScalarProperty Name="SEO_PageName" ColumnName="SEO_PageName" />
+          <ScalarProperty Name="SEO_Title" ColumnName="SEO_Title" />
+          <ScalarProperty Name="SEO_Keyword" ColumnName="SEO_Keyword" />
+          <ScalarProperty Name="SEO_Description" ColumnName="SEO_Description" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category_One">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Category_One">
+        <MappingFragment StoreEntitySet="Category_One">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="CategoryOneId" ColumnName="CategoryOneId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="UrlPath" ColumnName="UrlPath" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category_Three">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Category_Three">
+        <MappingFragment StoreEntitySet="Category_Three">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="CategoryThreeId" ColumnName="CategoryThreeId" />
+          <ScalarProperty Name="CategoryTwoId" ColumnName="CategoryTwoId" />
+          <ScalarProperty Name="CategoryThreeName" ColumnName="CategoryThreeName" />
+          <ScalarProperty Name="UrlPath" ColumnName="UrlPath" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category_Two">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Category_Two">
+        <MappingFragment StoreEntitySet="Category_Two">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="CategoryTwoId" ColumnName="CategoryTwoId" />
+          <ScalarProperty Name="CategoryOneId" ColumnName="CategoryOneId" />
+          <ScalarProperty Name="CategoryTwoName" ColumnName="CategoryTwoName" />
+          <ScalarProperty Name="UrlPath" ColumnName="UrlPath" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currencies">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Currency">
+        <MappingFragment StoreEntitySet="Currency">
+          <ScalarProperty Name="ISBase" ColumnName="ISBase" />
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer_Wishlist">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Customer_Wishlist">
+        <MappingFragment StoreEntitySet="Customer_Wishlist">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="WishlistId" ColumnName="WishlistId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MainPageCategories">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.MainPageCategory">
+        <MappingFragment StoreEntitySet="MainPageCategory">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="MainPageCategoryId" ColumnName="MainPageCategoryId" />
+          <ScalarProperty Name="MainPageCategory1" ColumnName="MainPageCategory" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsLetters">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.NewsLetter">
+        <MappingFragment StoreEntitySet="NewsLetter">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="NewsletterID" ColumnName="NewsletterID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Detail">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Order_Detail">
+        <MappingFragment StoreEntitySet="Order_Detail">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+          <ScalarProperty Name="DeliveryFees" ColumnName="DeliveryFees" />
+          <ScalarProperty Name="TotalOrderAmount" ColumnName="TotalOrderAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PageCategories">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.PageCategory">
+        <MappingFragment StoreEntitySet="PageCategory">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Sortnumber" ColumnName="Sortnumber" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="IsURL" ColumnName="IsURL" />
+          <ScalarProperty Name="PageCategoryId" ColumnName="PageCategoryId" />
+          <ScalarProperty Name="MainPageCategoryId" ColumnName="MainPageCategoryId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="PageCategory1" ColumnName="PageCategory" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PageCategoryDetails">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.PageCategoryDetail">
+        <MappingFragment StoreEntitySet="PageCategoryDetails">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="PageCategoryDetailId" ColumnName="PageCategoryDetailId" />
+          <ScalarProperty Name="PageCategoryId" ColumnName="PageCategoryId" />
+          <ScalarProperty Name="PageCategoryDescriptoin" ColumnName="PageCategoryDescriptoin" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Attribute">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Attribute">
+        <MappingFragment StoreEntitySet="Product_Attribute">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ProductAttributeID" ColumnName="ProductAttributeID" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Basic">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Basic">
+        <MappingFragment StoreEntitySet="Product_Basic">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="ProductStartDate" ColumnName="ProductStartDate" />
+          <ScalarProperty Name="ProductEndDate" ColumnName="ProductEndDate" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Brands">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Brands">
+        <MappingFragment StoreEntitySet="Product_Brands">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ProductBrandId" ColumnName="ProductBrandId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Category">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Category">
+        <MappingFragment StoreEntitySet="Product_Category">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="MainCat_Id" ColumnName="MainCat_Id" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Images">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Images">
+        <MappingFragment StoreEntitySet="Product_Images">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ProductImagesId" ColumnName="ProductImagesId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="AltText" ColumnName="AltText" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Displayorder" ColumnName="Displayorder" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Price">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Price">
+        <MappingFragment StoreEntitySet="Product_Price">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="DeliveryFees" ColumnName="DeliveryFees" />
+          <ScalarProperty Name="ProductPriceId" ColumnName="ProductPriceId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="DisableBuyButton" ColumnName="DisableBuyButton" />
+          <ScalarProperty Name="TaxExempt" ColumnName="TaxExempt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_SEO">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_SEO">
+        <MappingFragment StoreEntitySet="Product_SEO">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="SEOId" ColumnName="SEOId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="SEO_PageName" ColumnName="SEO_PageName" />
+          <ScalarProperty Name="SEO_MetaTItle" ColumnName="SEO_MetaTItle" />
+          <ScalarProperty Name="SEO_Keywords" ColumnName="SEO_Keywords" />
+          <ScalarProperty Name="SEO_Metadescription" ColumnName="SEO_Metadescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Specification">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Specification">
+        <MappingFragment StoreEntitySet="Product_Specification">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ProductSpecificationId" ColumnName="ProductSpecificationId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="SpecificationId" ColumnName="SpecificationId" />
+          <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Insertdate" ColumnName="Insertdate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Status">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Status">
+        <MappingFragment StoreEntitySet="Product_Status">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ProductStatusId" ColumnName="ProductStatusId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Tags">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Tags">
+        <MappingFragment StoreEntitySet="Product_Tags">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ProductTagsId" ColumnName="ProductTagsId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductTags" ColumnName="ProductTags" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+          <ScalarProperty Name="Star" ColumnName="Star" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocialMedias">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.SocialMedia">
+        <MappingFragment StoreEntitySet="SocialMedia">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="SocialMediaId" ColumnName="SocialMediaId" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specification_Setup">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Specification_Setup">
+        <MappingFragment StoreEntitySet="Specification_Setup">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="SpecificationId" ColumnName="SpecificationId" />
+          <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+          <ScalarProperty Name="SpecificationName" ColumnName="SpecificationName" />
+          <ScalarProperty Name="SpecificiatoinDescription" ColumnName="SpecificiatoinDescription" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="Status1" ColumnName="Status" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="ShowOnFront" ColumnName="ShowOnFront" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserActivations">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.UserActivation">
+        <MappingFragment StoreEntitySet="UserActivation">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_Profile">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Users_Profile">
+        <MappingFragment StoreEntitySet="Users_Profile">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="IsMembershipFree" ColumnName="IsMembershipFree" />
+          <ScalarProperty Name="ShopURLPath" ColumnName="ShopURLPath" />
+          <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+          <ScalarProperty Name="PaypalId" ColumnName="PaypalId" />
+          <ScalarProperty Name="ShopDescription" ColumnName="ShopDescription" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="ProfileGUID" ColumnName="ProfileGUID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="AdminStatus" ColumnName="AdminStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="AMMultivendor2Model.Store.f_topcat" FunctionImportName="f_topcat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_topcat_Result">
+          <ScalarProperty Name="urlpath" ColumnName="urlpath" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="parent_category_id" ColumnName="parent_category_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="AMMultivendor2Model.Store.getcat" FunctionImportName="getcat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.getcat_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PARENT_NAMEID" ColumnName="PARENT_NAMEID" />
+          <ScalarProperty Name="HLevel" ColumnName="HLevel" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="Displayname" ColumnName="Displayname" />
+          <ScalarProperty Name="catnames" ColumnName="catnames" />
+          <ScalarProperty Name="displayorder" ColumnName="displayorder" />
+          <ScalarProperty Name="urlpath" ColumnName="urlpath" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getcat" FunctionName="AMMultivendor2Model.Store.sp_getcat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.sp_getcat_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PARENT_NAMEID" ColumnName="PARENT_NAMEID" />
+          <ScalarProperty Name="HLevel" ColumnName="HLevel" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="Displayname" ColumnName="Displayname" />
+          <ScalarProperty Name="catnames" ColumnName="catnames" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Product_Discount">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Discount">
+        <MappingFragment StoreEntitySet="Product_Discount">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ModuleType" ColumnName="ModuleType" />
+          <ScalarProperty Name="DiscountEndDate" ColumnName="DiscountEndDate" />
+          <ScalarProperty Name="DiscountStartDate" ColumnName="DiscountStartDate" />
+          <ScalarProperty Name="DiscountOffer" ColumnName="DiscountOffer" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="DiscountId" ColumnName="DiscountId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Website_Setup">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Website_Setup">
+        <MappingFragment StoreEntitySet="Website_Setup">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="DeductionType" ColumnName="DeductionType" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ItemKey" ColumnName="ItemKey" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemValue" ColumnName="ItemValue" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="WebsiteSetupId" ColumnName="WebsiteSetupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logoes">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Logo">
+        <MappingFragment StoreEntitySet="Logo">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Favicon" ColumnName="Favicon" />
+          <ScalarProperty Name="FooterLogo" ColumnName="FooterLogo" />
+          <ScalarProperty Name="WebsiteName" ColumnName="WebsiteName" />
+          <ScalarProperty Name="SupportContact" ColumnName="SupportContact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="logoheight" ColumnName="logoheight" />
+          <ScalarProperty Name="logowidth" ColumnName="logowidth" />
+          <ScalarProperty Name="Logo1" ColumnName="Logo" />
+          <ScalarProperty Name="LogoId" ColumnName="LogoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Master">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Order_Master">
+        <MappingFragment StoreEntitySet="Order_Master">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="OrderKeyStatus" ColumnName="OrderKeyStatus" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_Profile_All" FunctionName="AMMultivendor2Model.Store.f_Profile_All">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_Profile_All_Result">
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="ProfileGUID" ColumnName="ProfileGUID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="AdminStatus" ColumnName="AdminStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ShopDescription" ColumnName="ShopDescription" />
+          <ScalarProperty Name="PaypalId" ColumnName="PaypalId" />
+          <ScalarProperty Name="total_purchased" ColumnName="total_purchased" />
+          <ScalarProperty Name="total_products" ColumnName="total_products" />
+          <ScalarProperty Name="totalproduct_Sold" ColumnName="totalproduct_Sold" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_startrating_productwise" FunctionName="AMMultivendor2Model.Store.f_startrating_productwise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_startrating_productwise_Result">
+          <ScalarProperty Name="AverageRating" ColumnName="AverageRating" />
+          <ScalarProperty Name="RatingCount" ColumnName="RatingCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Order_Basic">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Order_Basic">
+        <MappingFragment StoreEntitySet="Order_Basic">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="currencyid" ColumnName="currencyid" />
+          <ScalarProperty Name="LastOrderStatus" ColumnName="LastOrderStatus" />
+          <ScalarProperty Name="OrderVariation" ColumnName="OrderVariation" />
+          <ScalarProperty Name="Donation" ColumnName="Donation" />
+          <ScalarProperty Name="Commission" ColumnName="Commission" />
+          <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="DeliveryFees" ColumnName="DeliveryFees" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donation_Master">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Donation_Master">
+        <MappingFragment StoreEntitySet="Donation_Master">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Administrativefee" ColumnName="Administrativefee" />
+          <ScalarProperty Name="PaypalID" ColumnName="PaypalID" />
+          <ScalarProperty Name="AdminRemarks" ColumnName="AdminRemarks" />
+          <ScalarProperty Name="AdminStatus" ColumnName="AdminStatus" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="RequestFundGUID" ColumnName="RequestFundGUID" />
+          <ScalarProperty Name="RequestFundId" ColumnName="RequestFundId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donation_Received">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Donation_Received">
+        <MappingFragment StoreEntitySet="Donation_Received">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="AdministrativeAmount" ColumnName="AdministrativeAmount" />
+          <ScalarProperty Name="AdministrativeFeesPer" ColumnName="AdministrativeFeesPer" />
+          <ScalarProperty Name="PaypalId" ColumnName="PaypalId" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="RequestFundGUID" ColumnName="RequestFundGUID" />
+          <ScalarProperty Name="DonationReceivedId" ColumnName="DonationReceivedId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_Donation_BYID" FunctionName="AMMultivendor2Model.Store.f_Donation_BYID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_Donation_BYID_Result">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="shortdescription" ColumnName="shortdescription" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="AdminStatus" ColumnName="AdminStatus" />
+          <ScalarProperty Name="AdminRemarks" ColumnName="AdminRemarks" />
+          <ScalarProperty Name="RequestFundGUID" ColumnName="RequestFundGUID" />
+          <ScalarProperty Name="paypalid" ColumnName="paypalid" />
+          <ScalarProperty Name="totalreceived" ColumnName="totalreceived" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_donation_total" FunctionName="AMMultivendor2Model.Store.f_donation_total">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_donation_total_Result">
+          <ScalarProperty Name="totaldonation" ColumnName="totaldonation" />
+          <ScalarProperty Name="funds" ColumnName="funds" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Users_Membership">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Users_Membership">
+        <MappingFragment StoreEntitySet="Users_Membership">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Cancellationdate" ColumnName="Cancellationdate" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="CancelStatus" ColumnName="CancelStatus" />
+          <ScalarProperty Name="MembershipStatus" ColumnName="MembershipStatus" />
+          <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="MembershipFee" ColumnName="MembershipFee" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="IsFree" ColumnName="IsFree" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="MembershipId" ColumnName="MembershipId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_Orders_All" FunctionName="AMMultivendor2Model.Store.f_Orders_All">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_Orders_All_Result">
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="DeliveryFees" ColumnName="DeliveryFees" />
+          <ScalarProperty Name="Commission" ColumnName="Commission" />
+          <ScalarProperty Name="Donation" ColumnName="Donation" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="orderdeliverystatus" ColumnName="orderdeliverystatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_All_getcat" FunctionName="AMMultivendor2Model.Store.f_All_getcat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_All_getcat_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PARENT_NAMEID" ColumnName="PARENT_NAMEID" />
+          <ScalarProperty Name="HLevel" ColumnName="HLevel" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="Displayname" ColumnName="Displayname" />
+          <ScalarProperty Name="catnames" ColumnName="catnames" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Order_Disbursement">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Order_Disbursement">
+        <MappingFragment StoreEntitySet="Order_Disbursement">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+          <ScalarProperty Name="DisbursementId" ColumnName="DisbursementId" />
+          <ScalarProperty Name="DisbursementMode" ColumnName="DisbursementMode" />
+          <ScalarProperty Name="DisburseDate" ColumnName="DisburseDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderEarningId" ColumnName="OrderEarningId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Status">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Order_Status">
+        <MappingFragment StoreEntitySet="Order_Status">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Insertby" ColumnName="Insertby" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="StatusDate" ColumnName="StatusDate" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Variation">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Order_Variation">
+        <MappingFragment StoreEntitySet="Order_Variation">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ProductSpecificationId" ColumnName="ProductSpecificationId" />
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+          <ScalarProperty Name="OrderVariationId" ColumnName="OrderVariationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendor_Membership_Package">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Vendor_Membership_Package">
+        <MappingFragment StoreEntitySet="Vendor_Membership_Package">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Sortoption" ColumnName="Sortoption" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="Fees" ColumnName="Fees" />
+          <ScalarProperty Name="RecurringPeriod" ColumnName="RecurringPeriod" />
+          <ScalarProperty Name="Membershiptype" ColumnName="Membershiptype" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Membershipid" ColumnName="Membershipid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_disbursement" FunctionName="AMMultivendor2Model.Store.f_disbursement">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_disbursement_Result">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="totaprice" ColumnName="totaprice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="DeliveryFees" ColumnName="DeliveryFees" />
+          <ScalarProperty Name="Commission" ColumnName="Commission" />
+          <ScalarProperty Name="Donation" ColumnName="Donation" />
+          <ScalarProperty Name="balancedisbursment" ColumnName="balancedisbursment" />
+          <ScalarProperty Name="disbursementamount" ColumnName="disbursementamount" />
+          <ScalarProperty Name="sellerusername" ColumnName="sellerusername" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="orderdeliverystatus" ColumnName="orderdeliverystatus" />
+          <ScalarProperty Name="PaypalId" ColumnName="PaypalId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_disbursement_summary" FunctionName="AMMultivendor2Model.Store.f_disbursement_summary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_disbursement_summary_Result">
+          <ScalarProperty Name="balancedisbursment" ColumnName="balancedisbursment" />
+          <ScalarProperty Name="PaypalId" ColumnName="PaypalId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Order_Shipping">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Order_Shipping">
+        <MappingFragment StoreEntitySet="Order_Shipping">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Contactnumber" ColumnName="Contactnumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+          <ScalarProperty Name="ShippingId" ColumnName="ShippingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Recently_Viewed">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Recently_Viewed">
+        <MappingFragment StoreEntitySet="Product_Recently_Viewed">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Insertdate" ColumnName="Insertdate" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="RecentlyViewId" ColumnName="RecentlyViewId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_order_master_summary" FunctionName="AMMultivendor2Model.Store.f_order_master_summary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_order_master_summary_Result">
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="ExcludeVatPrice" ColumnName="ExcludeVatPrice" />
+          <ScalarProperty Name="vat" ColumnName="vat" />
+          <ScalarProperty Name="tax" ColumnName="tax" />
+          <ScalarProperty Name="donation" ColumnName="donation" />
+          <ScalarProperty Name="totaaftercomanddon" ColumnName="totaaftercomanddon" />
+          <ScalarProperty Name="deliveryfees" ColumnName="deliveryfees" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_order_master" FunctionName="AMMultivendor2Model.Store.f_order_master">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_order_master_Result">
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ExcludeVatPrice" ColumnName="ExcludeVatPrice" />
+          <ScalarProperty Name="vat" ColumnName="vat" />
+          <ScalarProperty Name="tax" ColumnName="tax" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Zipcode" ColumnName="zipcode" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contactnumber" ColumnName="Contactnumber" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="PaymentDate" ColumnName="paymentdate" />
+          <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+          <ScalarProperty Name="commission" ColumnName="commission" />
+          <ScalarProperty Name="donation" ColumnName="donation" />
+          <ScalarProperty Name="totaaftercomanddon" ColumnName="totaaftercomanddon" />
+          <ScalarProperty Name="deliveryfees" ColumnName="deliveryfees" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_getproducts" FunctionName="AMMultivendor2Model.Store.f_getproducts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_getproducts_Result">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="ProductStartDate" ColumnName="ProductStartDate" />
+          <ScalarProperty Name="ProductEndDate" ColumnName="ProductEndDate" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="categoryurlpath" ColumnName="categoryurlpath" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="maincaturlpath" ColumnName="maincaturlpath" />
+          <ScalarProperty Name="maincatid" ColumnName="maincatid" />
+          <ScalarProperty Name="deals" ColumnName="deals" />
+          <ScalarProperty Name="badgestatus" ColumnName="badgestatus" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="shopname" ColumnName="shopname" />
+          <ScalarProperty Name="ShopURLPath" ColumnName="ShopURLPath" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="brands" ColumnName="brands" />
+          <ScalarProperty Name="brandsurlpath" ColumnName="brandsurlpath" />
+          <ScalarProperty Name="brandid" ColumnName="brandid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="totalpick" ColumnName="totalpick" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Message">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="SessionBookingId" ColumnName="SessionBookingId" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="Message1" ColumnName="Message" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="recieveddate" ColumnName="recieveddate" />
+          <ScalarProperty Name="senddate" ColumnName="senddate" />
+          <ScalarProperty Name="recipient" ColumnName="recipient" />
+          <ScalarProperty Name="sender" ColumnName="sender" />
+          <ScalarProperty Name="ChatID" ColumnName="ChatID" />
+          <ScalarProperty Name="MesageId" ColumnName="MesageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_AllMessages" FunctionName="AMMultivendor2Model.Store.SP_AllMessages" />
+    <FunctionImportMapping FunctionImportName="f_getproducts_By_getmegaoffers" FunctionName="AMMultivendor2Model.Store.f_getproducts_By_getmegaoffers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_getproducts_By_getmegaoffers_Result">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="ProductStartDate" ColumnName="ProductStartDate" />
+          <ScalarProperty Name="ProductEndDate" ColumnName="ProductEndDate" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="categoryurlpath" ColumnName="categoryurlpath" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="maincaturlpath" ColumnName="maincaturlpath" />
+          <ScalarProperty Name="maincatid" ColumnName="maincatid" />
+          <ScalarProperty Name="deals" ColumnName="deals" />
+          <ScalarProperty Name="badgestatus" ColumnName="badgestatus" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="shopname" ColumnName="shopname" />
+          <ScalarProperty Name="ShopURLPath" ColumnName="ShopURLPath" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="brands" ColumnName="brands" />
+          <ScalarProperty Name="brandsurlpath" ColumnName="brandsurlpath" />
+          <ScalarProperty Name="brandid" ColumnName="brandid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="totalpick" ColumnName="totalpick" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_getproducts_By_CategoryID" FunctionName="AMMultivendor2Model.Store.f_getproducts_By_CategoryID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_getproducts_By_CategoryID_Result">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="ProductStartDate" ColumnName="ProductStartDate" />
+          <ScalarProperty Name="ProductEndDate" ColumnName="ProductEndDate" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="categoryurlpath" ColumnName="categoryurlpath" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="maincaturlpath" ColumnName="maincaturlpath" />
+          <ScalarProperty Name="maincatid" ColumnName="maincatid" />
+          <ScalarProperty Name="deals" ColumnName="deals" />
+          <ScalarProperty Name="badgestatus" ColumnName="badgestatus" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="shopname" ColumnName="shopname" />
+          <ScalarProperty Name="ShopURLPath" ColumnName="ShopURLPath" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="brands" ColumnName="brands" />
+          <ScalarProperty Name="brandsurlpath" ColumnName="brandsurlpath" />
+          <ScalarProperty Name="brandid" ColumnName="brandid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="totalpick" ColumnName="totalpick" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_getproducts_By_StatusID" FunctionName="AMMultivendor2Model.Store.f_getproducts_By_StatusID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_getproducts_By_StatusID_Result">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="ProductStartDate" ColumnName="ProductStartDate" />
+          <ScalarProperty Name="ProductEndDate" ColumnName="ProductEndDate" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="categoryurlpath" ColumnName="categoryurlpath" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="maincaturlpath" ColumnName="maincaturlpath" />
+          <ScalarProperty Name="maincatid" ColumnName="maincatid" />
+          <ScalarProperty Name="deals" ColumnName="deals" />
+          <ScalarProperty Name="badgestatus" ColumnName="badgestatus" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="shopname" ColumnName="shopname" />
+          <ScalarProperty Name="ShopURLPath" ColumnName="ShopURLPath" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="brands" ColumnName="brands" />
+          <ScalarProperty Name="brandsurlpath" ColumnName="brandsurlpath" />
+          <ScalarProperty Name="brandid" ColumnName="brandid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="totalpick" ColumnName="totalpick" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_getproducts_By_ProductId" FunctionName="AMMultivendor2Model.Store.f_getproducts_By_ProductId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_getproducts_By_ProductId_Result">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="ProductStartDate" ColumnName="ProductStartDate" />
+          <ScalarProperty Name="ProductEndDate" ColumnName="ProductEndDate" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="categoryurlpath" ColumnName="categoryurlpath" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="maincaturlpath" ColumnName="maincaturlpath" />
+          <ScalarProperty Name="maincatid" ColumnName="maincatid" />
+          <ScalarProperty Name="deals" ColumnName="deals" />
+          <ScalarProperty Name="badgestatus" ColumnName="badgestatus" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="shopname" ColumnName="shopname" />
+          <ScalarProperty Name="ShopURLPath" ColumnName="ShopURLPath" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="brands" ColumnName="brands" />
+          <ScalarProperty Name="brandsurlpath" ColumnName="brandsurlpath" />
+          <ScalarProperty Name="brandid" ColumnName="brandid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="totalpick" ColumnName="totalpick" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_getproducts_paging" FunctionName="AMMultivendor2Model.Store.f_getproducts_paging">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_getproducts_paging_Result">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="ProductStartDate" ColumnName="ProductStartDate" />
+          <ScalarProperty Name="ProductEndDate" ColumnName="ProductEndDate" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="categoryurlpath" ColumnName="categoryurlpath" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="maincaturlpath" ColumnName="maincaturlpath" />
+          <ScalarProperty Name="maincatid" ColumnName="maincatid" />
+          <ScalarProperty Name="deals" ColumnName="deals" />
+          <ScalarProperty Name="badgestatus" ColumnName="badgestatus" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="shopname" ColumnName="shopname" />
+          <ScalarProperty Name="ShopURLPath" ColumnName="ShopURLPath" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="brands" ColumnName="brands" />
+          <ScalarProperty Name="brandsurlpath" ColumnName="brandsurlpath" />
+          <ScalarProperty Name="brandid" ColumnName="brandid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="totalpick" ColumnName="totalpick" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_getproducts_Recentlyviewed" FunctionName="AMMultivendor2Model.Store.f_getproducts_Recentlyviewed">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_getproducts_Recentlyviewed_Result">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="ProductStartDate" ColumnName="ProductStartDate" />
+          <ScalarProperty Name="ProductEndDate" ColumnName="ProductEndDate" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="categoryurlpath" ColumnName="categoryurlpath" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="maincaturlpath" ColumnName="maincaturlpath" />
+          <ScalarProperty Name="maincatid" ColumnName="maincatid" />
+          <ScalarProperty Name="deals" ColumnName="deals" />
+          <ScalarProperty Name="badgestatus" ColumnName="badgestatus" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="shopname" ColumnName="shopname" />
+          <ScalarProperty Name="ShopURLPath" ColumnName="ShopURLPath" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="brands" ColumnName="brands" />
+          <ScalarProperty Name="brandsurlpath" ColumnName="brandsurlpath" />
+          <ScalarProperty Name="brandid" ColumnName="brandid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="totalpick" ColumnName="totalpick" />
+          <ScalarProperty Name="productviewinsertdate" ColumnName="productviewinsertdate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Product_Paging" FunctionName="AMMultivendor2Model.Store.SP_Product_Paging">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.SP_Product_Paging_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="totalpick" ColumnName="totalpick" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+          <ScalarProperty Name="badgestatus" ColumnName="badgestatus" />
+          <ScalarProperty Name="deals" ColumnName="deals" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="maincatid" ColumnName="maincatid" />
+          <ScalarProperty Name="CatMasUrl" ColumnName="CatMasUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Product_Paging_AllRecord" FunctionName="AMMultivendor2Model.Store.SP_Product_Paging_AllRecord" />
+    <EntitySetMapping Name="Product_Inventory">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Product_Inventory">
+        <MappingFragment StoreEntitySet="Product_Inventory">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="Inventory" ColumnName="Inventory" />
+          <ScalarProperty Name="ProductGUID" ColumnName="ProductGUID" />
+          <ScalarProperty Name="ProductInventoryId" ColumnName="ProductInventoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Website_Setup_Script">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Website_Setup_Script">
+        <MappingFragment StoreEntitySet="Website_Setup_Script">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Scriptname" ColumnName="Scriptname" />
+          <ScalarProperty Name="Scriptid" ColumnName="Scriptid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Status_HasProducts" FunctionName="AMMultivendor2Model.Store.SP_Status_HasProducts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.SP_Status_HasProducts_Result">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="ShowOnFront" ColumnName="ShowOnFront" />
+          <ScalarProperty Name="URLPath" ColumnName="URLPath" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Order_Master" FunctionName="AMMultivendor2Model.Store.SP_Order_Master">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.SP_Order_Master_Result">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+          <ScalarProperty Name="orderdeliverystatus" ColumnName="orderdeliverystatus" />
+          <ScalarProperty Name="orderdeliverystatusdate" ColumnName="orderdeliverystatusdate" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Email_Setup">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.Email_Setup">
+        <MappingFragment StoreEntitySet="Email_Setup">
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="BCC" ColumnName="BCC" />
+          <ScalarProperty Name="Host" ColumnName="Host" />
+          <ScalarProperty Name="SMTPPort" ColumnName="SMTPPort" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EmailFrom" ColumnName="EmailFrom" />
+          <ScalarProperty Name="EmailSettingId" ColumnName="EmailSettingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Vendor_Search" FunctionName="AMMultivendor2Model.Store.SP_Vendor_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.SP_Vendor_Search_Result">
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="totalproducts" ColumnName="totalproducts" />
+          <ScalarProperty Name="shopurl" ColumnName="shopurl" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_order_detail" FunctionName="AMMultivendor2Model.Store.f_order_detail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.f_order_detail_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="OrderGUID" ColumnName="OrderGUID" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="DeliveryFees" ColumnName="DeliveryFees" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="orderdeliverystatus" ColumnName="orderdeliverystatus" />
+          <ScalarProperty Name="orderdeliverystatusdate" ColumnName="orderdeliverystatusdate" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+          <ScalarProperty Name="Commission" ColumnName="Commission" />
+          <ScalarProperty Name="Donation" ColumnName="Donation" />
+          <ScalarProperty Name="OrderVariation" ColumnName="OrderVariation" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="organizations">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.organization">
+        <MappingFragment StoreEntitySet="organization">
+          <ScalarProperty Name="v_id_proof" ColumnName="v_id_proof" />
+          <ScalarProperty Name="v_upi_id" ColumnName="v_upi_id" />
+          <ScalarProperty Name="v_bank_branch_name" ColumnName="v_bank_branch_name" />
+          <ScalarProperty Name="v_ifsc_code" ColumnName="v_ifsc_code" />
+          <ScalarProperty Name="v_account_number" ColumnName="v_account_number" />
+          <ScalarProperty Name="v_bank_name" ColumnName="v_bank_name" />
+          <ScalarProperty Name="org_description" ColumnName="org_description" />
+          <ScalarProperty Name="org_address" ColumnName="org_address" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="v_mobile" ColumnName="v_mobile" />
+          <ScalarProperty Name="v_phone" ColumnName="v_phone" />
+          <ScalarProperty Name="v_email" ColumnName="v_email" />
+          <ScalarProperty Name="vender_name" ColumnName="vender_name" />
+          <ScalarProperty Name="org_logo" ColumnName="org_logo" />
+          <ScalarProperty Name="org_name" ColumnName="org_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="AMMultivendor2Model.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="AMMultivendor2Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="SP_getorg" FunctionName="AMMultivendor2Model.Store.SP_getorg">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.SP_getorg_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="org_name" ColumnName="org_name" />
+          <ScalarProperty Name="org_logo" ColumnName="org_logo" />
+          <ScalarProperty Name="vender_name" ColumnName="vender_name" />
+          <ScalarProperty Name="v_email" ColumnName="v_email" />
+          <ScalarProperty Name="v_phone" ColumnName="v_phone" />
+          <ScalarProperty Name="v_mobile" ColumnName="v_mobile" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="org_address" ColumnName="org_address" />
+          <ScalarProperty Name="org_description" ColumnName="org_description" />
+          <ScalarProperty Name="v_bank_name" ColumnName="v_bank_name" />
+          <ScalarProperty Name="v_account_number" ColumnName="v_account_number" />
+          <ScalarProperty Name="v_ifsc_code" ColumnName="v_ifsc_code" />
+          <ScalarProperty Name="v_bank_branch_name" ColumnName="v_bank_branch_name" />
+          <ScalarProperty Name="v_upi_id" ColumnName="v_upi_id" />
+          <ScalarProperty Name="v_id_proof" ColumnName="v_id_proof" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getcat_withoutparent" FunctionName="AMMultivendor2Model.Store.sp_getcat_withoutparent">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AMMultivendor2Model.sp_getcat_withoutparent_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PARENT_NAMEID" ColumnName="PARENT_NAMEID" />
+          <ScalarProperty Name="HLevel" ColumnName="HLevel" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="Displayname" ColumnName="Displayname" />
+          <ScalarProperty Name="catnames" ColumnName="catnames" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

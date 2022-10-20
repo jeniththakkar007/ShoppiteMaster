@@ -1,0 +1,1482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AMMultivendor2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="f_topcat_Result">
+    <Property Name="urlpath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="category_id" Type="Int32" />
+    <Property Name="parent_category_id" Type="Int32" />
+    <Property Name="category_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="getcat_Result">
+    <Property Name="ID" Type="Int32" />
+    <Property Name="PARENT_NAMEID" Type="Int32" />
+    <Property Name="HLevel" Type="Int32" />
+    <Property Name="NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Displayname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="catnames" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="displayorder" Type="Int32" />
+    <Property Name="urlpath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <EntityType Name="Ads_Detail">
+    <Key>
+      <PropertyRef Name="AdId" />
+    </Key>
+    <Property Name="AdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdsPlacementId" Type="Int32" />
+    <Property Name="AdsPageId" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Ads_PageName">
+    <Key>
+      <PropertyRef Name="AdsPageId" />
+    </Key>
+    <Property Name="AdsPageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdsPlacementId" Type="Int32" />
+    <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Ads_Placement">
+    <Key>
+      <PropertyRef Name="AdsPlacementId" />
+    </Key>
+    <Property Name="AdsPlacementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlacementName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Width" Type="Int32" />
+    <Property Name="Height" Type="Int32" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Attributes_Setup">
+    <Key>
+      <PropertyRef Name="AttributeId" />
+    </Key>
+    <Property Name="AttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AttributeName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AttributeDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileId" Type="Int32" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="BrandId" />
+    </Key>
+    <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_Id" Type="Int32" />
+    <Property Name="BrandName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BrandDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BrandImage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsPublished" Type="Boolean" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="BrandURLPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="category_master">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="URLPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="parent_category_id" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Banner" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IsPublished" Type="Boolean" />
+    <Property Name="IsShowHomePage" Type="Boolean" />
+    <Property Name="IsIncludeMenu" Type="Boolean" />
+    <Property Name="SEO_PageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_Keyword" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Category_One">
+    <Key>
+      <PropertyRef Name="CategoryOneId" />
+    </Key>
+    <Property Name="CategoryOneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UrlPath" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Banner" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="IsFeatured" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Category_Three">
+    <Key>
+      <PropertyRef Name="CategoryThreeId" />
+    </Key>
+    <Property Name="CategoryThreeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryTwoId" Type="Int32" />
+    <Property Name="CategoryThreeName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UrlPath" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Banner" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="IsFeatured" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Category_Two">
+    <Key>
+      <PropertyRef Name="CategoryTwoId" />
+    </Key>
+    <Property Name="CategoryTwoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryOneId" Type="Int32" />
+    <Property Name="CategoryTwoName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UrlPath" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Banner" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="IsFeatured" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CurrencyId" />
+    </Key>
+    <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsPublished" Type="Boolean" />
+    <Property Name="InsertDate" Type="DateTime" Precision="0" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ISBase" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Customer_Wishlist">
+    <Key>
+      <PropertyRef Name="WishlistId" />
+    </Key>
+    <Property Name="WishlistId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MainPageCategory">
+    <Key>
+      <PropertyRef Name="MainPageCategoryId" />
+    </Key>
+    <Property Name="MainPageCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MainPageCategory1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="NewsLetter">
+    <Key>
+      <PropertyRef Name="NewsletterID" />
+    </Key>
+    <Property Name="NewsletterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Order_Detail">
+    <Key>
+      <PropertyRef Name="OrderDetailId" />
+    </Key>
+    <Property Name="OrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderGUID" Type="Guid" />
+    <Property Name="DeliveryFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalOrderAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PageCategory">
+    <Key>
+      <PropertyRef Name="PageCategoryId" />
+    </Key>
+    <Property Name="PageCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MainPageCategoryId" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PageCategory1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="IsURL" Type="Boolean" />
+    <Property Name="URL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Sortnumber" Type="Int32" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PageCategoryDetail">
+    <Key>
+      <PropertyRef Name="PageCategoryDetailId" />
+    </Key>
+    <Property Name="PageCategoryDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PageCategoryId" Type="Int32" />
+    <Property Name="PageCategoryDescriptoin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Attribute">
+    <Key>
+      <PropertyRef Name="ProductAttributeID" />
+    </Key>
+    <Property Name="ProductAttributeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="AttributeId" Type="Int32" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Basic">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="URLPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ShortDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SKU" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="QTY" Type="Int32" />
+    <Property Name="ProductStartDate" Type="DateTime" Precision="3" />
+    <Property Name="ProductEndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsPublished" Type="Boolean" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ProfileId" Type="Int32" />
+    <Property Name="CoverImage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Brands">
+    <Key>
+      <PropertyRef Name="ProductBrandId" />
+    </Key>
+    <Property Name="ProductBrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="BrandId" Type="Int32" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Category">
+    <Key>
+      <PropertyRef Name="ProductCategoryId" />
+    </Key>
+    <Property Name="ProductCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="Category_Id" Type="Int32" />
+    <Property Name="MainCat_Id" Type="Int32" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Images">
+    <Key>
+      <PropertyRef Name="ProductImagesId" />
+    </Key>
+    <Property Name="ProductImagesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="AltText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Displayorder" Type="Int32" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Price">
+    <Key>
+      <PropertyRef Name="ProductPriceId" />
+    </Key>
+    <Property Name="ProductPriceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="CurrencyId" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OldPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DisableBuyButton" Type="Boolean" />
+    <Property Name="TaxExempt" Type="Boolean" />
+    <Property Name="DeliveryFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_SEO">
+    <Key>
+      <PropertyRef Name="SEOId" />
+    </Key>
+    <Property Name="SEOId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="SEO_PageName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_MetaTItle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_Keywords" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_Metadescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Specification">
+    <Key>
+      <PropertyRef Name="ProductSpecificationId" />
+    </Key>
+    <Property Name="ProductSpecificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="SpecificationId" Type="Int32" />
+    <Property Name="ControlType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Insertdate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Status">
+    <Key>
+      <PropertyRef Name="ProductStatusId" />
+    </Key>
+    <Property Name="ProductStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="StatusId" Type="Int32" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Tags">
+    <Key>
+      <PropertyRef Name="ProductTagsId" />
+    </Key>
+    <Property Name="ProductTagsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="ProductTags" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Star" Type="Int32" />
+    <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="TransactionId" Type="Int32" />
+    <Property Name="Module" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SocialMedia">
+    <Key>
+      <PropertyRef Name="SocialMediaId" />
+    </Key>
+    <Property Name="SocialMediaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Icon" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Specification_Setup">
+    <Key>
+      <PropertyRef Name="SpecificationId" />
+    </Key>
+    <Property Name="SpecificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AttributeId" Type="Int32" />
+    <Property Name="SpecificationName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SpecificiatoinDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileId" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="URLPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ShowOnFront" Type="Boolean" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CssClass" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="UserActivation">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Users_Profile">
+    <Key>
+      <PropertyRef Name="ProfileId" />
+    </Key>
+    <Property Name="ProfileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfileGUID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="AdminStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShopName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ShopDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="PaypalId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CoverImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ShopURLPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsMembershipFree" Type="Boolean" />
+    <Property Name="latitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ads_Detail" EntityType="Self.Ads_Detail" />
+    <EntitySet Name="Ads_PageName" EntityType="Self.Ads_PageName" />
+    <EntitySet Name="Ads_Placement" EntityType="Self.Ads_Placement" />
+    <EntitySet Name="Attributes_Setup" EntityType="Self.Attributes_Setup" />
+    <EntitySet Name="Brands" EntityType="Self.Brand" />
+    <EntitySet Name="category_master" EntityType="Self.category_master" />
+    <EntitySet Name="Category_One" EntityType="Self.Category_One" />
+    <EntitySet Name="Category_Three" EntityType="Self.Category_Three" />
+    <EntitySet Name="Category_Two" EntityType="Self.Category_Two" />
+    <EntitySet Name="Currencies" EntityType="Self.Currency" />
+    <EntitySet Name="Customer_Wishlist" EntityType="Self.Customer_Wishlist" />
+    <EntitySet Name="MainPageCategories" EntityType="Self.MainPageCategory" />
+    <EntitySet Name="NewsLetters" EntityType="Self.NewsLetter" />
+    <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" />
+    <EntitySet Name="PageCategories" EntityType="Self.PageCategory" />
+    <EntitySet Name="PageCategoryDetails" EntityType="Self.PageCategoryDetail" />
+    <EntitySet Name="Product_Attribute" EntityType="Self.Product_Attribute" />
+    <EntitySet Name="Product_Basic" EntityType="Self.Product_Basic" />
+    <EntitySet Name="Product_Brands" EntityType="Self.Product_Brands" />
+    <EntitySet Name="Product_Category" EntityType="Self.Product_Category" />
+    <EntitySet Name="Product_Images" EntityType="Self.Product_Images" />
+    <EntitySet Name="Product_Price" EntityType="Self.Product_Price" />
+    <EntitySet Name="Product_SEO" EntityType="Self.Product_SEO" />
+    <EntitySet Name="Product_Specification" EntityType="Self.Product_Specification" />
+    <EntitySet Name="Product_Status" EntityType="Self.Product_Status" />
+    <EntitySet Name="Product_Tags" EntityType="Self.Product_Tags" />
+    <EntitySet Name="Reviews" EntityType="Self.Review" />
+    <EntitySet Name="SocialMedias" EntityType="Self.SocialMedia" />
+    <EntitySet Name="Specification_Setup" EntityType="Self.Specification_Setup" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="UserActivations" EntityType="Self.UserActivation" />
+    <EntitySet Name="Users_Profile" EntityType="Self.Users_Profile" />
+    <FunctionImport Name="f_topcat" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_topcat_Result)">
+      <Parameter Name="CatId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getcat" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.getcat_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getcat" ReturnType="Collection(AMMultivendor2Model.sp_getcat_Result)" />
+    <EntitySet Name="Product_Discount" EntityType="AMMultivendor2Model.Product_Discount" />
+    <EntitySet Name="Website_Setup" EntityType="AMMultivendor2Model.Website_Setup" />
+    <EntitySet Name="Logoes" EntityType="AMMultivendor2Model.Logo" />
+    <EntitySet Name="Order_Master" EntityType="AMMultivendor2Model.Order_Master" />
+    <EntitySet Name="Countries" EntityType="AMMultivendor2Model.Country" />
+    <FunctionImport Name="f_Profile_All" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_Profile_All_Result)">
+      <Parameter Name="Type" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="f_startrating_productwise" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_startrating_productwise_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Order_Basic" EntityType="AMMultivendor2Model.Order_Basic" />
+    <EntitySet Name="Donation_Master" EntityType="AMMultivendor2Model.Donation_Master" />
+    <EntitySet Name="Donation_Received" EntityType="AMMultivendor2Model.Donation_Received" />
+    <FunctionImport Name="f_Donation_BYID" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_Donation_BYID_Result)" />
+    <FunctionImport Name="f_donation_total" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_donation_total_Result)" />
+    <EntitySet Name="Users_Membership" EntityType="AMMultivendor2Model.Users_Membership" />
+    <FunctionImport Name="f_Orders_All" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_Orders_All_Result)" />
+    <FunctionImport Name="f_All_getcat" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_All_getcat_Result)" />
+    <EntitySet Name="Order_Disbursement" EntityType="AMMultivendor2Model.Order_Disbursement" />
+    <EntitySet Name="Order_Status" EntityType="AMMultivendor2Model.Order_Status" />
+    <EntitySet Name="Order_Variation" EntityType="AMMultivendor2Model.Order_Variation" />
+    <EntitySet Name="Vendor_Membership_Package" EntityType="AMMultivendor2Model.Vendor_Membership_Package" />
+    <FunctionImport Name="f_disbursement" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_disbursement_Result)" />
+    <FunctionImport Name="f_disbursement_summary" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_disbursement_summary_Result)" />
+    <EntitySet Name="Order_Shipping" EntityType="AMMultivendor2Model.Order_Shipping" />
+    <EntitySet Name="Product_Recently_Viewed" EntityType="AMMultivendor2Model.Product_Recently_Viewed" />
+    <FunctionImport Name="f_order_master_summary" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_order_master_summary_Result)">
+      <Parameter Name="OrderGUID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="f_order_master" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_order_master_Result)" />
+    <FunctionImport Name="f_getproducts" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_Result)" />
+    <EntitySet Name="Users" EntityType="AMMultivendor2Model.User" />
+    <EntitySet Name="Messages" EntityType="AMMultivendor2Model.Message" />
+    <FunctionImport Name="SP_AllMessages">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="f_getproducts_By_getmegaoffers" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_getmegaoffers_Result)" />
+    <FunctionImport Name="f_getproducts_By_CategoryID" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_CategoryID_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="f_getproducts_By_StatusID" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_StatusID_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="f_getproducts_By_ProductId" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_ProductId_Result)">
+      <Parameter Name="ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="f_getproducts_paging" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_paging_Result)">
+      <Parameter Name="numberofrows" Mode="In" Type="Int32" />
+      <Parameter Name="skiprecords" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="f_getproducts_Recentlyviewed" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_Recentlyviewed_Result)">
+      <Parameter Name="IP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Product_Paging" ReturnType="Collection(AMMultivendor2Model.SP_Product_Paging_Result)">
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="numberofrows" Mode="In" Type="Int32" />
+      <Parameter Name="skiprecords" Mode="In" Type="Int32" />
+      <Parameter Name="searchurl" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Product_Paging_AllRecord" ReturnType="Collection(Int32)">
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="searchurl" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Product_Inventory" EntityType="AMMultivendor2Model.Product_Inventory" />
+    <EntitySet Name="Website_Setup_Script" EntityType="AMMultivendor2Model.Website_Setup_Script" />
+    <FunctionImport Name="SP_Status_HasProducts" ReturnType="Collection(AMMultivendor2Model.SP_Status_HasProducts_Result)" />
+    <FunctionImport Name="SP_Order_Master" ReturnType="Collection(AMMultivendor2Model.SP_Order_Master_Result)" />
+    <EntitySet Name="Email_Setup" EntityType="AMMultivendor2Model.Email_Setup" />
+    <FunctionImport Name="SP_Vendor_Search" ReturnType="Collection(AMMultivendor2Model.SP_Vendor_Search_Result)">
+      <Parameter Name="Productname" Mode="In" Type="String" />
+      <Parameter Name="maincat" Mode="In" Type="String" />
+      <Parameter Name="subcat" Mode="In" Type="String" />
+      <Parameter Name="area" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="f_order_detail" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_order_detail_Result)">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <EntitySet Name="organizations" EntityType="AMMultivendor2Model.organization" />
+    <EntitySet Name="C__MigrationHistory" EntityType="AMMultivendor2Model.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="AMMultivendor2Model.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="AMMultivendor2Model.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="AMMultivendor2Model.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="AMMultivendor2Model.AspNetUser" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="AMMultivendor2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="AMMultivendor2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="AMMultivendor2Model.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <FunctionImport Name="SP_getorg" ReturnType="Collection(AMMultivendor2Model.SP_getorg_Result)" />
+    <FunctionImport Name="sp_getcat_withoutparent" ReturnType="Collection(AMMultivendor2Model.sp_getcat_withoutparent_Result)">
+      <Parameter Name="orgid" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_getcat_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="PARENT_NAMEID" Nullable="true" />
+    <Property Type="Int32" Name="HLevel" Nullable="true" />
+    <Property Type="String" Name="NAME" Nullable="true" />
+    <Property Type="String" Name="Displayname" Nullable="true" />
+    <Property Type="String" Name="catnames" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Product_Discount">
+    <Key>
+      <PropertyRef Name="DiscountId" />
+    </Key>
+    <Property Name="DiscountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DiscountType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DiscountOffer" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountStartDate" Type="DateTime" Precision="3" />
+    <Property Name="DiscountEndDate" Type="DateTime" Precision="3" />
+    <Property Name="ModuleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Website_Setup">
+    <Key>
+      <PropertyRef Name="WebsiteSetupId" />
+    </Key>
+    <Property Name="WebsiteSetupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemValue" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ItemDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ItemKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeductionType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Logo">
+    <Key>
+      <PropertyRef Name="LogoId" />
+    </Key>
+    <Property Name="LogoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Logo1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="logowidth" Type="Int32" />
+    <Property Name="logoheight" Type="Int32" />
+    <Property Name="CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SupportContact" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WebsiteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FooterLogo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Favicon" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Keyword" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Order_Master">
+    <Key>
+      <PropertyRef Name="OrderGUID" />
+    </Key>
+    <Property Name="OrderGUID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsertDate" Type="DateTime" Precision="0" />
+    <Property Name="OrderKeyStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Countryid" />
+    </Key>
+    <Property Name="Countryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="InsertBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="f_Profile_All_Result">
+    <Property Type="Int32" Name="ProfileId" Nullable="false" />
+    <Property Type="Guid" Name="ProfileGUID" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="AdminStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ShopName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Logo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CoverImage" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Zip" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="ShopDescription" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="PaypalId" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="total_purchased" Nullable="true" />
+    <Property Type="Int32" Name="total_products" Nullable="true" />
+    <Property Type="Int32" Name="totalproduct_Sold" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="f_startrating_productwise_Result">
+    <Property Type="Int32" Name="AverageRating" Nullable="false" />
+    <Property Type="Int32" Name="RatingCount" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Order_Basic">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderGUID" Type="Guid" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="QTY" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DeliveryFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="VAT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+    <Property Name="ReferenceID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Commission" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Donation" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderVariation" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="LastOrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="currencyid" Type="Int32" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Donation_Master">
+    <Key>
+      <PropertyRef Name="RequestFundId" />
+    </Key>
+    <Property Name="RequestFundId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestFundGUID" Type="Guid" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="AdminStatus" Type="Boolean" />
+    <Property Name="AdminRemarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="PaypalID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Administrativefee" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Donation_Received">
+    <Key>
+      <PropertyRef Name="DonationReceivedId" />
+    </Key>
+    <Property Name="DonationReceivedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestFundGUID" Type="Guid" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+    <Property Name="PaypalId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="AdministrativeFeesPer" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AdministrativeAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="f_Donation_BYID_Result">
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="shortdescription" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="Image" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="AdminStatus" Nullable="true" />
+    <Property Type="String" Name="AdminRemarks" Nullable="true" MaxLength="1000" />
+    <Property Type="Guid" Name="RequestFundGUID" Nullable="true" />
+    <Property Type="String" Name="paypalid" Nullable="true" MaxLength="256" />
+    <Property Type="Decimal" Name="totalreceived" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="f_donation_total_Result">
+    <Property Type="Decimal" Name="totaldonation" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="String" Name="funds" Nullable="false" MaxLength="5" />
+  </ComplexType>
+  <EntityType Name="Users_Membership">
+    <Key>
+      <PropertyRef Name="MembershipId" />
+    </Key>
+    <Property Name="MembershipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfileId" Type="Int32" />
+    <Property Name="IsFree" Type="Boolean" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="MembershipFee" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+    <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReferenceId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MembershipStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CancelStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cancellationdate" Type="DateTime" Precision="3" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="f_Orders_All_Result">
+    <Property Type="Guid" Name="OrderGUID" Nullable="true" />
+    <Property Type="Int32" Name="OrderId" Nullable="false" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="true" Precision="32" Scale="2" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Decimal" Name="Tax" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="VAT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DeliveryFees" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Commission" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Donation" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="OrderStatus" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="SellerID" Nullable="false" />
+    <Property Type="String" Name="ShopName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="Street" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PaymentMode" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="PaymentDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ReferenceID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Comments" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="orderdeliverystatus" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="f_All_getcat_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="PARENT_NAMEID" Nullable="true" />
+    <Property Type="Int32" Name="HLevel" Nullable="true" />
+    <Property Type="String" Name="NAME" Nullable="true" />
+    <Property Type="String" Name="Displayname" Nullable="true" />
+    <Property Type="String" Name="catnames" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Order_Disbursement">
+    <Key>
+      <PropertyRef Name="OrderEarningId" />
+    </Key>
+    <Property Name="OrderEarningId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DisburseDate" Type="DateTime" Precision="3" />
+    <Property Name="DisbursementMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DisbursementId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="InsertBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Order_Status">
+    <Key>
+      <PropertyRef Name="OrderStatusId" />
+    </Key>
+    <Property Name="OrderStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusDate" Type="DateTime" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Insertby" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Order_Variation">
+    <Key>
+      <PropertyRef Name="OrderVariationId" />
+    </Key>
+    <Property Name="OrderVariationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderGUID" Type="Guid" />
+    <Property Name="ProductSpecificationId" Type="Int32" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Vendor_Membership_Package">
+    <Key>
+      <PropertyRef Name="Membershipid" />
+    </Key>
+    <Property Name="Membershipid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Membershiptype" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="RecurringPeriod" Type="Int32" />
+    <Property Name="Fees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CurrencyId" Type="Int32" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sortoption" Type="Int32" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="f_disbursement_Result">
+    <Property Type="Int32" Name="orderid" Nullable="false" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="totaprice" Nullable="true" Precision="32" Scale="2" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Decimal" Name="Tax" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="VAT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DeliveryFees" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Commission" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Donation" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="balancedisbursment" Nullable="true" Precision="31" Scale="2" />
+    <Property Type="Decimal" Name="disbursementamount" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="sellerusername" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="orderdeliverystatus" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PaypalId" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="f_disbursement_summary_Result">
+    <Property Type="Decimal" Name="balancedisbursment" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="String" Name="PaypalId" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <EntityType Name="Order_Shipping">
+    <Key>
+      <PropertyRef Name="ShippingId" />
+    </Key>
+    <Property Name="ShippingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderGUID" Type="Guid" />
+    <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Zipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Contactnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product_Recently_Viewed">
+    <Key>
+      <PropertyRef Name="RecentlyViewId" />
+    </Key>
+    <Property Name="RecentlyViewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="IP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Insertdate" Type="DateTime" Precision="3" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="f_order_master_summary_Result">
+    <Property Type="Guid" Name="OrderGUID" Nullable="true" />
+    <Property Type="String" Name="orderid" Nullable="true" MaxLength="5" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="ExcludeVatPrice" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="vat" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="tax" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="donation" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="totaaftercomanddon" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="deliveryfees" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="f_order_master_Result">
+    <Property Type="Guid" Name="OrderGUID" Nullable="true" />
+    <Property Type="String" Name="orderid" Nullable="true" MaxLength="5" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="String" Name="orderdate" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="256" />
+    <Property Type="Decimal" Name="ExcludeVatPrice" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="vat" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="tax" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="Street" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Zipcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Contactnumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PaymentMode" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="PaymentDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ReferenceID" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="commission" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="donation" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="totaaftercomanddon" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="deliveryfees" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="f_getproducts_Result">
+    <Property Type="String" Name="image" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Guid" Name="ProductGUID" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="URLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="ProductStartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ProductEndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsPublished" Nullable="true" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ProfileId" Nullable="true" />
+    <Property Type="Int32" Name="Category_Id" Nullable="true" />
+    <Property Type="String" Name="category_name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="categoryurlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="OldPrice" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="maincaturlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="maincatid" Nullable="true" />
+    <Property Type="String" Name="deals" Nullable="false" />
+    <Property Type="String" Name="badgestatus" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="shopname" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ShopURLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="logo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brands" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brandsurlpath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="brandid" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="totalpick" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+    <Property Name="GUID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MesageId" />
+    </Key>
+    <Property Name="MesageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChatID" Type="Guid" />
+    <Property Name="sender" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="recipient" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="senddate" Type="DateTime" Precision="3" />
+    <Property Name="recieveddate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Message1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Attachment" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="SessionBookingId" Type="Int32" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="f_getproducts_By_getmegaoffers_Result">
+    <Property Type="String" Name="image" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Guid" Name="ProductGUID" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="URLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="ProductStartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ProductEndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsPublished" Nullable="true" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ProfileId" Nullable="true" />
+    <Property Type="Int32" Name="Category_Id" Nullable="true" />
+    <Property Type="String" Name="category_name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="categoryurlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="OldPrice" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="maincaturlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="maincatid" Nullable="true" />
+    <Property Type="String" Name="deals" Nullable="false" />
+    <Property Type="String" Name="badgestatus" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="shopname" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ShopURLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="logo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brands" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brandsurlpath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="brandid" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="totalpick" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="f_getproducts_By_CategoryID_Result">
+    <Property Type="String" Name="image" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Guid" Name="ProductGUID" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="URLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="ProductStartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ProductEndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsPublished" Nullable="true" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ProfileId" Nullable="true" />
+    <Property Type="Int32" Name="Category_Id" Nullable="true" />
+    <Property Type="String" Name="category_name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="categoryurlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="OldPrice" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="maincaturlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="maincatid" Nullable="true" />
+    <Property Type="String" Name="deals" Nullable="false" />
+    <Property Type="String" Name="badgestatus" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="shopname" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ShopURLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="logo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brands" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brandsurlpath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="brandid" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="totalpick" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="f_getproducts_By_StatusID_Result">
+    <Property Type="String" Name="image" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Guid" Name="ProductGUID" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="URLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="ProductStartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ProductEndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsPublished" Nullable="true" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ProfileId" Nullable="true" />
+    <Property Type="Int32" Name="Category_Id" Nullable="true" />
+    <Property Type="String" Name="category_name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="categoryurlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="OldPrice" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="maincaturlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="maincatid" Nullable="true" />
+    <Property Type="String" Name="deals" Nullable="false" />
+    <Property Type="String" Name="badgestatus" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="shopname" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ShopURLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="logo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brands" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brandsurlpath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="brandid" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="totalpick" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="f_getproducts_By_ProductId_Result">
+    <Property Type="String" Name="image" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Guid" Name="ProductGUID" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="URLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="ProductStartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ProductEndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsPublished" Nullable="true" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ProfileId" Nullable="true" />
+    <Property Type="Int32" Name="Category_Id" Nullable="true" />
+    <Property Type="String" Name="category_name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="categoryurlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="OldPrice" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="maincaturlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="maincatid" Nullable="true" />
+    <Property Type="String" Name="deals" Nullable="false" />
+    <Property Type="String" Name="badgestatus" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="shopname" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ShopURLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="logo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brands" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brandsurlpath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="brandid" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="totalpick" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="f_getproducts_paging_Result">
+    <Property Type="String" Name="image" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Guid" Name="ProductGUID" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="URLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="ProductStartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ProductEndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsPublished" Nullable="true" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ProfileId" Nullable="true" />
+    <Property Type="Int32" Name="Category_Id" Nullable="true" />
+    <Property Type="String" Name="category_name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="categoryurlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="OldPrice" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="maincaturlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="maincatid" Nullable="true" />
+    <Property Type="String" Name="deals" Nullable="false" />
+    <Property Type="String" Name="badgestatus" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="shopname" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ShopURLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="logo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brands" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brandsurlpath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="brandid" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="totalpick" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="f_getproducts_Recentlyviewed_Result">
+    <Property Type="String" Name="image" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Guid" Name="ProductGUID" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="URLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="ProductStartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ProductEndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsPublished" Nullable="true" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ProfileId" Nullable="true" />
+    <Property Type="Int32" Name="Category_Id" Nullable="true" />
+    <Property Type="String" Name="category_name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="categoryurlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="OldPrice" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="maincaturlpath" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="maincatid" Nullable="true" />
+    <Property Type="String" Name="deals" Nullable="false" />
+    <Property Type="String" Name="badgestatus" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="shopname" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ShopURLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="logo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brands" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="brandsurlpath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="brandid" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="totalpick" Nullable="true" />
+    <Property Type="DateTime" Name="productviewinsertdate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SP_Product_Paging_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Int32" Name="totalpick" Nullable="true" />
+    <Property Type="String" Name="URLPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="badgestatus" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="deals" Nullable="false" />
+    <Property Type="String" Name="image" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Category_Id" Nullable="true" />
+    <Property Type="Int32" Name="maincatid" Nullable="true" />
+    <Property Type="String" Name="CatMasUrl" Nullable="true" MaxLength="1000" />
+  </ComplexType>
+  <EntityType Name="Product_Inventory">
+    <Key>
+      <PropertyRef Name="ProductInventoryId" />
+    </Key>
+    <Property Name="ProductInventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGUID" Type="Guid" />
+    <Property Name="Inventory" Type="Int32" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Website_Setup_Script">
+    <Key>
+      <PropertyRef Name="Scriptid" />
+    </Key>
+    <Property Name="Scriptid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Scriptname" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="SP_Status_HasProducts_Result">
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CssClass" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="StatusId" Nullable="false" />
+    <Property Type="Boolean" Name="ShowOnFront" Nullable="true" />
+    <Property Type="String" Name="URLPath" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="SP_Order_Master_Result">
+    <Property Type="String" Name="orderid" Nullable="true" MaxLength="5" />
+    <Property Type="Guid" Name="OrderGUID" Nullable="true" />
+    <Property Type="String" Name="orderdeliverystatus" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="orderdeliverystatusdate" Nullable="false" MaxLength="4000" />
+    <Property Type="DateTime" Name="orderdate" Nullable="true" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="ProfileId" Nullable="false" />
+    <Property Type="Int32" Name="BuyerId" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Email_Setup">
+    <Key>
+      <PropertyRef Name="EmailSettingId" />
+    </Key>
+    <Property Name="EmailSettingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailFrom" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SMTPPort" Type="Int32" />
+    <Property Name="Host" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BCC" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrgId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="SP_Vendor_Search_Result">
+    <Property Type="Int32" Name="ProfileId" Nullable="false" />
+    <Property Type="String" Name="ShopName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="country" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="city" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="address" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="logo" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="totalproducts" Nullable="true" />
+    <Property Type="String" Name="shopurl" Nullable="true" MaxLength="551" />
+    <Property Type="String" Name="latitude" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="longitude" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="f_order_detail_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Guid" Name="OrderGUID" Nullable="true" />
+    <Property Type="String" Name="orderid" Nullable="true" MaxLength="5" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="true" Precision="32" Scale="2" />
+    <Property Type="String" Name="orderdate" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="image" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Tax" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="VAT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DeliveryFees" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="InsertDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="OrderStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Comments" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="String" Name="orderdeliverystatus" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="orderdeliverystatusdate" Nullable="false" MaxLength="4000" />
+    <Property Type="String" Name="PaymentMode" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="PaymentDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ReferenceID" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Commission" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Donation" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="OrderVariation" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="organization">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="org_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="org_logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="vender_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="v_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="v_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="v_mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pincode" Type="Int32" />
+    <Property Name="org_address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="org_description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="v_bank_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="v_account_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="v_ifsc_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="v_bank_branch_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="v_upi_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="v_id_proof" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="AMMultivendor2Model.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="AMMultivendor2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="AMMultivendor2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="AMMultivendor2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="AMMultivendor2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="AMMultivendor2Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="AMMultivendor2Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="AMMultivendor2Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="AMMultivendor2Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="AMMultivendor2Model.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="AMMultivendor2Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="AMMultivendor2Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="SP_getorg_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="org_name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="org_logo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="vender_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="v_email" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="v_phone" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="v_mobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="state" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="city" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="pincode" Nullable="true" />
+    <Property Type="String" Name="org_address" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="org_description" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="v_bank_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="v_account_number" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="v_ifsc_code" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="v_bank_branch_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="v_upi_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="v_id_proof" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_getcat_withoutparent_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="PARENT_NAMEID" Nullable="true" />
+    <Property Type="Int32" Name="HLevel" Nullable="true" />
+    <Property Type="String" Name="NAME" Nullable="true" />
+    <Property Type="String" Name="Displayname" Nullable="true" />
+    <Property Type="String" Name="catnames" Nullable="true" />
+  </ComplexType>
+</Schema>

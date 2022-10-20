@@ -1,0 +1,234 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="VendorPanel.SiteMaster" %>
+
+<%@ Register Src="~/usercontrol/Logo_uc.ascx" TagPrefix="uc1" TagName="Logo_uc" %>
+<%@ Register Src="~/usercontrol/alert_membership.ascx" TagPrefix="uc1" TagName="alert_membership" %>
+<%@ Register Src="~/usercontrol/Earning_upcoming_vendor_uc.ascx" TagPrefix="uc1" TagName="Earning_upcoming_vendor_uc" %>
+<%@ Register Src="~/usercontrol/Delivery_Pending_uc.ascx" TagPrefix="uc1" TagName="Delivery_Pending_uc" %>
+<%@ Register Src="~/inbox/msg-counter.ascx" TagPrefix="uc1" TagName="msgcounter" %>
+<%@ Register Src="~/usercontrol/loading_javascript.ascx" TagPrefix="uc1" TagName="loading_javascript" %>
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Vendor Panel</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/vendor.css" rel="stylesheet" />
+    <link href="Content/roots.css" rel="stylesheet" />
+    <link href="Content/Style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet"> 
+
+    <link href="listing/p-tabs.css" rel="stylesheet" />
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar-menu.js")%>" ></script>
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar.js")%>" ></script>
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar.min.js")%>" ></script>
+<div class="top-header">
+    <uc1:loading_javascript runat="server" ID="loading_javascript" />
+            
+                <ul class="header-links">
+                <li>
+    <a runat="server" class="logo ">
+                        <uc1:Logo_uc runat="server" id="Logo_uc" />
+</a></li>  <li class="sep-l"><a data-toggle="sidebar" href="#" >
+                    
+    <asp:Image ID="Image5" runat="server" ImageUrl="~/images/menu.png" Width="25px" />
+
+                    </a></li>
+          
+                </ul>
+      <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                    
+                           
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+             <ul class="pull-right m-none">
+                   <li><a runat="server" title="Manage your account">Hello, <%: Page.User.Identity.Name  %>!  </a></li>
+             </ul>
+            </LoggedInTemplate>
+                    </asp:LoginView>
+        </div>
+
+
+
+
+
+
+      <div id="wrapper">
+              
+        <aside id="side-wrapper" class="shadow">
+                <div class="media">
+                  
+                    <div class="media-body">
+               <%--   <a data-toggle="sidebar" href="#" class="visible-lg pull-left padding5">
+                    
+                      <asp:Image ID="Image1" runat="server" ImageUrl="~/images/menu.png" Width="45px" CssClass="padding10 " /> 
+
+                    </a>  --%> 
+                    </div>
+                </div>
+                <ul class="nav-stacked sidebar-menu">
+                     <li>
+        <a runat="server" href="~/Default.aspx">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/images/home.png" /> <span>Home</span> 
+        </a>
+       
+      </li>
+
+                      <li>
+        <a runat="server" href="~/Admin/profile.aspx">
+        <asp:Image ID="Image7" runat="server" ImageUrl="~/images/vendorprofile.png" /> <span>Profile</span> 
+        </a>
+       
+      </li>    
+
+                   <li>
+        <a runat="server" href="~/Admin/Product_View.aspx">
+        <asp:Image ID="Image2" runat="server" ImageUrl="~/images/products.png" /> <span>Products</span> 
+        </a>
+       
+      </li>    
+                    
+                      <li>
+        <a runat="server" href="~/Admin/order_master.aspx">
+        <asp:Image ID="Image4" runat="server" ImageUrl="~/images/customer.png" /> <span>Orders</span> 
+        </a>
+       
+      </li>    
+
+   <li>
+        <a runat="server" href="~/Admin/commission_report.aspx">
+        <asp:Image ID="Image3" runat="server" ImageUrl="~/images/orders.png" /> <span>Disbursement Report</span> 
+        </a>
+       
+      </li>    
+ 
+                      <li>
+        <a runat="server" href="~/Admin/Membershipsusbcription.aspx">
+        <asp:Image ID="Image8" runat="server" ImageUrl="~/images/member.png" /> <span>Membership Report</span> 
+        </a>
+       
+      </li>    
+                        <li>
+        <a runat="server" href="~/Admin/myinbox.aspx">
+        <asp:Image ID="Image9" runat="server" ImageUrl="~/images/icons8-new-post-100.png" /> <span>Inbox  <uc1:msgcounter runat="server" ID="msgcounter" />
+        </span> 
+        </a>
+       
+      </li>    
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                    
+                           
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+
+                            <li ><a >
+                    
+    <asp:Image ID="Image5" runat="server" ImageUrl="~/images/wallet.png"  /> <span> Upcoming Earning </span> 
+                                <%--<asp:Label ID="Label1" runat="server" Text="30 USD" CssClass="bold"></asp:Label>--%>
+                                <uc1:Earning_upcoming_vendor_uc runat="server" ID="Earning_upcoming_vendor_uc" />
+                    </a></li>
+
+
+                                    <li class="sep-l">  
+                                        <a runat="server" href="~/Admin/Order_Master.aspx">
+                    
+    <asp:Image ID="Image6" runat="server" ImageUrl="~/images/orders.png" /> <span> Pending Order </span> 
+                                <%--<asp:Label ID="Label1" runat="server" Text="30 USD" CssClass="bold"></asp:Label>--%>
+                                        <uc1:Delivery_Pending_uc runat="server" ID="Delivery_Pending_uc" />
+                                       </a>
+
+                                    </li>
+
+
+
+
+                                   
+                            <li>
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" CssClass="logoff" />
+                            </li>
+
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                    
+</ul>
+                    </aside>
+
+
+
+                <div id="content-wrapper">
+
+        
+
+                      <div class="container-fluid">
+                          <uc1:alert_membership runat="server" id="alert_membership" />
+                    <div class="body-content  padding15 ">
+            
+       
+                       
+           <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+                </div>
+
+                    
+                    </div>
+                
+                
+       
+        
+          
+ 
+        
+           <script>
+               $('#wrapper').sidebar();
+</script>
+      <script>
+          $.sidebarMenu($('.sidebar-menu'))
+  </script>
+     </div>
+    </form>
+</body>
+</html>
