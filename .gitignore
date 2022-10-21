@@ -2,7 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/ShoppiteAPI/.vs
+/ShoppiteMaster/.vs
 *.swp
 *.*~
 project.lock.json
