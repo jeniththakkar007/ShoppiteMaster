@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            height: 14px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,10 +36,10 @@
         </tr>
         
         <tr>
-            <td>
+            <td class="auto-style1">
                 Name
             </td>
-            <td>
+            <td class="auto-style1">
                 <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
                 <%--<asp:Label ID="lblname" runat="server" Text=""></asp:Label>--%>
             </td>

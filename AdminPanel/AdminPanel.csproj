@@ -276,6 +276,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="Login.Master" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Properties\PublishProfiles\admin.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Project_Readme.html" />
@@ -787,6 +788,13 @@
     </Compile>
     <Compile Include="usercontrol\seo_uc.ascx.designer.cs">
       <DependentUpon>seo_uc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

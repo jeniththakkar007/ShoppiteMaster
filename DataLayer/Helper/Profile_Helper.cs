@@ -131,9 +131,9 @@ using System.Web;
                 up.ShopURLPath = ch.createurlpath(shopname);
                 up.IsMembershipFree = memberstatus;
                 up.ContactNumber = phone;
-            up.Address = address;
-            up.latitude = lat;
-            up.longitude = lang;
+                up.Address = address;
+                up.latitude = lat;
+                up.longitude = lang;
                 //up.ProfileGUID = Guid.NewGuid();
 
                 db.Users_Profile.Add(up);

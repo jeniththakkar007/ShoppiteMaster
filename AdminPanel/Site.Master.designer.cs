@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdminPanel {
-    
-    
-    public partial class SiteMaster {
-        
+namespace AdminPanel
+{
+
+
+    public partial class SiteMaster
+    {
+
         /// <summary>
         /// Logo_uc control.
         /// </summary>
@@ -20,7 +22,34 @@ namespace AdminPanel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FrontPanel.usercontrol.Logo_uc Logo_uc;
-        
+
+        /// <summary>
+        /// Categories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList Categories;
+
+        /// <summary>
+        /// SqlDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+
         /// <summary>
         /// MainContent control.
         /// </summary>

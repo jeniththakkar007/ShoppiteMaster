@@ -154,11 +154,17 @@
                 width: 94%;
             }
         }
+        .auto-style1 {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-     <div class="wrap">
+     <div class="auto-style1">
         <div class="logo">
             <h1>OPPS..!</h1>
             <p>Some thing went wrong. Please try again!</p>

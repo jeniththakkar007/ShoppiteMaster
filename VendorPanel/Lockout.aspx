@@ -53,7 +53,7 @@
  <h4 class="white-c">
      <asp:Label ID="lblcurrencyname" runat="server"></asp:Label> <asp:Label ID="lblfees" runat="server"></asp:Label> / <asp:Label ID="lbltitle" runat="server"></asp:Label>
  </h4>
-         <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn d-grey-bg white-c btn-lg " PostBackUrl="~/vendorpackages.aspx">Start Now</asp:LinkButton>       
+         <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn d-grey-bg white-c btn-lg " PostBackUrl="~/vendorpackages.aspx" OnClick="LinkButton1_Click">Start Now</asp:LinkButton>       
      <br />   <br />  <br />  <br /> <br /> 
      <asp:Image ID="Image1" runat="server" ImageUrl="~/images/membershipbuy.png" Width="90%" />
     </div>

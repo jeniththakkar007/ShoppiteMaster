@@ -19,7 +19,7 @@
             <uc:Logo_uc runat="server" ID="Logo_uc" /></div>
             <div class="padding15 white-bg border l-grey-bd radius ">   
                 <h3 class="center upp bold">
-           Vendor Panel </h3>
+                    vendor panel</h3>
                 <hr />
             <%--    <a class="btn facebook-btn ">Login in with Facebook </a>
                 <a class="btn google-btn ">Login in with Google </a>
@@ -37,7 +37,7 @@
                     <div class="form-group">
                        <div class="input-group">
                             
-                            <asp:TextBox runat="server" ID="txtemail" placeholder="Email Address" TextMode="Email" />
+                            <asp:TextBox runat="server" AutoCompleteType="Email" ID="txtemail" placeholder="Email Address" TextMode="Email" />
                            
                            <span class="input-group-addon">
        <asp:Image ID="Image1" runat="server" ImageUrl="~/images/envelop.png" Height="15px" />

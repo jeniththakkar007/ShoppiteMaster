@@ -59,10 +59,10 @@
         <EntityTypeShape EntityType="AMMultivendor2Model.Email_Setup" Width="1.5" PointX="8.375" PointY="20.75" />
         <EntityTypeShape EntityType="AMMultivendor2Model.organization" Width="1.5" PointX="21.375" PointY="0.75" />
         <EntityTypeShape EntityType="AMMultivendor2Model.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="21.75" />
-        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetRole" Width="1.5" PointX="21.375" PointY="8.5" />
-        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetUserClaim" Width="1.5" PointX="25.875" PointY="7" />
-        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetUserLogin" Width="1.5" PointX="25.875" PointY="9.75" />
-        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetUser" Width="1.5" PointX="23.625" PointY="7.375" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetRole" Width="1.5" PointX="21.375" PointY="8.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetUserClaim" Width="1.5" PointX="25.875" PointY="7" IsExpanded="false" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetUserLogin" Width="1.5" PointX="25.875" PointY="9.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.AspNetUser" Width="1.5" PointX="23.625" PointY="7.375" IsExpanded="false" />
         <AssociationConnector Association="AMMultivendor2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="AMMultivendor2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="AMMultivendor2Model.AspNetUserRoles" />

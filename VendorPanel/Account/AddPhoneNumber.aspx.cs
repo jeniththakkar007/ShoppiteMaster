@@ -30,5 +30,10 @@ namespace VendorPanel.Account
 
             Response.Redirect("/Account/VerifyPhoneNumber?PhoneNumber=" + HttpUtility.UrlEncode(PhoneNumber.Text));
         }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
