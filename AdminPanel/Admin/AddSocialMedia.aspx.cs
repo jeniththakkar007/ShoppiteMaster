@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -14,7 +15,6 @@ namespace AdminPanel.Admin
 
 
         //CheckFile ch = new CheckFile();
-        AWS_Helper aw = new AWS_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,7 +25,10 @@ namespace AdminPanel.Admin
             try
             {
                 //1350 500
-
+                String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+                int orgid = Convert.ToInt32(masterDropDown);
+                string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
+                string filepath = fileconfigpath + orgid + "\\SocialMedia";
                 if (FileUpload1.HasFile)
                 {
 
@@ -36,9 +39,15 @@ namespace AdminPanel.Admin
 
                     //FileUpload1.SaveAs(Server.MapPath("~/DynamicImage/" + Path.GetFileName(FileUpload1.FileName)));
 
+                    string bannerfilepath = filepath + "\\files";
+                    if (!System.IO.Directory.Exists(bannerfilepath))
+                    {
+                        System.IO.Directory.CreateDirectory(bannerfilepath);
+                    }
+                    bannerfilepath = bannerfilepath + "\\" + FileUpload1.FileName;
+                    FileUpload1.SaveAs(bannerfilepath);
 
-
-                    SqlDataSource1.InsertParameters.Add("Image", aw.uploadfile(FileUpload1));
+                    SqlDataSource1.InsertParameters.Add("Image", bannerfilepath);
 
                     SqlDataSource1.Insert();
                     lblMessage.Visible = true;

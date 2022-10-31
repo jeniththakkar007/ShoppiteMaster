@@ -12,12 +12,7 @@
               <div class="col-md-3 no-padding ">
  Search By Product Name: <asp:TextBox ID="txtproductname" runat="server" CssClass="form-control"></asp:TextBox>
               </div>
-              <div class="col-md-2">
-                  Organizations: 
-                     <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrg" DataTextField="org_name" DataValueField="id">
-                    <asp:ListItem Value="0">None</asp:ListItem>
-                    </asp:DropDownList>
-                     </div>
+              
               <div class="col-md-2"> <br />
 <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" CssClass="btn w-100 theme-bg white-c">Filter</asp:LinkButton>
               </div>

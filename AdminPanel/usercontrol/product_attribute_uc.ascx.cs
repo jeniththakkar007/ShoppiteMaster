@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -289,7 +290,11 @@ namespace AdminPanel.usercontrol
 
                 if (fileicon.HasFile)
                 {
-                    f = aw.uploadfile(fileicon);
+                    String masterDropDown = (((this.Parent.Page.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+                    int selectedOrg = Convert.ToInt32(masterDropDown);
+                    string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
+                    string filepath = fileconfigpath + selectedOrg + "\\Status";
+                    f = aw.uploadfile(fileicon, filepath);
                 }
 
 

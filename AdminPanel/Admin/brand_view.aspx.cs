@@ -12,21 +12,18 @@ namespace AdminPanel.Admin
     {
 
         Entities db = new Entities();
-        protected void Page_Load(object sender, EventArgs e)
+       
+        protected void Page_PreRender(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-            {
-
-                getbrands();
-            }
+            getbrands();
         }
-
 
         protected void getbrands()
         {
 
-
-            var q=(from b in db.Brands
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
+            var q=(from b in db.Brands where b.OrgId == selectedOrg
                       orderby b.BrandName
                        select b);
 

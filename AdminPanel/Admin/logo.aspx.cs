@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -86,7 +87,12 @@ namespace Adminweb.Admin
 
             if (FU1.HasFile)
             {
-                Image2.ImageUrl = aw.uploadfile(FU1);
+                String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+                int selectedOrg = Convert.ToInt32(masterDropDown);
+                string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
+                string filepath = fileconfigpath + selectedOrg + "\\Logos";
+                
+                Image2.ImageUrl = aw.uploadfile(FU1, filepath);
             }
 
         }
@@ -95,7 +101,11 @@ namespace Adminweb.Admin
         {
             if (FileUpload1.HasFile)
             {
-                Image1.ImageUrl = aw.uploadfile(FileUpload1);
+                String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+                int selectedOrg = Convert.ToInt32(masterDropDown);
+                string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
+                string bannerfilepath = fileconfigpath + selectedOrg + "\\Logo";
+                Image1.ImageUrl = aw.uploadfile(FileUpload1, bannerfilepath);
             }
         }
 
@@ -107,7 +117,11 @@ namespace Adminweb.Admin
 
                 if ( ext == ".ico")
                 {
-                    Image3.ImageUrl = aw.uploadfile(FileUpload2);
+                    String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+                    int selectedOrg = Convert.ToInt32(masterDropDown);
+                    string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
+                    string bannerfilepath = fileconfigpath + selectedOrg + "\\Logo";
+                    Image3.ImageUrl = aw.uploadfile(FileUpload2, bannerfilepath);
                 }
 
                 else

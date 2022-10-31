@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdminPanel.Admin {
-    
-    
-    public partial class Category_View {
-        
+namespace AdminPanel.Admin
+{
+
+
+    public partial class Category_View
+    {
+
         /// <summary>
         /// LinkButton1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace AdminPanel.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-        
+
         /// <summary>
         /// ListView1 control.
         /// </summary>
@@ -29,5 +31,19 @@ namespace AdminPanel.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ListView1;
+
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new AdminPanel.SiteMaster Master
+        {
+            get
+            {
+                return ((AdminPanel.SiteMaster)(base.Master));
+            }
+        }
     }
 }

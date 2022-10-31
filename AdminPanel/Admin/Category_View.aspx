@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Category_View.aspx.cs" Inherits="AdminPanel.Admin.Category_View" %>
+<%@ MasterType VirtualPath="~/Site.Master" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
         <div class="white-smoke-bg  sticky padding15">

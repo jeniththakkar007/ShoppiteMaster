@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -42,12 +43,6 @@ namespace AdminPanel.usercontrol
             db.SaveChanges();
 
 
-
-
-
-         
-
-
         }
 
 
@@ -66,18 +61,24 @@ namespace AdminPanel.usercontrol
 
         public void Upload()
         {
-         
+            String masterDropDown = (((this.Parent.Page.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int orgid = Convert.ToInt32(masterDropDown);
+            string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
+            string filepath = fileconfigpath + orgid + "\\OtherProducts";
 
             if (fuUpload1.HasFiles)
             {
                 foreach (HttpPostedFile postedFile in fuUpload1.PostedFiles)
                 {
                     //CheckFile cf = new CheckFile();
-
-                    AWS_Helper aw = new AWS_Helper();
-                    lblfile.Text = aw.uploadfilemulti(postedFile);
-
-                    insertimages(lblfile.Text);
+                    string bannerfilepath = filepath + "\\files";
+                    if (!System.IO.Directory.Exists(bannerfilepath))
+                    {
+                        System.IO.Directory.CreateDirectory(bannerfilepath);
+                    }
+                    bannerfilepath = bannerfilepath + "\\" + postedFile.FileName;
+                    postedFile.SaveAs(bannerfilepath);
+                    insertimages(bannerfilepath);
                 }
             }
 

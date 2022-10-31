@@ -32,18 +32,7 @@
                      </div>
   </div>
 
-            <div class="form-group row">
-                 <div class="col-md-2 right">
- Organization
-                     </div>
-                 <div class="col-md-4">
-                     <asp:DropDownList ID="ddlorg" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrg" DataTextField="org_name" DataValueField="id">
-                    <asp:ListItem Value="0">None</asp:ListItem>
-                    </asp:DropDownList>
-                     </div>
-  </div>
-
-
+            
               <div class="form-group row">
                  <div class="col-md-2 right">
  Parent Category (If Any)
@@ -203,11 +192,7 @@ Meta description
     <script language="javascript" type="text/javascript">
         $(function () {
             $('[id*=fubanner]').change(function () {
-                var selectedOrg = $('#<%=ddlorg.ClientID %> option:selected').val();
-                if (selectedOrg == 0) {
-                    alert("Please select organization.");
-                }
-                else {
+                
                     if (typeof (FileReader) != "undefined") {
                         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
                         $($(this)[0].files).each(function () {
@@ -226,7 +211,7 @@ Meta description
                     } else {
                         alert("This browser does not support HTML5 FileReader.");
                     }
-                }
+                
             });
         });
     </script>

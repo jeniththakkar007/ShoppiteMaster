@@ -18,7 +18,6 @@ namespace AdminPanel.Admin
 
         Entities db = new Entities();
         //CheckFile cf = new CheckFile();
-        //AWS_Helper aw = new AWS_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -31,7 +30,7 @@ namespace AdminPanel.Admin
                     ddlcat.DataBind();
                     txtname.Text = cm.category_name;
                     ddlcat.SelectedValue = cm.parent_category_id.ToString();
-                    ddlorg.SelectedValue = cm.OrgId != null ? cm.OrgId.ToString(): "0" ;
+                  
                     txtdescription.Text = cm.Description;
                     imgicon.ImageUrl = cm.Icon;
                     imgbanner.ImageUrl = cm.Banner;
@@ -52,9 +51,9 @@ namespace AdminPanel.Admin
 
         protected void fileupload()
         {
-
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int orgvalue = Convert.ToInt32(masterDropDown);
             string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-            var orgvalue = ddlorg.SelectedValue;
             string filepath = fileconfigpath + orgvalue + "\\Category";
             if (!System.IO.Directory.Exists(fileconfigpath+orgvalue))
                 System.IO.Directory.CreateDirectory(fileconfigpath + orgvalue);
@@ -91,8 +90,9 @@ namespace AdminPanel.Admin
             fileupload();
 
             CreateURLPath_Helper cuh = new CreateURLPath_Helper();
-
-            if(Request.QueryString["ID"]==null)
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int orgvalue = Convert.ToInt32(masterDropDown);
+            if (Request.QueryString["ID"]==null)
             {
 
                 category_master cm = new category_master();
@@ -100,7 +100,7 @@ namespace AdminPanel.Admin
                 cm.category_name = txtname.Text;
                 cm.URLPath = cuh.createurlpath(txtname.Text);
                 cm.parent_category_id = int.Parse(ddlcat.SelectedValue);
-                cm.OrgId = int.Parse(ddlorg.SelectedValue);
+                cm.OrgId = orgvalue;
                 cm.Description = txtdescription.Text;
                 cm.Icon = imgicon.ImageUrl;
                 cm.Banner = imgbanner.ImageUrl;
@@ -128,7 +128,7 @@ namespace AdminPanel.Admin
                 cm.category_name = txtname.Text;
                 cm.URLPath = cuh.createurlpath(txtname.Text);
                 cm.parent_category_id = int.Parse(ddlcat.SelectedValue);
-                cm.OrgId = int.Parse(ddlorg.SelectedValue);
+                cm.OrgId = orgvalue;
                 cm.Description = txtdescription.Text;
                 cm.Icon = imgicon.ImageUrl;
                 cm.Banner = imgbanner.ImageUrl;

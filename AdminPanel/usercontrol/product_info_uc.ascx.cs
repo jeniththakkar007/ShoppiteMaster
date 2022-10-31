@@ -23,66 +23,18 @@ namespace AdminPanel.usercontrol
 
                 txtstartdate.Attributes.Add("readonly", "true");
                 txtenddate.Attributes.Add("readonly", "true");
-                int getorganizationid=Convert.ToInt32(ddlorg.SelectedValue);
-                getcategorydata(getorganizationid);
-                getbranddata();
+               
+                
                 getstatus();
-                ListBox1.DataBind();
 
                     Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
 
 
                     ////multiple cateogry re populate
-                    var q = (from pc in db.Product_Category
-                             where pc.ProductGUID == id
-                             select pc).ToList();
+                    
 
 
-                    if (q != null)
-                    {
-
-                        foreach (var productcategory in q)
-                        {
-
-                            foreach (ListItem item in ListBox1.Items)
-                            {
-                                string catid = productcategory.Category_Id.ToString();
-                                if (item.Value == catid)
-                                {
-
-                                    item.Selected = true;
-                                }
-
-
-                            }
-                        }
-
-
-                    }
-
-
-                      Product_Brands productbrands = db.Product_Brands.FirstOrDefault(u => u.ProductGUID == id);
-
-                     if (productbrands != null)
-                     {
-                        
-
-
-                         foreach (ListItem item in ListBox2.Items)
-                         { 
-                             
-                             string brandid = productbrands.BrandId.ToString();
-
-
-                             if (item.Value == brandid)
-                             {
-
-                                 item.Selected = true;
-                             }
-
-
-                         }
-                     }
+                      
 
 
                      var productstatus = (from ps in db.Product_Status
@@ -117,7 +69,61 @@ namespace AdminPanel.usercontrol
             }
         }
 
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            getcategorydata();
+            getbranddata();
+            Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
+            var q = (from pc in db.Product_Category
+                     where pc.ProductGUID == id
+                     select pc).ToList();
 
+
+            if (q != null)
+            {
+
+                foreach (var productcategory in q)
+                {
+
+                    foreach (ListItem item in ListBox1.Items)
+                    {
+                        string catid = productcategory.Category_Id.ToString();
+                        if (item.Value == catid)
+                        {
+
+                            item.Selected = true;
+                        }
+
+
+                    }
+                }
+
+
+            }
+
+            Product_Brands productbrands = db.Product_Brands.FirstOrDefault(u => u.ProductGUID == id);
+
+            if (productbrands != null)
+            {
+
+
+
+                foreach (ListItem item in ListBox2.Items)
+                {
+
+                    string brandid = productbrands.BrandId.ToString();
+
+
+                    if (item.Value == brandid)
+                    {
+
+                        item.Selected = true;
+                    }
+
+
+                }
+            }
+        }
 
         public string ProductBasic_txtqty
         {
@@ -163,11 +169,7 @@ namespace AdminPanel.usercontrol
         }
 
 
-        public string ProductBasic_ddlOrg
-        {
-            get { return ddlorg.SelectedValue; }
-            set { ddlorg.SelectedValue = value; }
-        }
+       
 
 
         public string ProductBasic_txttags
@@ -245,8 +247,9 @@ namespace AdminPanel.usercontrol
 
        protected void getbranddata()
         {
-
-            var q=(from b in db.Brands
+            String masterDropDown = (((this.Parent.Page.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int orgid = Convert.ToInt32(masterDropDown);
+            var q=(from b in db.Brands where b.OrgId == orgid 
                        orderby b.BrandName
                        select b);
 
@@ -273,8 +276,10 @@ namespace AdminPanel.usercontrol
             chkstatus.DataSource = q.ToList();
             chkstatus.DataBind();
        }
-        protected void getcategorydata(int orgid)
+        protected void getcategorydata()
         {
+            String masterDropDown = (((this.Parent.Page.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int orgid = Convert.ToInt32(masterDropDown);
             var data = db.sp_getcat_withoutparent(orgid);
             ListBox1.DataSource= data.ToList();
             ListBox1.DataTextField = "catnames";
@@ -282,10 +287,6 @@ namespace AdminPanel.usercontrol
             ListBox1.DataBind();
         }
 
-        protected void ddlorg_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var orgId = Convert.ToInt32(ddlorg.SelectedValue);
-            getcategorydata(orgId);
-        }
+      
     }
 }

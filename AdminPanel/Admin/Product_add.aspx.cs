@@ -37,8 +37,7 @@ namespace AdminPanel.Admin
                         product_info_uc.ProductBasic_chkpublish = bool.Parse(pb.IsPublished.ToString());
                         product_info_uc.ProductBasic_txtstartdate = pb.ProductStartDate.ToString();
                         product_info_uc.ProductBasic_txtenddate = pb.ProductEndDate.ToString();
-                        product_info_uc.ProductBasic_ddlOrg = pb.OrgId != null ? pb.OrgId.ToString():"0";
-
+                        
                         product_info_uc.ProductBasic_txtqty = pb.QTY.ToString();
                         Image_uploadasync_uc.IMG_imgbanner = pb.CoverImage;
 
@@ -275,7 +274,8 @@ namespace AdminPanel.Admin
             Image_uploadasync_uc.fileupload();
             imagemultiuploaduc.Upload();
 
-
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int orgid = Convert.ToInt32(masterDropDown);
             if (Image_uploadasync_uc.IMG_imgbanner == "")
             {
 
@@ -319,7 +319,7 @@ namespace AdminPanel.Admin
                         pb.InsertDate = DateTime.Now;
                         pb.ProfileId = ph.profile_return_id(this.Page.User.Identity.Name);
                         pb.CoverImage = Image_uploadasync_uc.IMG_imgbanner;
-
+                        pb.OrgId = orgid;
 
                         db.Product_Basic.Add(pb);
                         db.SaveChanges();
@@ -402,6 +402,7 @@ namespace AdminPanel.Admin
                         pbcheck.CoverImage = Image_uploadasync_uc.IMG_imgbanner;
                         pbcheck.ProductStartDate = DateTime.Parse(product_info_uc.ProductBasic_txtstartdate);
                         pbcheck.ProductEndDate = DateTime.Parse(product_info_uc.ProductBasic_txtenddate);
+                        pbcheck.OrgId = orgid;
                         pbcheck.ModifiedDate = DateTime.Now;
                         db.SaveChanges();
 

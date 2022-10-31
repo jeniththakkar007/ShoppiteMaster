@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -98,8 +99,11 @@ namespace AdminPanel.Admin
 
           if (message == "Success")
           {
-
-              Image1.ImageUrl = aw.uploadfile(FileUpload1);
+                String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+                int selectedOrg = Convert.ToInt32(masterDropDown);
+                string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
+                string bannerfilepath = fileconfigpath + selectedOrg + "\\Ads";
+                Image1.ImageUrl = aw.uploadfile(FileUpload1, bannerfilepath);
               lblerror.Text = string.Empty;
           }
 

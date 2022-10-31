@@ -7,13 +7,7 @@
     <div class="col-md-8 no-padding">
         <div class="white-bg padding15 shadow">
             <br />
-            <div class="form-group row">
- Organization
-                     <asp:DropDownList ID="ddlorg" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrg" DataTextField="org_name" OnSelectedIndexChanged="ddlorg_SelectedIndexChanged" DataValueField="id">
-                    <asp:ListItem Value="0">None</asp:ListItem>
-                    </asp:DropDownList>
-                </div>     
-            <br />
+           
             <div class="form-group">
                 Product Name
                     <asp:TextBox ID="txtproductname" runat="server"></asp:TextBox>

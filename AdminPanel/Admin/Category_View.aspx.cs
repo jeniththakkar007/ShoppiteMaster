@@ -16,27 +16,11 @@ namespace AdminPanel.Admin
         {
             if(!IsPostBack)
             {
-
-
-
-
-                var q = (from f in db.f_All_getcat()
-                         join c in db.category_master on f.ID equals c.category_id
-                         orderby f.catnames
-                         where c.IsPublished==true
-                        
-                             select f
-                             );
-                    
-                    
-                    
-                  
-
-
-                ListView1.DataSource = q.ToList();
-                ListView1.DataBind();
             }
+            
         }
+
+   
 
         protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
@@ -64,5 +48,22 @@ namespace AdminPanel.Admin
 
             }
         }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
+            var q = (from f in db.f_All_getcat()
+                     join c in db.category_master on f.ID equals c.category_id
+                     orderby f.catnames
+                     where c.IsPublished == true
+                     && c.OrgId == selectedOrg
+                     select f
+                             );
+            ListView1.DataSource = q.ToList();
+            ListView1.DataBind();
+        }
+
+        
     }
 }

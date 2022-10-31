@@ -16,17 +16,25 @@ namespace AdminPanel.Admin
         Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //getdata();
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
             getdata();
+           
         }
 
         protected void getdata()
         {
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
             Profile_Helper ph = new Profile_Helper();
 
             int profileid= ph.profile_return_id(this.Page.User.Identity.Name);
             var q=(from p in db.Product_Basic
-                   where  p.IsPublished==true
-                       select p);
+                   where  p.IsPublished==true && p.OrgId == selectedOrg
+                   select p);
 
             if(txtproductname.Text!=string.Empty)
             {
