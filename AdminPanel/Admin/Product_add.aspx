@@ -35,7 +35,7 @@
    </div>
     <div class="form form-horizontal margin10 ">
         <asp:Label ID="lblerror" runat="server" Text="" ForeColor="red"></asp:Label>
-        <uc1:Image_uploadasync_uc runat="server" ID="Image_uploadasync_uc" />
+        <uc1:Image_uploadasync_uc runat="server" ID="Image_uploadasync_uc" ClientIDMode="Inherit" ValidateRequestMode="Inherit" />
      <uc1:product_info_uc runat="server" id="product_info_uc" />
 
       

@@ -1,8 +1,10 @@
 ﻿
+using DataLayer.Helper;
 using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 
     public class Order_Helper
@@ -22,14 +24,28 @@ using System.Web;
     public Guid MasterOrderID()
         {
 
+        
 
-            Guid orderid = new Guid();
+        Guid orderid = new Guid();
             Order_Master om= new Order_Master();
 
 
             om.OrderKeyStatus="Active";
             om.InsertDate =DateTime.Now;
-
+            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
+            var Url = HttpContext.Current.Request.Url;
+            var subdomain = website_Setup_Helper.GetSubDomain(Url);
+            var orgid = 0;
+            if (subdomain.Contains("localhost"))
+            {
+                orgid = 1;
+            }
+            else
+            {
+                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+            
+            }
+            om.OrgId = orgid;
             db.Order_Master.Add(om);
             db.SaveChanges();
 
@@ -39,16 +55,16 @@ using System.Web;
                orderid= om.OrderGUID;
             }
 
-
-
-            return orderid;
+        
+  
+        return orderid;
         }
 
 
         public void Order_Update(Guid id, string orderstatus, string username, string paymentmode, string referenceid)
         {
-
-            var q = (from ob in db.Order_Basic
+        
+        var q = (from ob in db.Order_Basic
                      where ob.OrderGUID == id
                      select ob).ToList();
 
@@ -142,4 +158,6 @@ using System.Web;
 
             return value;
         }
+
+
     }

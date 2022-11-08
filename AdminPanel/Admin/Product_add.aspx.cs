@@ -39,6 +39,7 @@ namespace AdminPanel.Admin
                         product_info_uc.ProductBasic_txtenddate = pb.ProductEndDate.ToString();
                         
                         product_info_uc.ProductBasic_txtqty = pb.QTY.ToString();
+
                         Image_uploadasync_uc.IMG_imgbanner = pb.CoverImage;
 
 
@@ -272,6 +273,7 @@ namespace AdminPanel.Admin
         {
 
             Image_uploadasync_uc.fileupload();
+            Image_uploadasync_uc.processRequest(Context);
             imagemultiuploaduc.Upload();
 
             String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;

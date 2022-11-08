@@ -34,7 +34,7 @@ namespace VendorPanel.Admin
 
 
 
-            var q = db.SP_Order_Master().Where(u => u.ProfileId == profileid && u.orderdeliverystatus==RadioButtonList1.SelectedValue);
+            var q = db.SP_Order_Master(profileid).Where(u => u.ProfileId == profileid && u.orderdeliverystatus==RadioButtonList1.SelectedValue);
 
             if(txtsearch.Text!=string.Empty)
             {

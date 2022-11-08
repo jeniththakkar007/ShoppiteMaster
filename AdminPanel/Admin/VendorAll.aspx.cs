@@ -18,17 +18,23 @@ namespace AdminPanel.Admin
 
             if(!IsPostBack)
             {
-                getdata();
+                Page.LoadComplete += new EventHandler(Page_PreRender);
+                //getdata();
             }
 
         }
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            getdata();
 
+        }
 
         protected void getdata()
         {
 
-
-            var q = db.f_Profile_All("Vendor");
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
+            var q = db.f_Profile_All("Vendor", selectedOrg);
 
             ListView1.DataSource = q.ToList();
             ListView1.DataBind();

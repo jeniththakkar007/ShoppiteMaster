@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Helper;
+using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,14 +16,21 @@ namespace FrontPanel.Admin
     {
 
         Entities db = new Entities();
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
             if(!IsPostBack)
             {
-
-                getdata();
+                
+               getdata();
             }
+
+        }
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            getdata();
 
         }
 
@@ -32,9 +40,21 @@ namespace FrontPanel.Admin
 
             int profileid = ph.profile_return_id(Page.User.Identity.Name);
 
-
-
-            var q = db.SP_Order_Master().Where(u => u.BuyerId == profileid && u.orderdeliverystatus==RadioButtonList1.SelectedValue);
+            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
+            var Url = HttpContext.Current.Request.Url;
+            var subdomain = website_Setup_Helper.GetSubDomain(Url);
+            var orgid = 0;
+            if (subdomain == "localhost")
+            {
+                orgid = 1;
+            }
+            else {
+                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+                //orgid = orgObject.id;
+               orgid = 1;
+            }
+            var q = db.SP_Order_Master(orgid).Where(u => u.BuyerId == profileid &&
+                        u.orderdeliverystatus==RadioButtonList1.SelectedValue);
 
             if(txtsearch.Text!=string.Empty)
             {

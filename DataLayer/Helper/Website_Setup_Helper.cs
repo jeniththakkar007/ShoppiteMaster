@@ -103,8 +103,25 @@ namespace DataLayer.Helper
         }
 
 
+        public string GetSubDomain(Uri url)
+        {
 
-      
+            if (url.HostNameType == UriHostNameType.Dns)
+            {
+
+                string host = url.Host;
+
+                var nodes = host.Split('.');
+                int startNode = 0;
+                if (nodes[0] == "www") startNode = 1;
+
+                return string.Format("{0}.{1}", nodes[startNode], nodes[startNode]);
+
+            }
+
+            return null;
+        }
+
         public void setupemail()
         {
             Email_Setup es = db.Email_Setup.FirstOrDefault(u => u.EmailSettingId == 1);

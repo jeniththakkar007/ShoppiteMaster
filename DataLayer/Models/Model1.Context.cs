@@ -112,13 +112,17 @@ namespace DataLayer.Models
         }
     
         [DbFunction("Entities", "f_Profile_All")]
-        public virtual IQueryable<f_Profile_All_Result> f_Profile_All(string type)
+        public virtual IQueryable<f_Profile_All_Result> f_Profile_All(string type, Nullable<int> orgId)
         {
             var typeParameter = type != null ?
                 new ObjectParameter("Type", type) :
                 new ObjectParameter("Type", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_Profile_All_Result>("[Entities].[f_Profile_All](@Type)", typeParameter);
+            var orgIdParameter = orgId.HasValue ?
+                new ObjectParameter("OrgId", orgId) :
+                new ObjectParameter("OrgId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_Profile_All_Result>("[Entities].[f_Profile_All](@Type, @OrgId)", typeParameter, orgIdParameter);
         }
     
         [DbFunction("Entities", "f_startrating_productwise")]
@@ -297,9 +301,13 @@ namespace DataLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Status_HasProducts_Result>("SP_Status_HasProducts");
         }
     
-        public virtual ObjectResult<SP_Order_Master_Result> SP_Order_Master()
+        public virtual ObjectResult<SP_Order_Master_Result> SP_Order_Master(Nullable<int> orgid)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Order_Master_Result>("SP_Order_Master");
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Order_Master_Result>("SP_Order_Master", orgidParameter);
         }
     
         public virtual ObjectResult<SP_Vendor_Search_Result> SP_Vendor_Search(string productname, string maincat, string subcat, string area)

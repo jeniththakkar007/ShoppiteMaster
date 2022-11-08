@@ -1351,6 +1351,7 @@
         </Function>
         <Function Name="f_Profile_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="OrgId" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -1428,7 +1429,9 @@
           <Parameter Name="orgid" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_getorg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_Order_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_Order_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orgid" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_Product_Paging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Action" Type="varchar" Mode="In" />
           <Parameter Name="numberofrows" Type="int" Mode="In" />
@@ -2017,7 +2020,8 @@
           <EntitySet Name="Order_Master" EntityType="AMMultivendor2Model.Order_Master" />
           <EntitySet Name="Countries" EntityType="AMMultivendor2Model.Country" />
           <FunctionImport Name="f_Profile_All" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_Profile_All_Result)">
-          <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="OrgId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_startrating_productwise" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_startrating_productwise_Result)">
           <Parameter Name="Id" Mode="In" Type="Int32" />
@@ -2078,7 +2082,9 @@
           <EntitySet Name="Product_Inventory" EntityType="AMMultivendor2Model.Product_Inventory" />
           <EntitySet Name="Website_Setup_Script" EntityType="AMMultivendor2Model.Website_Setup_Script" />
           <FunctionImport Name="SP_Status_HasProducts" ReturnType="Collection(AMMultivendor2Model.SP_Status_HasProducts_Result)" />
-          <FunctionImport Name="SP_Order_Master" ReturnType="Collection(AMMultivendor2Model.SP_Order_Master_Result)" />
+          <FunctionImport Name="SP_Order_Master" ReturnType="Collection(AMMultivendor2Model.SP_Order_Master_Result)" >
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="Email_Setup" EntityType="AMMultivendor2Model.Email_Setup" />
           <FunctionImport Name="SP_Vendor_Search" ReturnType="Collection(AMMultivendor2Model.SP_Vendor_Search_Result)">
             <Parameter Name="Productname" Mode="In" Type="String" />
@@ -2109,7 +2115,7 @@
           </AssociationSet>
           <FunctionImport Name="SP_getorg" ReturnType="Collection(AMMultivendor2Model.SP_getorg_Result)" />
           <FunctionImport Name="sp_getcat_withoutparent" ReturnType="Collection(AMMultivendor2Model.sp_getcat_withoutparent_Result)">
-            <Parameter Name="orgid" Mode="In" Type="Int32" />
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_getcat_Result">
