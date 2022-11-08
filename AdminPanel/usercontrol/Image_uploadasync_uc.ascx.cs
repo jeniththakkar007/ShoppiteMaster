@@ -11,6 +11,7 @@ namespace AdminPanel.usercontrol
 {
     public partial class Image_uploadasync_uc : System.Web.UI.UserControl
     {
+        AWS_Helper aw = new AWS_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -21,17 +22,13 @@ namespace AdminPanel.usercontrol
             String masterDropDown = (((this.Parent.Page.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int orgid = Convert.ToInt32(masterDropDown);
             string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-            string filepath = fileconfigpath + orgid + "\\Products";
+            string filepath = fileconfigpath + orgid + "/Products";
             if (fubanner.HasFile)
             {
-                string bannerfilepath = filepath + "\\fubanner";
-                if (!System.IO.Directory.Exists(bannerfilepath))
-                {
-                    System.IO.Directory.CreateDirectory(bannerfilepath);
-                }
-                bannerfilepath = bannerfilepath + "\\" + fubanner.FileName;
-                fubanner.SaveAs(bannerfilepath);
-                imgbanner.ImageUrl = bannerfilepath;
+                string bannerfilepath = filepath + "/fubanner";
+                bannerfilepath = bannerfilepath + "/" + fubanner.FileName;
+                
+                imgbanner.ImageUrl = aw.uploadfile(fubanner, bannerfilepath);
                 //CheckFile cf = new CheckFile();
 
 

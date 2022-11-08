@@ -24,34 +24,24 @@ namespace AdminPanel.Admin
         {
             try
             {
+                AWS_Helper aw = new AWS_Helper();
+
                 //1350 500
                 String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
                 int orgid = Convert.ToInt32(masterDropDown);
                 string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-                string filepath = fileconfigpath + orgid + "\\SocialMedia";
+                string filepath = fileconfigpath+ orgid + "/SocialMedia";
                 if (FileUpload1.HasFile)
                 {
-
-                    //System.Drawing.Image img = System.Drawing.Image.FromStream(FileUpload1.PostedFile.InputStream);
-                    //int height = img.Height;
-                    //int width = img.Width;
-                    //decimal size = Math.Round(((decimal)FileUpload1.PostedFile.ContentLength / (decimal)1024), 2);
-
-                    //FileUpload1.SaveAs(Server.MapPath("~/DynamicImage/" + Path.GetFileName(FileUpload1.FileName)));
-
-                    string bannerfilepath = filepath + "\\files";
-                    if (!System.IO.Directory.Exists(bannerfilepath))
-                    {
-                        System.IO.Directory.CreateDirectory(bannerfilepath);
-                    }
-                    bannerfilepath = bannerfilepath + "\\" + FileUpload1.FileName;
-                    FileUpload1.SaveAs(bannerfilepath);
-
-                    SqlDataSource1.InsertParameters.Add("Image", bannerfilepath);
+                    string bannerfilepath = filepath + "/files";
+                   
+                    bannerfilepath = bannerfilepath + "/" + FileUpload1.FileName;
+                   
+                    SqlDataSource1.InsertParameters.Add("Image", aw.uploadfile(FileUpload1));
 
                     SqlDataSource1.Insert();
                     lblMessage.Visible = true;
-                  
+
                     GridView1.DataBind();
 
 

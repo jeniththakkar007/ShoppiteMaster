@@ -293,7 +293,7 @@ namespace AdminPanel.usercontrol
                     String masterDropDown = (((this.Parent.Page.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
                     int selectedOrg = Convert.ToInt32(masterDropDown);
                     string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-                    string filepath = fileconfigpath + selectedOrg + "\\Status";
+                    string filepath = fileconfigpath + selectedOrg + "/Status/"+ fileicon.FileName;
                     f = aw.uploadfile(fileicon, filepath);
                 }
 

@@ -17,6 +17,7 @@ namespace AdminPanel.Admin
 
         Entities db = new Entities();
         //CheckFile cf = new CheckFile();
+        AWS_Helper aw = new AWS_Helper();
         protected void Page_PreRender(object sender, EventArgs e)
         {
             getcat();
@@ -61,17 +62,12 @@ namespace AdminPanel.Admin
             String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int orgid = Convert.ToInt32(masterDropDown);
             string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-            string filepath = fileconfigpath + orgid + "\\Brands";
+            string filepath = fileconfigpath + orgid + "/Brands";
             if (fuicon.HasFile)
             {
-                string bannerfilepath = filepath + "\\fuicon";
-                if (!System.IO.Directory.Exists(bannerfilepath))
-                {
-                    System.IO.Directory.CreateDirectory(bannerfilepath);
-                }
-                bannerfilepath = bannerfilepath + "\\" + fuicon.FileName;
-                fuicon.SaveAs(bannerfilepath);
-                imgicon.ImageUrl = bannerfilepath;
+                string bannerfilepath = filepath + "/fuicon";
+                bannerfilepath = bannerfilepath + "/" + fuicon.FileName;
+                imgicon.ImageUrl = aw.uploadfile(fuicon, bannerfilepath);
             }
 
         }

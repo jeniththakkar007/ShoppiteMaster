@@ -15,7 +15,7 @@ namespace AdminPanel.usercontrol
     {
 
         Entities db = new Entities();
-        
+        AWS_Helper aw = new AWS_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -64,20 +64,16 @@ namespace AdminPanel.usercontrol
             String masterDropDown = (((this.Parent.Page.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int orgid = Convert.ToInt32(masterDropDown);
             string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-            string filepath = fileconfigpath + orgid + "\\OtherProducts";
+            string filepath = fileconfigpath + orgid + "/OtherProducts";
 
             if (fuUpload1.HasFiles)
             {
                 foreach (HttpPostedFile postedFile in fuUpload1.PostedFiles)
                 {
                     //CheckFile cf = new CheckFile();
-                    string bannerfilepath = filepath + "\\files";
-                    if (!System.IO.Directory.Exists(bannerfilepath))
-                    {
-                        System.IO.Directory.CreateDirectory(bannerfilepath);
-                    }
-                    bannerfilepath = bannerfilepath + "\\" + postedFile.FileName;
-                    postedFile.SaveAs(bannerfilepath);
+                    string bannerfilepath = filepath + "/files";
+                    bannerfilepath = bannerfilepath + "/" + postedFile.FileName;
+                    lblfile.Text = aw.uploadfilemulti(postedFile, bannerfilepath);
                     insertimages(bannerfilepath);
                 }
             }
