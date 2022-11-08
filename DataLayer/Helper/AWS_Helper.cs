@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using System.Web.Configuration;
 using System.Web.UI.WebControls;
 
 namespace DataLayer.Helper
@@ -18,7 +17,7 @@ namespace DataLayer.Helper
         //string awsAccessKey = "AKI............";
         //string awsSecretKey = "+8Bo..................................";
 
-        string bucketName = "amenvato/envatoallproject";
+        string bucketName = "shoppite";
         string filename = "ammamarketing";
 
         //Access Key ID:
@@ -26,57 +25,55 @@ namespace DataLayer.Helper
         //Secret Access Key:
         //ZDN2WyruK7Q5ByJogX9hm4QA27MmbmUCDi8CA1hX
 
-        IAmazonS3 client = new AmazonS3Client("AKIAJKIRPSRPSPHMC2TA", "07YWPZR+iIPxNjfGAzp/PvulvD9iLrJZi7LJOCnt", RegionEndpoint.USEast2);
+        IAmazonS3 client = new AmazonS3Client("AKIA6IUF7JEED5QSS6Z5", "IRaP1i51oge4I5g1jFFUx22TvD7VCAYBB7kBBhsH", RegionEndpoint.APSouth1);
 
         //IAmazonS3 client = new AmazonS3Client("AKIAJCYZXRDRE4KPC4TQ", "ZDN2WyruK7Q5ByJogX9hm4QA27MmbmUCDi8CA1hX", RegionEndpoint.USEast2);
 
-        public string uploadfile(FileUpload FileUpload1,string bannerfilepath = "")
+        public string uploadfile(FileUpload FileUpload1,string uploadFileName = "")
         {
 
-            if (string.IsNullOrEmpty(bannerfilepath))
-            {
-                string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-                bannerfilepath = fileconfigpath + "\\Others";
-
+            if (string.IsNullOrEmpty(uploadFileName)) {
+                uploadFileName = @"Common\files\"+ FileUpload1.FileName;
             }
-            string returnfilename="";
+            string returnfilename = "";
+
 
 
             if (FileUpload1.HasFile)
             {
-                bannerfilepath = bannerfilepath + "\\Files";
-                if (!System.IO.Directory.Exists(bannerfilepath))
+
+                string ext = Path.GetExtension(FileUpload1.FileName).ToLower();
+                
+                PutObjectRequest request = new PutObjectRequest()
                 {
-                    System.IO.Directory.CreateDirectory(bannerfilepath);
-                }
-                bannerfilepath = bannerfilepath + "\\" + FileUpload1.FileName;
+                    InputStream = FileUpload1.PostedFile.InputStream,
+                    BucketName = bucketName,
+                    ContentType = GetContentType(ext),
+                    CannedACL = S3CannedACL.PublicRead,
+                    Key = uploadFileName// <-- in S3 key represents a path  
+                };
 
-                FileUpload1.SaveAs(bannerfilepath);
+                PutObjectResponse response = client.PutObject(request);
 
-                returnfilename = bannerfilepath;
+
+                returnfilename = "https://shoppite.s3.ap-south-1.amazonaws.com/" + uploadFileName;
             }
 
             return returnfilename;
         }
 
 
-        public string uploadfilemulti(HttpPostedFile postedFile)
+        public string uploadfilemulti(HttpPostedFile postedFile, string uploadFileName = "")
         {
 
             string returnfilename = "";
-
+            if (string.IsNullOrEmpty(uploadFileName))
+            {
+                uploadFileName = @"Markets/Common/files/" + postedFile.FileName;
+            }
             if (postedFile.ContentLength > 0)
             {
-
-
-
-                string uploadFileName = "";
-
                 string ext = Path.GetExtension(postedFile.FileName).ToLower();
-                if (ext == ".jpg" || ext == ".jpeg" || ext == ".gif" || ext == ".png" || ext == ".pdf" || ext == ".docx" || ext == ".pptx" || ext == ".xlsx" || ext == ".doc" || ext == ".xls" || ext == ".ppt")
-                {
-                    uploadFileName = filename + Guid.NewGuid().ToString() + ext;
-                }
 
                 PutObjectRequest request = new PutObjectRequest()
                 {
@@ -90,7 +87,7 @@ namespace DataLayer.Helper
                 PutObjectResponse response = client.PutObject(request);
 
 
-                returnfilename = "https://amenvato.s3.us-east-2.amazonaws.com/envatoallproject/" + uploadFileName;
+                returnfilename = "https://shoppite.s3.ap-south-1.amazonaws.com/" + uploadFileName;
             }
 
             return returnfilename;

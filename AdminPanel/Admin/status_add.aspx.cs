@@ -56,7 +56,7 @@ namespace AdminPanel.Admin
             String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int selectedOrg = Convert.ToInt32(masterDropDown);
             string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-            string filepath = fileconfigpath + selectedOrg + "\\Status";
+            string filepath = fileconfigpath + selectedOrg + "/Status/"+FileUpload1.FileName;
             Image1.ImageUrl = aw.uploadfile(FileUpload1, filepath);
             if(Image1.ImageUrl=="")
             {

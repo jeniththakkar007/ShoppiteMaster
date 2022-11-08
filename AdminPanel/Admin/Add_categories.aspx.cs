@@ -17,6 +17,7 @@ namespace AdminPanel.Admin
 
 
         Entities db = new Entities();
+        AWS_Helper aw = new AWS_Helper();
         //CheckFile cf = new CheckFile();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,31 +55,20 @@ namespace AdminPanel.Admin
             String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int orgvalue = Convert.ToInt32(masterDropDown);
             string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-            string filepath = fileconfigpath + orgvalue + "\\Category";
-            if (!System.IO.Directory.Exists(fileconfigpath+orgvalue))
-                System.IO.Directory.CreateDirectory(fileconfigpath + orgvalue);
+            string filepath = fileconfigpath + orgvalue + "/Category";
             if (fuicon.HasFile)
             {
-                string categoryfilepath = filepath+"\\fuicon";
-                if (!System.IO.Directory.Exists(categoryfilepath))
-                {
-                    System.IO.Directory.CreateDirectory(categoryfilepath);
-                }
-                categoryfilepath = categoryfilepath +"\\"+fuicon.FileName;
-                fuicon.SaveAs(categoryfilepath);
-                imgicon.ImageUrl = categoryfilepath;
+                string categoryfilepath = filepath+"/fuicon";
+                categoryfilepath = categoryfilepath +"/"+fuicon.FileName;
+                imgicon.ImageUrl = aw.uploadfile(fuicon, categoryfilepath);
             }
 
             if (fubanner.HasFile)
             {
-                string bannerfilepath = filepath +"\\fubanner";
-                if (!System.IO.Directory.Exists(bannerfilepath))
-                {
-                    System.IO.Directory.CreateDirectory(bannerfilepath);
-                }
-                bannerfilepath = bannerfilepath +"\\"+fubanner.FileName;
-                fubanner.SaveAs(bannerfilepath);
-                imgbanner.ImageUrl = bannerfilepath;
+                string bannerfilepath = filepath +"/fubanner";
+              
+                bannerfilepath = bannerfilepath +"/"+fubanner.FileName;
+                imgbanner.ImageUrl = aw.uploadfile(fubanner, bannerfilepath);
             }
 
         }

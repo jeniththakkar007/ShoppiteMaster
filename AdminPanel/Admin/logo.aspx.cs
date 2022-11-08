@@ -90,7 +90,7 @@ namespace Adminweb.Admin
                 String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
                 int selectedOrg = Convert.ToInt32(masterDropDown);
                 string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-                string filepath = fileconfigpath + selectedOrg + "\\Logos";
+                string filepath = fileconfigpath + selectedOrg + "/Logos/"+ FU1.FileName;
                 
                 Image2.ImageUrl = aw.uploadfile(FU1, filepath);
             }
@@ -104,7 +104,7 @@ namespace Adminweb.Admin
                 String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
                 int selectedOrg = Convert.ToInt32(masterDropDown);
                 string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-                string bannerfilepath = fileconfigpath + selectedOrg + "\\Logo";
+                string bannerfilepath = fileconfigpath + selectedOrg + "/Logo/"+ FileUpload1.FileName;
                 Image1.ImageUrl = aw.uploadfile(FileUpload1, bannerfilepath);
             }
         }
@@ -120,7 +120,7 @@ namespace Adminweb.Admin
                     String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
                     int selectedOrg = Convert.ToInt32(masterDropDown);
                     string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-                    string bannerfilepath = fileconfigpath + selectedOrg + "\\Logo";
+                    string bannerfilepath = fileconfigpath + selectedOrg + "\\Logo\\"+ FileUpload2.FileName;
                     Image3.ImageUrl = aw.uploadfile(FileUpload2, bannerfilepath);
                 }
 
