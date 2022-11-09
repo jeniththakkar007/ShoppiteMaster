@@ -20,21 +20,29 @@ namespace VendorPanel.Admin
 
             if(!IsPostBack)
             {
-
-                getdata();
+                Page.LoadComplete += new EventHandler(Page_PreRender);
+                //getdata();
             }
+
+        }
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            getdata();
 
         }
 
         protected void getdata()
         {
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
+
             Profile_Helper ph = new Profile_Helper();
 
             int profileid = ph.profile_return_id(Page.User.Identity.Name);
 
 
 
-            var q = db.SP_Order_Master(profileid).Where(u => u.ProfileId == profileid && u.orderdeliverystatus==RadioButtonList1.SelectedValue);
+            var q = db.SP_Order_Master(selectedOrg).Where(u => u.ProfileId == selectedOrg && u.orderdeliverystatus==RadioButtonList1.SelectedValue);
 
             if(txtsearch.Text!=string.Empty)
             {
