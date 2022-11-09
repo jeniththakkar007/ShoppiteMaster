@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Linq.Dynamic;
+using DataLayer.Helper;
 
 namespace FrontPanel.usercontrol
 {
@@ -138,6 +139,21 @@ namespace FrontPanel.usercontrol
             string Searchurl = "";
 
             string Action = "";
+            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
+            var Url = HttpContext.Current.Request.Url;
+            var subdomain = website_Setup_Helper.GetSubDomain(Url);
+            var orgid = 0;
+            if (subdomain.Contains("localhost"))
+            {
+                orgid = 1;
+            }
+            else
+            {
+                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+                orgid = orgObject.id;
+               
+            }
+            db.SaveChanges();
 
 
 
@@ -145,7 +161,8 @@ namespace FrontPanel.usercontrol
             {
                 Action = "Keyword";
                 Searchurl = this.Page.RouteData.Values["Keyword"].ToString();
-                totalavailrecords = db.SP_Product_Paging_AllRecord(Action, Searchurl).FirstOrDefault().ToString();
+
+                totalavailrecords = db.SP_Product_Paging_AllRecord(Action, Searchurl, orgid).FirstOrDefault().ToString();
 
                 //maincategory = this.Page.RouteData.Values["MainCategory"].ToString();
                 //key = this.Page.RouteData.Values["Keyword"].ToString();
@@ -160,7 +177,8 @@ namespace FrontPanel.usercontrol
                 Action = "MainCat";
                 Searchurl = this.Page.RouteData.Values["MainCategory"].ToString();
 
-                totalavailrecords = db.SP_Product_Paging_AllRecord(Action, Searchurl).FirstOrDefault().ToString();
+
+                totalavailrecords = db.SP_Product_Paging_AllRecord(Action, Searchurl,orgid).FirstOrDefault().ToString();
               
                 //maincategory = this.Page.RouteData.Values["MainCategory"].ToString();
                 //q = q.Where(u => u.maincatid + "-" + u.maincaturlpath == maincategory).ToList();
@@ -172,7 +190,7 @@ namespace FrontPanel.usercontrol
             {
                 Action = "SubCat";
                 Searchurl = this.Page.RouteData.Values["SubCategory"].ToString();
-                totalavailrecords = db.SP_Product_Paging_AllRecord(Action, Searchurl).FirstOrDefault().ToString();
+                totalavailrecords = db.SP_Product_Paging_AllRecord(Action, Searchurl, orgid).FirstOrDefault().ToString();
 
                 //subcategory = this.Page.RouteData.Values["SubCategory"].ToString();
                 //q = q.Where(u => u.Category_Id + "-" + u.categoryurlpath == subcategory).ToList();
@@ -182,7 +200,7 @@ namespace FrontPanel.usercontrol
             {
                 Action = "Deals";
                 Searchurl = this.Page.RouteData.Values["CatStatus"].ToString();
-                totalavailrecords = db.SP_Product_Paging_AllRecord(Action, Searchurl).FirstOrDefault().ToString();
+                totalavailrecords = db.SP_Product_Paging_AllRecord(Action, Searchurl, orgid).FirstOrDefault().ToString();
 
                 //deals = this.Page.RouteData.Values["CatStatus"].ToString();
 
@@ -196,7 +214,7 @@ namespace FrontPanel.usercontrol
 
 
 
-            var q = db.SP_Product_Paging(Action, numberofrows, skiprows, Searchurl).ToList();
+            var q = db.SP_Product_Paging(Action, numberofrows, skiprows, Searchurl, orgid).ToList();
 
 
             if (Session["SortList"] != null && Session["DirectionList"] != null)

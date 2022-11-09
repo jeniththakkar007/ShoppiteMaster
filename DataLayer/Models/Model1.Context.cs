@@ -262,7 +262,7 @@ namespace DataLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_getproducts_Recentlyviewed_Result>("[Entities].[f_getproducts_Recentlyviewed](@IP)", iPParameter);
         }
     
-        public virtual ObjectResult<SP_Product_Paging_Result> SP_Product_Paging(string action, Nullable<int> numberofrows, Nullable<int> skiprecords, string searchurl)
+        public virtual ObjectResult<SP_Product_Paging_Result> SP_Product_Paging(string action, Nullable<int> numberofrows, Nullable<int> skiprecords, string searchurl, Nullable<int> orgid)
         {
             var actionParameter = action != null ?
                 new ObjectParameter("Action", action) :
@@ -280,10 +280,14 @@ namespace DataLayer.Models
                 new ObjectParameter("searchurl", searchurl) :
                 new ObjectParameter("searchurl", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Product_Paging_Result>("SP_Product_Paging", actionParameter, numberofrowsParameter, skiprecordsParameter, searchurlParameter);
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Product_Paging_Result>("SP_Product_Paging", actionParameter, numberofrowsParameter, skiprecordsParameter, searchurlParameter, orgidParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> SP_Product_Paging_AllRecord(string action, string searchurl)
+        public virtual ObjectResult<Nullable<int>> SP_Product_Paging_AllRecord(string action, string searchurl, Nullable<int> orgid)
         {
             var actionParameter = action != null ?
                 new ObjectParameter("Action", action) :
@@ -293,7 +297,11 @@ namespace DataLayer.Models
                 new ObjectParameter("searchurl", searchurl) :
                 new ObjectParameter("searchurl", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_Product_Paging_AllRecord", actionParameter, searchurlParameter);
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_Product_Paging_AllRecord", actionParameter, searchurlParameter, orgidParameter);
         }
     
         public virtual ObjectResult<SP_Status_HasProducts_Result> SP_Status_HasProducts()

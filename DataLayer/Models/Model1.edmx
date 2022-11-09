@@ -1437,10 +1437,12 @@
           <Parameter Name="numberofrows" Type="int" Mode="In" />
           <Parameter Name="skiprecords" Type="int" Mode="In" />
           <Parameter Name="searchurl" Type="nvarchar" Mode="In" />
+          <Parameter Name="orgid" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_Product_Paging_AllRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Action" Type="varchar" Mode="In" />
           <Parameter Name="searchurl" Type="nvarchar" Mode="In" />
+          <Parameter Name="orgid" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_Status_HasProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_Vendor_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2074,10 +2076,12 @@
             <Parameter Name="numberofrows" Mode="In" Type="Int32" />
             <Parameter Name="skiprecords" Mode="In" Type="Int32" />
             <Parameter Name="searchurl" Mode="In" Type="String" />
+            <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Product_Paging_AllRecord" ReturnType="Collection(Int32)">
             <Parameter Name="Action" Mode="In" Type="String" />
             <Parameter Name="searchurl" Mode="In" Type="String" />
+            <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Product_Inventory" EntityType="AMMultivendor2Model.Product_Inventory" />
           <EntitySet Name="Website_Setup_Script" EntityType="AMMultivendor2Model.Website_Setup_Script" />
