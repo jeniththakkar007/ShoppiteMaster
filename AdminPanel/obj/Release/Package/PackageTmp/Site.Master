@@ -1,0 +1,309 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AdminPanel.SiteMaster" %>
+
+<%@ Register Src="~/usercontrol/Logo_uc.ascx" TagPrefix="uc1" TagName="Logo_uc" %>
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Admin Panel</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet"> 
+    <link href="Content/roots.css" rel="stylesheet" />
+    <link href="Content/admin.css" rel="stylesheet" />
+    <link href="Content/Style.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+
+    
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://resources/demos/style.css">
+<%--  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>--%>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+<body class="white-smoke-bg">
+  
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+          <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar-menu.js")%>" ></script>
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar.js")%>" ></script>
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar.min.js")%>" ></script>
+
+    <div id="wrapper">
+              
+        <aside id="side-wrapper">
+                <div class="media">
+                  
+                    <div class="media-body">
+                  <a data-toggle="sidebar" href="#" class="visible-lg">
+                    
+                   <i class="fab fa-elementor top-toggle"></i>
+
+                    </a>   <a runat="server" class="logo">
+                        <uc1:Logo_uc runat="server" ID="Logo_uc" />
+</a>
+                    </div>
+                </div>
+                <ul class="nav-stacked sidebar-menu">
+                   
+ <li>
+        <a href="#">
+           <i class="fas fa-cogs"></i> <span>Configuration</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="sidebar-submenu">
+               <li><a runat="server" href="~/Admin/logo.aspx"> <i class="far fa-dot-circle"></i> <span> Logo </span> </a></li>
+       
+               <li><a runat="server" href="~/Admin/PageDetails.aspx"> <i class="far fa-dot-circle"></i> <span> Pages </span> </a></li>
+                  <li><a runat="server" href="~/Admin/AddSocialMedia.aspx"> <i class="far fa-dot-circle"></i> <span> Social Media </span> </a></li>
+      <li><a runat="server" href="~/Admin/advertisement_all.aspx"> <i class="far fa-dot-circle"></i> <span> Banners </span> </a></li>
+              <li><a runat="server" href="~/Admin/emailsetup.aspx"> <i class="far fa-dot-circle"></i> <span> Email Setup </span> </a></li>
+                <li><a runat="server" href="~/Admin/websitesetup.aspx"> <i class="far fa-dot-circle"></i> <span> Website Setup </span> </a></li>
+             <li><a runat="server" href="~/Admin/newsletteremail.aspx"> <i class="far fa-dot-circle"></i> <span> Newsletter Data </span> </a></li>
+                <li><a runat="server" href="~/Admin/manage.aspx"> <i class="far fa-dot-circle"></i> <span> Manage Password </span> </a></li>
+            </ul>
+      </li>
+
+
+
+
+  <li>
+        <a href="#">
+           <i class="fas fa-list"></i> <span>Catalog</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="sidebar-submenu">
+             <li><a runat="server" href="~/Admin/Product_View.aspx"> <i class="far fa-dot-circle"></i> <span> Products </span> </a></li>
+            <li><a runat="server" href="~/Admin/Category_View.aspx"> <i class="far fa-dot-circle"></i> <span> Categories  </span> </a></li>
+             <li><a runat="server" href="~/Admin/brand_view.aspx"> <i class="far fa-dot-circle"></i> <span> Brands  </span> </a></li>
+            <li><a runat="server" href="~/Admin/status_add.aspx"> <i class="far fa-dot-circle"></i> <span> Product Status  </span> </a></li>
+                    <li><a runat="server" href="~/Admin/attribute_view.aspx"> <i class="far fa-dot-circle"></i> <span> Attribute  </span> </a></li>
+                    <li><a runat="server" href="~/Admin/specification_view.aspx"> <i class="far fa-dot-circle"></i> <span> Specification  </span> </a></li>
+            </ul>
+       </li>
+ 
+                     <li>
+        <a href="~/Admin/VendorAll.aspx" runat="server">
+          <i class="fas fa-store"></i> <span>Vendors</span> 
+        </a>
+                         </li>
+                        <li>
+        <a href="~/Admin/CustomersAll.aspx" runat="server">
+           <i class="fas fa-users"></i> <span>Customers</span> 
+        </a>
+                         </li>
+                        <li>
+        <a href="~/Admin/Order_Master.aspx" runat="server">
+          <i class="fas fa-cart-arrow-down"></i><span>Orders</span> 
+        </a>
+                         </li>
+
+                       <li>
+        <a href="~/Admin/DonationReport.aspx" runat="server">
+          <i class="fas fa-cart-arrow-down"></i><span>Donation Report</span> 
+        </a>
+                         </li>
+                      <li>
+        <a href="~/Admin/VendorPackage_view.aspx" runat="server">
+          <i class="fas fa-cart-arrow-down"></i><span>Vendor Packages</span> 
+        </a>
+                         </li>
+
+                    <li>
+        <a href="~/Admin/Commission_Report.aspx" runat="server">
+          <i class="fas fa-list"></i><span>Disbursement Report</span> 
+        </a>
+                         </li>
+             
+                    
+
+
+            <%--            <li>
+        <a href="#" runat="server">
+         <i class="fas fa-percent"></i> <span>Comissions</span> 
+        </a>
+                         </li>
+                       <li>
+        <a href="#">
+        <i class="fas fa-hand-holding-usd"></i> <span>Donation</span> 
+        </a>
+                         </li>--%>
+<%--
+
+
+
+
+
+                <li>
+        <a runat="server" href="~/admin/createcustomer.aspx">
+           <i class="fas fa-user"></i> <span>Create Customer</span> 
+        </a>
+       
+      </li>
+                    <li>
+        <a runat="server" href="~/admin/allcustomers.aspx">
+           <i class="fas fa-users"></i> <span>All Customer</span> 
+        </a>
+       
+      </li>
+                    <li>
+        <a runat="server" href="~/admin/addorder.aspx">
+           <i class="fas fa-check"></i> <span>Create Order</span> 
+        </a>
+       
+      </li>
+                    <li>
+        <a runat="server" href="~/admin/allorders.aspx">
+           <i class="fas fa-list"></i> <span>All Orders</span> 
+        </a>
+       
+      </li>    
+
+                     <li>
+        <a runat="server" href="~/Account/Register.aspx">
+           <i class="fas fa-lock"></i> <span>Create User</span> 
+        </a>
+       
+      </li>    
+
+                     <li>
+        <a runat="server" href="~/admin/AllUsers.aspx">
+           <i class="fas fa-users"></i> <span>All Users</span> 
+        </a>
+       
+      </li>    --%>
+                    
+</ul>
+                    </aside>
+
+
+
+                <div id="content-wrapper">
+
+        <div class="top-header">
+            
+            
+                <ul class="header-links">
+                <li><a data-toggle="sidebar" href="#" class="visible-xs">
+                    
+                    <i class="fa fa-list"></i>
+
+                    </a></li>
+                     <li><a runat="server" > Admin Panel </a></li>
+       
+                </ul>
+                <ul class="pull-right">
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                    
+                           
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+
+                            
+                            <li>
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            </li>
+
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                  
+                </ul>
+           
+        </div>
+
+                      <div class="container-fluid">
+                 
+                    <div class="body-content  padding15 ">
+            
+       
+                       
+           <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+                </div>
+
+                    
+                    </div>
+                
+                
+       
+        
+          
+ 
+        
+           <script>
+               $('#wrapper').sidebar();
+</script>
+      <script>
+          $.sidebarMenu($('.sidebar-menu'))
+  </script>
+     </div>
+
+
+      <%--  <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>--%>
+      <%--  <div class="body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder></div>--%>
+          <%--  <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            </footer>--%>
+        
+
+    </form>
+</body>
+</html>

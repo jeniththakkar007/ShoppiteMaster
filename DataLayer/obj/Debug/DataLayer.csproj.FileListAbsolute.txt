@@ -1,0 +1,90 @@
+D:\blacktraderproject\BlackTrader\DataLayer\bin\DataLayer.dll.config
+D:\blacktraderproject\BlackTrader\DataLayer\bin\DataLayer.dll
+D:\blacktraderproject\BlackTrader\DataLayer\bin\DataLayer.pdb
+D:\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.dll
+D:\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.SqlServer.dll
+D:\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.xml
+D:\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.SqlServer.xml
+D:\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+D:\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
+D:\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.dll
+D:\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.pdb
+D:\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.Core.dll
+D:\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.S3.dll
+D:\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.Core.pdb
+D:\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.Core.xml
+D:\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.S3.pdb
+D:\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.S3.xml
+D:\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\DataLayer.dll.config
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\DataLayer.dll
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\DataLayer.pdb
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.Core.dll
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.S3.dll
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.dll
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.SqlServer.dll
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.Core.pdb
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.Core.xml
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.S3.pdb
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.S3.xml
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.xml
+D:\Products\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.SqlServer.xml
+D:\Products\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache
+D:\Products\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+D:\Products\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
+D:\Products\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.dll
+D:\Products\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.pdb
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\DataLayer.dll.config
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\DataLayer.dll
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\DataLayer.pdb
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.Core.dll
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.S3.dll
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.dll
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.SqlServer.dll
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.Core.pdb
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.Core.xml
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.S3.pdb
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\AWSSDK.S3.xml
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.xml
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\bin\EntityFramework.SqlServer.xml
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.dll
+D:\am-products\envato\projects code\multivendor-ecommerce\blacktraderproject\BlackTrader\DataLayer\obj\Debug\DataLayer.pdb
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\DataLayer.dll.config
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\DataLayer.dll
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\DataLayer.pdb
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\AWSSDK.Core.dll
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\AWSSDK.S3.dll
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\EntityFramework.dll
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\EntityFramework.SqlServer.dll
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\AWSSDK.Core.pdb
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\AWSSDK.Core.xml
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\AWSSDK.S3.pdb
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\AWSSDK.S3.xml
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\EntityFramework.xml
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\EntityFramework.SqlServer.xml
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\obj\Debug\DataLayer.dll
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\obj\Debug\DataLayer.pdb
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache
+D:\Products\codecanyon-jRrIVvGu-multi_vendor-ecommerce-website-in-aspnet\DataLayer\bin\System.Device.Portable.dll
+G:\ShoppiteMaster\DataLayer\bin\DataLayer.dll.config
+G:\ShoppiteMaster\DataLayer\bin\DataLayer.dll
+G:\ShoppiteMaster\DataLayer\bin\DataLayer.pdb
+G:\ShoppiteMaster\DataLayer\bin\AWSSDK.Core.dll
+G:\ShoppiteMaster\DataLayer\bin\AWSSDK.S3.dll
+G:\ShoppiteMaster\DataLayer\bin\EntityFramework.dll
+G:\ShoppiteMaster\DataLayer\bin\EntityFramework.SqlServer.dll
+G:\ShoppiteMaster\DataLayer\bin\AWSSDK.Core.pdb
+G:\ShoppiteMaster\DataLayer\bin\AWSSDK.Core.xml
+G:\ShoppiteMaster\DataLayer\bin\AWSSDK.S3.pdb
+G:\ShoppiteMaster\DataLayer\bin\AWSSDK.S3.xml
+G:\ShoppiteMaster\DataLayer\bin\EntityFramework.xml
+G:\ShoppiteMaster\DataLayer\bin\EntityFramework.SqlServer.xml
+G:\ShoppiteMaster\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+G:\ShoppiteMaster\DataLayer\obj\Debug\DataLayer.dll
+G:\ShoppiteMaster\DataLayer\obj\Debug\DataLayer.pdb
+G:\ShoppiteMaster\DataLayer\obj\Debug\DataLayer.csproj.AssemblyReference.cache

@@ -21,7 +21,7 @@ namespace FrontPanel.usercontrol
             //    getproductstatus();
             //}
         }
-        
+
 
 
         public void getproductstatus()
@@ -48,6 +48,7 @@ namespace FrontPanel.usercontrol
 
             if (e.CommandName == "lk")
             {
+
 
                 ph.Wishlist_Crud_Like(int.Parse(id), Page.User.Identity.Name);
 

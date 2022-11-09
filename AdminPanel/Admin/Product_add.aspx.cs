@@ -273,6 +273,7 @@ namespace AdminPanel.Admin
         {
 
             Image_uploadasync_uc.fileupload();
+            Image_uploadasync_uc.processRequest(Context);
             imagemultiuploaduc.Upload();
 
             String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;

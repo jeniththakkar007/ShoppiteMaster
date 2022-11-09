@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32413.511
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendorPanel", "VendorPanel\VendorPanel.csproj", "{CBFD5717-E668-4D03-8CCA-659078D3376A}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{90AA7D49-C208-4FA1-A7E9-9C98A665EE46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminPanel", "AdminPanel\AdminPanel.csproj", "{A71429D5-3F1D-4D1C-BCD5-7898222F7441}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendor_Register Panel", "Vendor_Register Panel\Vendor_Register Panel.csproj", "{B09EADC2-AF91-41C4-B406-27DCE56AFA58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,9 +33,6 @@ Global
 		{A71429D5-3F1D-4D1C-BCD5-7898222F7441}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A71429D5-3F1D-4D1C-BCD5-7898222F7441}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A71429D5-3F1D-4D1C-BCD5-7898222F7441}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B09EADC2-AF91-41C4-B406-27DCE56AFA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B09EADC2-AF91-41C4-B406-27DCE56AFA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B09EADC2-AF91-41C4-B406-27DCE56AFA58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
