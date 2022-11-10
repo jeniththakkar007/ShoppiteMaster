@@ -308,9 +308,13 @@ namespace DataLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_Product_Paging_AllRecord", actionParameter, searchurlParameter, orgidParameter);
         }
     
-        public virtual ObjectResult<SP_Status_HasProducts_Result> SP_Status_HasProducts()
+        public virtual ObjectResult<SP_Status_HasProducts_Result> SP_Status_HasProducts(Nullable<int> orgid)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Status_HasProducts_Result>("SP_Status_HasProducts");
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Status_HasProducts_Result>("SP_Status_HasProducts", orgidParameter);
         }
     
         public virtual ObjectResult<SP_Order_Master_Result> SP_Order_Master(Nullable<int> orgid)

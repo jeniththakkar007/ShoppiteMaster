@@ -1446,7 +1446,9 @@
           <Parameter Name="searchurl" Type="nvarchar" Mode="In" />
           <Parameter Name="orgid" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_Status_HasProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_Status_HasProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orgid" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_Vendor_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Productname" Type="nvarchar" Mode="In" />
           <Parameter Name="maincat" Type="nvarchar" Mode="In" />
@@ -2089,7 +2091,9 @@
           </FunctionImport>
           <EntitySet Name="Product_Inventory" EntityType="AMMultivendor2Model.Product_Inventory" />
           <EntitySet Name="Website_Setup_Script" EntityType="AMMultivendor2Model.Website_Setup_Script" />
-          <FunctionImport Name="SP_Status_HasProducts" ReturnType="Collection(AMMultivendor2Model.SP_Status_HasProducts_Result)" />
+          <FunctionImport Name="SP_Status_HasProducts" ReturnType="Collection(AMMultivendor2Model.SP_Status_HasProducts_Result)" >
+            <Parameter Name="orgid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="SP_Order_Master" ReturnType="Collection(AMMultivendor2Model.SP_Order_Master_Result)" >
           <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
