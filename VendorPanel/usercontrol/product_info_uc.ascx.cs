@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DataLayer.Helper;
 
 namespace VendorPanel.usercontrol
 {
@@ -121,15 +122,25 @@ namespace VendorPanel.usercontrol
 
         protected void getcatbind()
         {
+            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
+            var Url = HttpContext.Current.Request.Url;
+            var subdomain = website_Setup_Helper.GetSubDomain(Url);
+            var orgid = 0;
+            if (subdomain == "localhost")
+            {
+                orgid = 1;
+            }
+            else
+            {
+                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+                orgid = orgObject.id;
+                //orgid = 1;
+            }
+            var q = db.sp_getcat(orgid).Where(u => u.PARENT_NAMEID != 0);
 
-            var q = db.sp_getcat().Where(u => u.PARENT_NAMEID != 0);
 
 
-
-         
-
-
-                ListBox1.DataTextField="catnames";
+            ListBox1.DataTextField="catnames";
             ListBox1.DataValueField="ID";
             ListBox1.DataSource = q.ToList();
             ListBox1.DataBind();

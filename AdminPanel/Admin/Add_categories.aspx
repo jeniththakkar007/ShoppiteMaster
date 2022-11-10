@@ -38,8 +38,11 @@
  Parent Category (If Any)
                      </div>
                  <div class="col-md-4">
-                     <asp:DropDownList ID="ddlcat" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource1" DataTextField="catnames" DataValueField="ID">
+                     <%--<asp:DropDownList ID="ddlcat" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource1" DataTextField="catnames" DataValueField="ID">
                     <asp:ListItem Value="0">None</asp:ListItem>
+                </asp:DropDownList>--%>
+                     <asp:DropDownList ID="ddlcat" runat="server">
+                    <%--<asp:ListItem Value="0">None</asp:ListItem>--%>
                 </asp:DropDownList>
                      </div>
   </div>
@@ -245,7 +248,7 @@ Meta description
 </script>
 
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Default %>" ProviderName="<%$ ConnectionStrings:Default.ProviderName %>" SelectCommand="sp_getcat" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Default %>" ProviderName="<%$ ConnectionStrings:Default.ProviderName %>" SelectCommand="sp_getcat" SelectCommandType="StoredProcedure"></asp:SqlDataSource>--%>
     <asp:SqlDataSource ID="SqlDataSourceOrg" runat="server" ConnectionString="<%$ ConnectionStrings:Default %>" ProviderName="<%$ ConnectionStrings:Default.ProviderName %>" SelectCommand="SP_getorg" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
 </asp:Content>

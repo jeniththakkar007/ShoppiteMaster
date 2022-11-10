@@ -34,7 +34,7 @@ namespace AdminPanel.usercontrol
             Product_Images pi = new Product_Images();
 
 
-            pi.Image = image;
+            pi.Image = lblfile.Text;
             pi.ProductGUID = id;
             pi.InsertDate = DateTime.Now;
             pi.UserName = this.Page.User.Identity.Name;

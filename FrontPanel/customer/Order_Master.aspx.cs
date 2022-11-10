@@ -23,16 +23,16 @@ namespace FrontPanel.Admin
 
             if(!IsPostBack)
             {
-                
-               getdata();
+                //Page.LoadComplete += new EventHandler(Page_PreRender);
+                getdata();
             }
 
         }
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-            getdata();
+        //protected void Page_PreRender(object sender, EventArgs e)
+        //{
+        //    getdata();
 
-        }
+        //}
 
         protected void getdata()
         {
@@ -50,8 +50,8 @@ namespace FrontPanel.Admin
             }
             else {
                 var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
-                //orgid = orgObject.id;
-               orgid = 1;
+                orgid = orgObject.id;
+               //orgid = 1;
             }
             var q = db.SP_Order_Master(orgid).Where(u => u.BuyerId == profileid &&
                         u.orderdeliverystatus==RadioButtonList1.SelectedValue);

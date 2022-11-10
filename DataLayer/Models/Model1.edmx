@@ -1424,7 +1424,9 @@
         <Function Name="SP_AllMessages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_getcat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getcat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orgid" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_getcat_withoutparent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="orgid" Type="int" Mode="In" />
         </Function>
@@ -2015,7 +2017,9 @@
           <FunctionImport Name="getcat" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.getcat_Result)">
           <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_getcat" ReturnType="Collection(AMMultivendor2Model.sp_getcat_Result)" />
+          <FunctionImport Name="sp_getcat" ReturnType="Collection(AMMultivendor2Model.sp_getcat_Result)" >
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="Product_Discount" EntityType="AMMultivendor2Model.Product_Discount" />
           <EntitySet Name="Website_Setup" EntityType="AMMultivendor2Model.Website_Setup" />
           <EntitySet Name="Logoes" EntityType="AMMultivendor2Model.Logo" />

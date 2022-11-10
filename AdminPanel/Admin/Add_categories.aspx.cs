@@ -45,7 +45,20 @@ namespace AdminPanel.Admin
                     txtdisplayorder.Text = cm.DisplayOrder.ToString();
 
                 }
+                Page.LoadComplete += new EventHandler(Page_PreRender);
             }
+        }
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
+
+            ddlcat.DataSource = db.sp_getcat(selectedOrg);
+            ddlcat.DataTextField = "catnames";
+            ddlcat.DataValueField = "ID";
+            ddlcat.DataBind();
+
+            ddlcat.Items.Insert(0, new ListItem("None", "0"));
         }
 
 

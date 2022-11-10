@@ -106,9 +106,13 @@ namespace DataLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getcat_Result>("[Entities].[getcat](@ID)", iDParameter);
         }
     
-        public virtual ObjectResult<sp_getcat_Result> sp_getcat()
+        public virtual ObjectResult<sp_getcat_Result> sp_getcat(Nullable<int> orgid)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getcat_Result>("sp_getcat");
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getcat_Result>("sp_getcat", orgidParameter);
         }
     
         [DbFunction("Entities", "f_Profile_All")]
