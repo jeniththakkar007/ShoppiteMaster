@@ -27,7 +27,8 @@ namespace FrontPanel.usercontrol
         public void getproductstatus()
         {
 
-            var q = db.SP_Status_HasProducts();
+            var orgId = ph.GetOrgID();
+            var q = db.SP_Status_HasProducts(orgId);
 
             //var q = (from stat in db.Status
             //         join productstatus in db.Product_Status on stat.StatusId equals productstatus.StatusId

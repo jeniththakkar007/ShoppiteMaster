@@ -1,4 +1,5 @@
 ﻿
+using DataLayer.Helper;
 using DataLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -237,4 +238,23 @@ using System.Web;
                 totalrating = int.Parse(item.RatingCount.ToString());
             }
         }
+        
+    public int GetOrgID()
+    {
+        Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
+        var Url = HttpContext.Current.Request.Url;
+        var subdomain = website_Setup_Helper.GetSubDomain(Url);
+        var orgid = 0;
+        if (subdomain.Contains("localhost"))
+        {
+            orgid = 1;
+        }
+        else
+        {
+            var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+            orgid = orgObject.id;
+        }
+        return orgid;
     }
+
+}
