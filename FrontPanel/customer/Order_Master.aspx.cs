@@ -17,7 +17,7 @@ namespace FrontPanel.Admin
 
         Entities db = new Entities();
 
-
+        Product_Helper phh = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -40,19 +40,20 @@ namespace FrontPanel.Admin
 
             int profileid = ph.profile_return_id(Page.User.Identity.Name);
 
-            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
-            var Url = HttpContext.Current.Request.Url;
-            var subdomain = website_Setup_Helper.GetSubDomain(Url);
-            var orgid = 0;
-            if (subdomain == "localhost")
-            {
-                orgid = 1;
-            }
-            else {
-                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
-                orgid = orgObject.id;
-               //orgid = 1;
-            }
+            //Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
+            //var Url = HttpContext.Current.Request.Url;
+            //var subdomain = website_Setup_Helper.GetSubDomain(Url);
+            //var orgid = 0;
+            //if (subdomain == "localhost")
+            //{
+            //    orgid = 1;
+            //}
+            //else {
+            //    var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+            //    orgid = orgObject.id;
+            //   //orgid = 1;
+            //}
+            var orgid = phh.GetOrgID();
             var q = db.SP_Order_Master(orgid).Where(u => u.BuyerId == profileid &&
                         u.orderdeliverystatus==RadioButtonList1.SelectedValue);
 

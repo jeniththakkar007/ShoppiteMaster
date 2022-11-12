@@ -17,7 +17,7 @@ namespace FrontPanel.customer
 
         Entities db = new Entities();
         Order_Helper oh = new Order_Helper();
-
+        Product_Helper ph = new Product_Helper();
         //string SMTP = "";
         //string BCC = "";
 
@@ -306,8 +306,8 @@ namespace FrontPanel.customer
         {
             //var allproducts = db.f_getproducts();
 
-
-            var q = (from p in db.f_order_detail(orderid)
+            var orgId = ph.GetOrgID();
+            var q = (from p in db.f_order_detail(orderid, orgId)
 
                      where p.OrderStatus == "Confirmed"
                      select new

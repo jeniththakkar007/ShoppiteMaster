@@ -12,6 +12,7 @@ namespace FrontPanel.Admin
     {
 
         Entities db = new Entities();
+        Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -66,7 +67,8 @@ namespace FrontPanel.Admin
         protected void getorderdata()
         {
             Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
-            var q = db.f_order_detail(id);
+            var orgId = ph.GetOrgID();
+            var q = db.f_order_detail(id, orgId);
 
 
             ListView1.DataSource = q.ToList();
