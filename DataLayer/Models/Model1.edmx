@@ -877,6 +877,7 @@
           </ReturnType>
         </Function>
         <Function Name="f_disbursement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orgid" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -901,6 +902,7 @@
           </ReturnType>
         </Function>
         <Function Name="f_disbursement_summary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orgid" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -942,6 +944,7 @@
           </ReturnType>
         </Function>
         <Function Name="f_getproducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orgid" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -1023,6 +1026,7 @@
           </ReturnType>
         </Function>
         <Function Name="f_getproducts_By_getmegaoffers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orgid" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -1188,6 +1192,7 @@
         </Function>
         <Function Name="f_getproducts_Recentlyviewed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IP" Type="nvarchar" Mode="In" />
+          <Parameter Name="orgid" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -1230,6 +1235,7 @@
         </Function>
         <Function Name="f_order_detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="orgid" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -1454,6 +1460,7 @@
           <Parameter Name="maincat" Type="nvarchar" Mode="In" />
           <Parameter Name="subcat" Type="nvarchar" Mode="In" />
           <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="orgid" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="AMMultivendor2ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
@@ -2046,21 +2053,29 @@
           <EntitySet Name="Order_Status" EntityType="AMMultivendor2Model.Order_Status" />
           <EntitySet Name="Order_Variation" EntityType="AMMultivendor2Model.Order_Variation" />
           <EntitySet Name="Vendor_Membership_Package" EntityType="AMMultivendor2Model.Vendor_Membership_Package" />
-          <FunctionImport Name="f_disbursement" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_disbursement_Result)" />
-          <FunctionImport Name="f_disbursement_summary" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_disbursement_summary_Result)" />
+          <FunctionImport Name="f_disbursement" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_disbursement_Result)" >
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_disbursement_summary" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_disbursement_summary_Result)" >
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="Order_Shipping" EntityType="AMMultivendor2Model.Order_Shipping" />
           <EntitySet Name="Product_Recently_Viewed" EntityType="AMMultivendor2Model.Product_Recently_Viewed" />
           <FunctionImport Name="f_order_master_summary" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_order_master_summary_Result)">
           <Parameter Name="OrderGUID" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="f_order_master" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_order_master_Result)" />
-          <FunctionImport Name="f_getproducts" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_Result)" />
+          <FunctionImport Name="f_getproducts" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_Result)" >
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="Users" EntityType="AMMultivendor2Model.User" />
           <EntitySet Name="Messages" EntityType="AMMultivendor2Model.Message" />
           <FunctionImport Name="SP_AllMessages">
           <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="f_getproducts_By_getmegaoffers" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_getmegaoffers_Result)" />
+          <FunctionImport Name="f_getproducts_By_getmegaoffers" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_getmegaoffers_Result)" >
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="f_getproducts_By_CategoryID" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_CategoryID_Result)">
           <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -2075,7 +2090,8 @@
             <Parameter Name="skiprecords" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_getproducts_Recentlyviewed" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_Recentlyviewed_Result)">
-          <Parameter Name="IP" Mode="In" Type="String" />
+            <Parameter Name="IP" Mode="In" Type="String" />
+            <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Product_Paging" ReturnType="Collection(AMMultivendor2Model.SP_Product_Paging_Result)">
             <Parameter Name="Action" Mode="In" Type="String" />
@@ -2092,7 +2108,7 @@
           <EntitySet Name="Product_Inventory" EntityType="AMMultivendor2Model.Product_Inventory" />
           <EntitySet Name="Website_Setup_Script" EntityType="AMMultivendor2Model.Website_Setup_Script" />
           <FunctionImport Name="SP_Status_HasProducts" ReturnType="Collection(AMMultivendor2Model.SP_Status_HasProducts_Result)" >
-            <Parameter Name="orgid" Mode="In" Type="Int32" />
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Order_Master" ReturnType="Collection(AMMultivendor2Model.SP_Order_Master_Result)" >
           <Parameter Name="orgid" Mode="In" Type="Int32" />
@@ -2103,9 +2119,11 @@
             <Parameter Name="maincat" Mode="In" Type="String" />
             <Parameter Name="subcat" Mode="In" Type="String" />
             <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_order_detail" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_order_detail_Result)">
           <Parameter Name="ID" Mode="In" Type="Guid" />
+            <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="organizations" EntityType="AMMultivendor2Model.organization" />
           <EntitySet Name="C__MigrationHistory" EntityType="AMMultivendor2Model.C__MigrationHistory" />

@@ -22,14 +22,19 @@ using System.Web;
             UserRegisterHelper ur = new UserRegisterHelper();
             Product_Recently_Viewed prv = db.Product_Recently_Viewed.FirstOrDefault(u => u.ProductId == id);
 
-            if (prv == null)
+            
+
+        if (prv == null)
             {
                 Product_Recently_Viewed pr = new Product_Recently_Viewed();
 
-                pr.ProductId = id;
+            
+            var orgid = GetOrgID();
+           
+            pr.ProductId = id;
                 pr.IP = ur.getuserip();
                 pr.Insertdate = DateTime.Now;
-
+                pr.OrgId = orgid;
                 db.Product_Recently_Viewed.Add(pr);
                 db.SaveChanges();
 
@@ -177,9 +182,9 @@ using System.Web;
                 ipAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
             }
             ip = ipAddress;
-
+            var orgid = GetOrgID();
             
-            Customer_Wishlist cw = db.Customer_Wishlist.FirstOrDefault(u => u.ProductId == productid && u.IP==ip);
+            Customer_Wishlist cw = db.Customer_Wishlist.FirstOrDefault(u => u.ProductId == productid && u.IP==ip && u.OrgId == orgid);
 
             if (cw != null)
             {

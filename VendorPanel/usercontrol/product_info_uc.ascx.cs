@@ -126,7 +126,7 @@ namespace VendorPanel.usercontrol
             var Url = HttpContext.Current.Request.Url;
             var subdomain = website_Setup_Helper.GetSubDomain(Url);
             var orgid = 0;
-            if (subdomain == "localhost")
+            if (subdomain.Contains("localhost"))
             {
                 orgid = 1;
             }

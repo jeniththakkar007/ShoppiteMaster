@@ -11,6 +11,7 @@ namespace VendorPanel.usercontrol
     public partial class Earning_upcoming_vendor_uc : System.Web.UI.UserControl
     {
         Entities db = new Entities();
+        Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -24,7 +25,8 @@ namespace VendorPanel.usercontrol
 
         protected void getdisbursement()
         {
-            var q = db.f_disbursement().Where(u => u.sellerusername == this.Page.User.Identity.Name && u.disbursementamount==0).Sum(u=>u.balancedisbursment);
+            var orgid = ph.GetOrgID();
+            var q = db.f_disbursement(orgid).Where(u => u.sellerusername == this.Page.User.Identity.Name && u.disbursementamount==0).Sum(u=>u.balancedisbursment);
 
 
 

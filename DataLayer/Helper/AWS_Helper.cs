@@ -33,7 +33,7 @@ namespace DataLayer.Helper
         {
 
             if (string.IsNullOrEmpty(uploadFileName)) {
-                uploadFileName = @"Common\files\"+ FileUpload1.FileName;
+                uploadFileName = @"Common/files/"+ FileUpload1.FileName;
             }
             string returnfilename = "";
 

@@ -13,20 +13,28 @@ namespace AdminPanel.Admin
 
 
         Entities db = new Entities();
+        Product_Helper ph = new Product_Helper();
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
-
-                getdata();
+                Page.LoadComplete += new EventHandler(Page_PreRender);
+                //getdata();
             }
         }
 
+        private void Page_PreRender(object sender, EventArgs e)
+        {
+            getdata();
+        }
 
         protected void getdata()
         {
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
 
-            var q = db.f_disbursement().ToList();
+            var q = db.f_disbursement(selectedOrg).ToList();
 
             if(RadioButtonList1.SelectedValue=="Paid Disbursement")
             {
@@ -47,7 +55,7 @@ namespace AdminPanel.Admin
 
 
 
-            var qs = db.f_disbursement_summary();
+            var qs = db.f_disbursement_summary(selectedOrg);
 
             GridView2.DataSource = qs.ToList();
             GridView2.DataBind();

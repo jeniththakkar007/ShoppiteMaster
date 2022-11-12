@@ -16,10 +16,14 @@ namespace AdminPanel.Admin
         {
             if(!IsPostBack)
             {
-                getorderdata();
+                Page.LoadComplete += new EventHandler(Page_PreRender);
+
             }
         }
-
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            getorderdata();
+        }
 
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -66,7 +70,9 @@ namespace AdminPanel.Admin
         protected void getorderdata()
         {
             Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
-            var q = db.f_order_detail(id);
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
+            var q = db.f_order_detail(id, selectedOrg);
 
 
             ListView1.DataSource = q.ToList();

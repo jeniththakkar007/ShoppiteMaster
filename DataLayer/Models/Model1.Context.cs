@@ -164,15 +164,23 @@ namespace DataLayer.Models
         }
     
         [DbFunction("Entities", "f_disbursement")]
-        public virtual IQueryable<f_disbursement_Result> f_disbursement()
+        public virtual IQueryable<f_disbursement_Result> f_disbursement(Nullable<int> orgid)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_disbursement_Result>("[Entities].[f_disbursement]()");
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_disbursement_Result>("[Entities].[f_disbursement](@orgid)", orgidParameter);
         }
     
         [DbFunction("Entities", "f_disbursement_summary")]
-        public virtual IQueryable<f_disbursement_summary_Result> f_disbursement_summary()
+        public virtual IQueryable<f_disbursement_summary_Result> f_disbursement_summary(Nullable<int> orgid)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_disbursement_summary_Result>("[Entities].[f_disbursement_summary]()");
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_disbursement_summary_Result>("[Entities].[f_disbursement_summary](@orgid)", orgidParameter);
         }
     
         [DbFunction("Entities", "f_order_master_summary")]
@@ -192,9 +200,13 @@ namespace DataLayer.Models
         }
     
         [DbFunction("Entities", "f_getproducts")]
-        public virtual IQueryable<f_getproducts_Result> f_getproducts()
+        public virtual IQueryable<f_getproducts_Result> f_getproducts(Nullable<int> orgid)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_getproducts_Result>("[Entities].[f_getproducts]()");
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_getproducts_Result>("[Entities].[f_getproducts](@orgid)", orgidParameter);
         }
     
         public virtual int SP_AllMessages(string userName)
@@ -207,9 +219,13 @@ namespace DataLayer.Models
         }
     
         [DbFunction("Entities", "f_getproducts_By_getmegaoffers")]
-        public virtual IQueryable<f_getproducts_By_getmegaoffers_Result> f_getproducts_By_getmegaoffers()
+        public virtual IQueryable<f_getproducts_By_getmegaoffers_Result> f_getproducts_By_getmegaoffers(Nullable<int> orgid)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_getproducts_By_getmegaoffers_Result>("[Entities].[f_getproducts_By_getmegaoffers]()");
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_getproducts_By_getmegaoffers_Result>("[Entities].[f_getproducts_By_getmegaoffers](@orgid)", orgidParameter);
         }
     
         [DbFunction("Entities", "f_getproducts_By_CategoryID")]
@@ -257,13 +273,17 @@ namespace DataLayer.Models
         }
     
         [DbFunction("Entities", "f_getproducts_Recentlyviewed")]
-        public virtual IQueryable<f_getproducts_Recentlyviewed_Result> f_getproducts_Recentlyviewed(string iP)
+        public virtual IQueryable<f_getproducts_Recentlyviewed_Result> f_getproducts_Recentlyviewed(string iP, Nullable<int> orgid)
         {
             var iPParameter = iP != null ?
                 new ObjectParameter("IP", iP) :
                 new ObjectParameter("IP", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_getproducts_Recentlyviewed_Result>("[Entities].[f_getproducts_Recentlyviewed](@IP)", iPParameter);
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_getproducts_Recentlyviewed_Result>("[Entities].[f_getproducts_Recentlyviewed](@IP, @orgid)", iPParameter, orgidParameter);
         }
     
         public virtual ObjectResult<SP_Product_Paging_Result> SP_Product_Paging(string action, Nullable<int> numberofrows, Nullable<int> skiprecords, string searchurl, Nullable<int> orgid)
@@ -326,7 +346,7 @@ namespace DataLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Order_Master_Result>("SP_Order_Master", orgidParameter);
         }
     
-        public virtual ObjectResult<SP_Vendor_Search_Result> SP_Vendor_Search(string productname, string maincat, string subcat, string area)
+        public virtual ObjectResult<SP_Vendor_Search_Result> SP_Vendor_Search(string productname, string maincat, string subcat, string area, Nullable<int> orgid)
         {
             var productnameParameter = productname != null ?
                 new ObjectParameter("Productname", productname) :
@@ -344,17 +364,25 @@ namespace DataLayer.Models
                 new ObjectParameter("area", area) :
                 new ObjectParameter("area", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Vendor_Search_Result>("SP_Vendor_Search", productnameParameter, maincatParameter, subcatParameter, areaParameter);
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Vendor_Search_Result>("SP_Vendor_Search", productnameParameter, maincatParameter, subcatParameter, areaParameter, orgidParameter);
         }
     
         [DbFunction("Entities", "f_order_detail")]
-        public virtual IQueryable<f_order_detail_Result> f_order_detail(Nullable<System.Guid> iD)
+        public virtual IQueryable<f_order_detail_Result> f_order_detail(Nullable<System.Guid> iD, Nullable<int> orgid)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
                 new ObjectParameter("ID", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_order_detail_Result>("[Entities].[f_order_detail](@ID)", iDParameter);
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_order_detail_Result>("[Entities].[f_order_detail](@ID, @orgid)", iDParameter, orgidParameter);
         }
     
         public virtual ObjectResult<SP_getorg_Result> SP_getorg()

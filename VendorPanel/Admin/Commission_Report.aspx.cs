@@ -13,6 +13,7 @@ namespace VendorPanel.Admin
 
 
         Entities db = new Entities();
+        Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -25,8 +26,8 @@ namespace VendorPanel.Admin
 
         protected void getdata()
         {
-
-            var q = db.f_disbursement().Where(u => u.sellerusername == this.Page.User.Identity.Name).OrderByDescending(u => u.InsertDate).ToList();
+            var orgid = ph.GetOrgID();
+            var q = db.f_disbursement(orgid).Where(u => u.sellerusername == this.Page.User.Identity.Name).OrderByDescending(u => u.InsertDate).ToList();
 
             if(RadioButtonList1.SelectedValue=="Paid Disbursement")
             {

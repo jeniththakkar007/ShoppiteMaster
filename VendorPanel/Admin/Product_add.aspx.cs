@@ -18,19 +18,12 @@ namespace VendorPanel.Admin
         {
             if (!IsPostBack)
             {
-
-
                 if (Request.QueryString["ID"] != null)
                 {
-
-
                     Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
-
                     Product_Basic pb = db.Product_Basic.FirstOrDefault(u => u.ProductGUID == id);
-
                     if (pb != null)
                     {
-
                         Brand_Helper b = new Brand_Helper();
                         product_info_uc.ProductBasic_txtproductname = pb.ProductName;
                         product_info_uc.ProductBasic_txtshortdescription = pb.ShortDescription;
@@ -39,15 +32,8 @@ namespace VendorPanel.Admin
                         product_info_uc.ProductBasic_chkpublish = bool.Parse(pb.IsPublished.ToString());
                         product_info_uc.ProductBasic_txtstartdate = pb.ProductStartDate.ToString();
                         product_info_uc.ProductBasic_txtenddate = pb.ProductEndDate.ToString();
-                       
-
                         product_info_uc.ProductBasic_txtqty = pb.QTY.ToString();
                         Image_uploadasync_uc.IMG_imgbanner = pb.CoverImage;
-
-
-
-
-
                         Product_Price productprice = db.Product_Price.FirstOrDefault(u => u.ProductGUID == id);
 
 

@@ -28,9 +28,9 @@ namespace AdminPanel.Admin
                     int id = int.Parse(Request.QueryString["ID"].ToString());
                     category_master cm = db.category_master.FirstOrDefault(u => u.category_id == id);
 
-                    ddlcat.DataBind();
+                    //ddlcat.DataBind();
                     txtname.Text = cm.category_name;
-                    ddlcat.SelectedValue = cm.parent_category_id.ToString();
+                    //ddlcat.SelectedValue = cm.parent_category_id.ToString();
                   
                     txtdescription.Text = cm.Description;
                     imgicon.ImageUrl = cm.Icon;
