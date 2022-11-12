@@ -13,6 +13,7 @@ namespace FrontPanel
 
 
         Entities db = new Entities();
+        Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -57,11 +58,12 @@ namespace FrontPanel
 
         protected void getdata(Guid orderid)
         {
-            var allproducts = db.f_getproducts();
+            var orgid = ph.GetOrgID();
+            var allproducts = db.f_getproducts(orgid);
 
             //var q = db.f_order_detail(Id).Where(u => u.OrderStatus == "Cart");
-
-            var q = (from p in db.f_order_detail(orderid)
+            var orgID = ph.GetOrgID();
+            var q = (from p in db.f_order_detail(orderid, orgID)
                    
                      where p.OrderStatus == "Cart"
                      select new

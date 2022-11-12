@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Helper;
+using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,23 @@ namespace FrontPanel.usercontrol
 
         protected void getproductstatus()
         {
-            var q = db.SP_Status_HasProducts();
+            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
+            var Url = HttpContext.Current.Request.Url;
+            var subdomain = website_Setup_Helper.GetSubDomain(Url);
+            var orgid = 0;
+            if (subdomain.Contains("localhost"))
+            {
+                orgid = 1;
+            }
+            else
+            {
+                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+                orgid = orgObject.id;
+            }
+
+           
+            var q = db.SP_Status_HasProducts(orgid);
+
             //var q=(from stat in db.Status
             //           join productstatus in db.Product_Status on stat.StatusId equals productstatus.StatusId
             //           orderby stat.Status1 ascending

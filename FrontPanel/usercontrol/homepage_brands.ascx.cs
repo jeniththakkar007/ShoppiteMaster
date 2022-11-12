@@ -13,6 +13,7 @@ namespace FrontPanel.usercontrol
 
 
         Entities db = new Entities();
+        Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             //if(!IsPostBack)
@@ -33,10 +34,10 @@ namespace FrontPanel.usercontrol
 
         public void getbrands()
         {
-
+            var orgid = ph.GetOrgID();
             var q = (from b in db.Brands
                      join pb in db.Product_Brands on b.BrandId equals pb.BrandId
-                     where b.BrandImage != string.Empty && b.BrandImage != null
+                     where b.BrandImage != string.Empty && b.BrandImage != null && b.OrgId ==orgid
                      orderby  Guid.NewGuid()
                      select b).Distinct().Take(12);
                       
@@ -48,6 +49,7 @@ namespace FrontPanel.usercontrol
 
 
             ListView1.DataSource = q.ToList();
+            orgid = ph.GetOrgID();
             ListView1.DataBind();
         }
 

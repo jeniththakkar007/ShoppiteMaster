@@ -13,6 +13,7 @@ namespace FrontPanel
     {
 
         Entities db = new Entities();
+        Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -54,6 +55,7 @@ namespace FrontPanel
         protected void getdata()
         {
 
+            var orgid = ph.GetOrgID();
             string productname = "%";
             string area = "%";
             string maincat = "%";
@@ -94,7 +96,7 @@ namespace FrontPanel
 
             if (Request.QueryString["lat"]==null && Request.QueryString["long"]==null)
             {
-                var q = db.SP_Vendor_Search(productname, maincat, subcat, area).ToList();
+                var q = db.SP_Vendor_Search(productname, maincat, subcat, area,orgid).ToList();
 
 
 
@@ -116,7 +118,7 @@ namespace FrontPanel
             {
 
 
-                var b = db.SP_Vendor_Search(productname, maincat, subcat, area);
+                var b = db.SP_Vendor_Search(productname, maincat, subcat, area,orgid);
 
                 var Algo1Match = b.AsEnumerable().Select(a => new
             {

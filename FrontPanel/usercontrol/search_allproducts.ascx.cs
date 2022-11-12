@@ -10,10 +10,9 @@ using DataLayer.Helper;
 
 namespace FrontPanel.usercontrol
 {
+    
     public partial class search_allproducts : System.Web.UI.UserControl
     {
-
-
 
         Entities db = new Entities();
         Product_Helper ph = new Product_Helper();
@@ -22,6 +21,7 @@ namespace FrontPanel.usercontrol
         public int pricestart;
         public int priceend;
         public string brands = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
           if(!IsPostBack)
@@ -76,7 +76,8 @@ namespace FrontPanel.usercontrol
 
         public void getbrandsproducts(string brands )
         {
-            var q = db.f_getproducts().OrderByDescending(u=>u.ModifiedDate??u.InsertDate).Where(u => u.brandid + "-" + u.brandsurlpath == brands).ToList().Distinct();
+            var orgid = ph.GetOrgID();
+            var q = db.f_getproducts(orgid).OrderByDescending(u=>u.ModifiedDate??u.InsertDate).Where(u => u.brandid + "-" + u.brandsurlpath == brands).ToList().Distinct();
 
 
 
@@ -87,7 +88,8 @@ namespace FrontPanel.usercontrol
 
         public void getstoreproducts(string storename)
         {
-            var q = db.f_getproducts().Where(u => u.ProfileId + "-" + u.ShopURLPath == storename).ToList().Distinct();
+            var orgid = ph.GetOrgID();
+            var q = db.f_getproducts(orgid).Where(u => u.ProfileId + "-" + u.ShopURLPath == storename).ToList().Distinct();
 
 
 
@@ -98,7 +100,8 @@ namespace FrontPanel.usercontrol
 
         public void getnewarrival()
         {
-            var q = db.f_getproducts().OrderByDescending(u => u.InsertDate).Where(u => u.deals.Contains("New-Arrival")).ToList().Take(4).OrderBy(u => Guid.NewGuid()).Distinct();
+            var orgid = ph.GetOrgID();
+            var q = db.f_getproducts(orgid).OrderByDescending(u => u.InsertDate).Where(u => u.deals.Contains("New-Arrival")).ToList().Take(4).OrderBy(u => Guid.NewGuid()).Distinct();
 
            
 
@@ -110,9 +113,9 @@ namespace FrontPanel.usercontrol
 
         public void wishlist()
         {
-
+            var orgid = ph.GetOrgID();
             var q=(from us in db.Customer_Wishlist 
-                       join p in db.f_getproducts() on us.ProductId equals p.ProductId
+                       join p in db.f_getproducts(orgid) on us.ProductId equals p.ProductId
                        where us.UserName==this.Page.User.Identity.Name
                        select p);
 
@@ -139,20 +142,7 @@ namespace FrontPanel.usercontrol
             string Searchurl = "";
 
             string Action = "";
-            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
-            var Url = HttpContext.Current.Request.Url;
-            var subdomain = website_Setup_Helper.GetSubDomain(Url);
-            var orgid = 0;
-            if (subdomain.Contains("localhost"))
-            {
-                orgid = 1;
-            }
-            else
-            {
-                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
-                orgid = orgObject.id;
-               
-            }
+            var orgid = ph.GetOrgID();
             db.SaveChanges();
 
 

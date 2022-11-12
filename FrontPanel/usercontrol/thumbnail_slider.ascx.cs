@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Helper;
+using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,12 @@ namespace FrontPanel.usercontrol
         {
             //var q = db.f_getproducts().OrderByDescending(u => u.InsertDate).Where(u => u.maincatid == id).ToList().Take(10).OrderBy(u => Guid.NewGuid());
             UserRegisterHelper ur= new UserRegisterHelper();
-
+            var orgid = ph.GetOrgID();
 
             string ip = ur.getuserip();
 
 
-            var q = (from allproducts in db.f_getproducts_Recentlyviewed(ip)
+            var q = (from allproducts in db.f_getproducts_Recentlyviewed(ip,orgid)
                      select new
                      {
 
@@ -99,10 +100,11 @@ namespace FrontPanel.usercontrol
             //var q = dh.Product_All().OrderByDescending(u => u.ModifiedDate ?? u.InsertDate).Where(u => u.StatusId == id).ToList().Take(10);
 
             //var q = db.f_getproducts().Distinct().OrderByDescending(u => u.ModifiedDate ?? u.InsertDate).ToList().Take(10);
+           
+            var orgid =  ph.GetOrgID();
 
 
-
-            var q = (from allproducts in db.f_getproducts_By_getmegaoffers()
+            var q = (from allproducts in db.f_getproducts_By_getmegaoffers(orgid)
 
                      orderby Guid.NewGuid(),  allproducts.ModifiedDate ?? allproducts.InsertDate descending
                       select new
@@ -136,10 +138,10 @@ namespace FrontPanel.usercontrol
             //var q = dh.Product_All().OrderByDescending(u => u.ModifiedDate ?? u.InsertDate).Where(u => u.StatusId == id).ToList().Take(10);
 
             //var q = db.f_getproducts().Distinct().OrderByDescending(u => u.ModifiedDate ?? u.InsertDate).ToList().Take(10);
+            var orgid =  ph.GetOrgID();
+          
 
-
-
-            var q = (from allproducts in db.f_getproducts_By_getmegaoffers()
+            var q = (from allproducts in db.f_getproducts_By_getmegaoffers(orgid)
 
 
                     
