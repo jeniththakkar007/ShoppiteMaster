@@ -1,10 +1,6 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace FrontPanel.usercontrol
 {
@@ -12,17 +8,12 @@ namespace FrontPanel.usercontrol
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
-
-       
-       public void showimage(string status)
+        public void showimage(string status)
         {
-
-            if(status=="True")
+            if (status == "True")
             {
-
                 Entities db = new Entities();
 
                 Ads_Detail ad = db.Ads_Detail.FirstOrDefault(u => u.AdsPageId == 8);
@@ -33,14 +24,10 @@ namespace FrontPanel.usercontrol
                     Image2.Visible = true;
                 }
             }
-
             else
             {
-
                 Image2.Visible = false;
             }
-
         }
-
     }
 }

@@ -2,9 +2,7 @@
 using Amazon.S3;
 using Amazon.S3.Model;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 
@@ -12,49 +10,44 @@ namespace DataLayer.Helper
 {
     public class AWS_Helper
     {
-
         //string bucketName = "amenvato/envatoallproject";
         //string awsAccessKey = "AKI............";
         //string awsSecretKey = "+8Bo..................................";
 
-        string bucketName = "shoppite";
-        string filename = "ammamarketing";
+        private string bucketName = "shoppite";
+        private string filename = "ammamarketing";
 
         //Access Key ID:
         //AKIAJCYZXRDRE4KPC4TQ
         //Secret Access Key:
         //ZDN2WyruK7Q5ByJogX9hm4QA27MmbmUCDi8CA1hX
 
-        IAmazonS3 client = new AmazonS3Client("AKIA6IUF7JEED5QSS6Z5", "IRaP1i51oge4I5g1jFFUx22TvD7VCAYBB7kBBhsH", RegionEndpoint.APSouth1);
+        private IAmazonS3 client = new AmazonS3Client("AKIA6IUF7JEED5QSS6Z5", "IRaP1i51oge4I5g1jFFUx22TvD7VCAYBB7kBBhsH", RegionEndpoint.APSouth1);
 
         //IAmazonS3 client = new AmazonS3Client("AKIAJCYZXRDRE4KPC4TQ", "ZDN2WyruK7Q5ByJogX9hm4QA27MmbmUCDi8CA1hX", RegionEndpoint.USEast2);
 
-        public string uploadfile(FileUpload FileUpload1,string uploadFileName = "")
+        public string uploadfile(FileUpload FileUpload1, string uploadFileName = "")
         {
-
-            if (string.IsNullOrEmpty(uploadFileName)) {
-                uploadFileName = @"Common/files/"+ FileUpload1.FileName;
+            if (string.IsNullOrEmpty(uploadFileName))
+            {
+                uploadFileName = @"Common/files/" + FileUpload1.FileName;
             }
             string returnfilename = "";
 
-
-
             if (FileUpload1.HasFile)
             {
-
                 string ext = Path.GetExtension(FileUpload1.FileName).ToLower();
-                
+
                 PutObjectRequest request = new PutObjectRequest()
                 {
                     InputStream = FileUpload1.PostedFile.InputStream,
                     BucketName = bucketName,
                     ContentType = GetContentType(ext),
                     CannedACL = S3CannedACL.PublicRead,
-                    Key = uploadFileName// <-- in S3 key represents a path  
+                    Key = uploadFileName// <-- in S3 key represents a path
                 };
 
                 PutObjectResponse response = client.PutObject(request);
-
 
                 returnfilename = "https://shoppite.s3.ap-south-1.amazonaws.com/" + uploadFileName;
             }
@@ -62,10 +55,8 @@ namespace DataLayer.Helper
             return returnfilename;
         }
 
-
         public string uploadfilemulti(HttpPostedFile postedFile, string uploadFileName = "")
         {
-
             string returnfilename = "";
             if (string.IsNullOrEmpty(uploadFileName))
             {
@@ -81,18 +72,16 @@ namespace DataLayer.Helper
                     BucketName = bucketName,
                     ContentType = GetContentType(ext),
                     CannedACL = S3CannedACL.PublicRead,
-                    Key = uploadFileName // <-- in S3 key represents a path  
+                    Key = uploadFileName // <-- in S3 key represents a path
                 };
 
                 PutObjectResponse response = client.PutObject(request);
-
 
                 returnfilename = "https://shoppite.s3.ap-south-1.amazonaws.com/" + uploadFileName;
             }
 
             return returnfilename;
         }
-
 
         public string GetContentType(string fileExtension)
         {
@@ -117,7 +106,7 @@ namespace DataLayer.Helper
             return contentType;
         }
 
-        string path = "";
+        private string path = "";
 
         public string checkfilesize(FileUpload FileUpload1, int imgheight, int imgwidth)
         {
@@ -133,13 +122,9 @@ namespace DataLayer.Helper
             if (height > imgheight || width > imgwidth)
             {
                 path = "Height and Width must be matched selected option.";
-
-
-
             }
             else
             {
-
                 path = "Success";
             }
             return path;

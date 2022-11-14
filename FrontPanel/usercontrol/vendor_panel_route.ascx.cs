@@ -1,21 +1,14 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace FrontPanel.usercontrol
 {
     public partial class vendor_panel_route : System.Web.UI.UserControl
     {
+        private Entities db = new Entities();
 
-
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (Page.User.Identity.Name != "")
             {
                 Profile_Helper ph = new Profile_Helper();
@@ -23,7 +16,6 @@ namespace FrontPanel.usercontrol
                 if (ph.isvendor_status(this.Page.User.Identity.Name) == false)
                 {
                     LinkButton1.Visible = false;
-
                 }
             }
         }

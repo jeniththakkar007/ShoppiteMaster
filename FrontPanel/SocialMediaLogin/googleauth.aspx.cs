@@ -1,22 +1,16 @@
-﻿using DataLayer;
-using DataLayer.Models;
+﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
 using System.Web.Script.Serialization;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace FrontPanel.SocialMediaLogin
 {
     public partial class googleauth : System.Web.UI.Page
     {
+        private Entities db = new Entities();
 
-          Entities db = new Entities();
         public class Tokenclass
         {
             public string access_token { get; set; }
@@ -24,6 +18,7 @@ namespace FrontPanel.SocialMediaLogin
             public int expires_in { get; set; }
             public string refresh_token { get; set; }
         }
+
         public class Userclass
         {
             public string id { get; set; }
@@ -38,11 +33,11 @@ namespace FrontPanel.SocialMediaLogin
             public string email { get; set; }
         }
 
+        private string clientid = "736889147266-vmbpgdbes6fmbljbfbh1tghnmu58m4kh.apps.googleusercontent.com";
+        private string clientsecret = "Fo1oBnkw2ZjcahJnJF-i1y-F";
+        private string redirection_url = "http://ecomfront.kitaablife.com/SocialMediaLogin/googleauth";
+        private string url = "https://accounts.google.com/o/oauth2/token";
 
-        string clientid = "736889147266-vmbpgdbes6fmbljbfbh1tghnmu58m4kh.apps.googleusercontent.com";
-        string clientsecret = "Fo1oBnkw2ZjcahJnJF-i1y-F";
-        string redirection_url = "http://ecomfront.kitaablife.com/SocialMediaLogin/googleauth";
-        string url = "https://accounts.google.com/o/oauth2/token";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -50,16 +45,12 @@ namespace FrontPanel.SocialMediaLogin
                 if (Request.QueryString["code"] != null)
                 {
                     GetToken(Request.QueryString["code"].ToString());
-
                 }
             }
         }
 
-
-      
         public void GetToken(string code)
         {
-
             string poststring = "grant_type=authorization_code&code=" + code + "&client_id=" + clientid + "&client_secret=" + clientsecret + "&redirect_uri=" + redirection_url + "";
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/x-www-form-urlencoded";
@@ -107,64 +98,45 @@ namespace FrontPanel.SocialMediaLogin
 
             if (lblid.Text != null)
             {
-
                 createuser(lblemail.Text, lblid.Text, lblemail.Text, lblid.Text, lblname.Text);
             }
         }
 
         protected void createuser(string username, string password, string email, string id, string name)
         {
-
             UserRegisterHelper ur = new UserRegisterHelper();
             string type = "Client";
 
             if (Request.QueryString["Type"] != null)
             {
-
                 type = Request.QueryString["Type"].ToString();
             }
-
 
             ErrorMessage.Text = ur.register(email, password, email);
 
             if (ErrorMessage.Text == "Success")
             {
-
-
-
-
-              
-
-                    ur.login(email, password, true);
-                    pageredirect();
+                ur.login(email, password, true);
+                pageredirect();
             }
 
             if (ErrorMessage.Text == "User Name already Exists. Please try another username.")
             {
                 ur.login(email, password, true);
                 pageredirect();
-
             }
-
         }
-
 
         protected void pageredirect()
         {
-
             if (Session["OrderID"] != null)
             {
-
-
                 Response.Redirect("~/customer/shippingdetail.aspx");
             }
-
             else
             {
-
                 Response.Redirect("~/Default");
             }
-
         }
     }
 }

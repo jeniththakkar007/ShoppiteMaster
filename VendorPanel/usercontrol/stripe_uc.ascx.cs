@@ -2,45 +2,28 @@
 using DataLayer.Models;
 using Stripe;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace FrontPanel.usercontrol
 {
     public partial class stripe_uc : System.Web.UI.UserControl
     {
+        private Entities db = new Entities();
 
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
         public void stripecrud(decimal fees, string vendor, string currency)
         {
-
             try
             {
                 //getprojectcost();
 
-
-
                 string id = Request.QueryString["ID"].ToString();
-
-
-
 
                 Website_Setup_Helper ws = new Website_Setup_Helper();
 
-
-              
-
-
                 StripeConfiguration.SetApiKey(ws.paymetgateway_return("Stripe"));
-
-
 
                 //StripeConfiguration.SetApiKey("sk_test_1bJLLNyKgee6hUNUJuji3xm9");
 
@@ -61,27 +44,17 @@ namespace FrontPanel.usercontrol
                 var servicecard = new TokenService();
                 Token stripeToken = servicecard.Create(optionsCard);
 
-
-
-
-
                 var optionscustomer = new CustomerCreateOptions
                 {
                     Description = this.Page.User.Identity.Name,
                     Source = stripeToken.Id,
                     //Email=bi.EmailToReceiveInvoice
-
-
-
                 };
 
                 var servicecustomer = new CustomerService();
                 Customer customer = servicecustomer.Create(optionscustomer);
 
                 int a = Convert.ToInt32(fees * 100);
-
-
-
 
                 var options = new ChargeCreateOptions
                 {
@@ -90,21 +63,15 @@ namespace FrontPanel.usercontrol
                     Customer = customer.Id,
 
                     Description = vendor + " Order Number " + id,
-
                 };
                 var service = new ChargeService();
                 service.Create(options);
 
-
                 Users_Membership um = new Users_Membership();
-
 
                 /// user profile id
                 Profile_Helper profile = new Profile_Helper();
                 int profileid = profile.profile_return_id(this.Page.User.Identity.Name);
-
-
-
 
                 //get package deails
 
@@ -113,18 +80,10 @@ namespace FrontPanel.usercontrol
 
                 package.getpackagebyid(packageid);
 
-
-
-
-              
                 int recurringperiod = int.Parse(package.recurringdays.ToString());
 
-
-
-                
                 DateTime startDate = DateTime.Now;
                 DateTime expiryDate = startDate.AddDays(recurringperiod);
-
 
                 um.ProfileId = profileid;
                 um.IsFree = false;
@@ -140,25 +99,13 @@ namespace FrontPanel.usercontrol
                 db.Users_Membership.Add(um);
                 db.SaveChanges();
 
-     
-
                 Response.Redirect("~/default");
-
-
-
-
-
-
             }
             catch (Exception ex)
             {
-
                 lblerror.Text = ex.Message;
                 lblerror.Visible = true;
             }
-
-
-
         }
     }
 }

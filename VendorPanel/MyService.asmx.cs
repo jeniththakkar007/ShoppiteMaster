@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 
 namespace VendorPanel
@@ -17,14 +14,12 @@ namespace VendorPanel
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     //[System.ComponentModel.ToolboxItem(false)]
-    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line.
     // [System.Web.Script.Services.ScriptService]
 
     [System.Web.Script.Services.ScriptService]
     public class MyService : System.Web.Services.WebService
     {
-
-
         [System.Web.Services.WebMethod]
         [System.Web.Script.Services.ScriptMethod]
         public List<string> SearchCustomers(string prefixText, int count)

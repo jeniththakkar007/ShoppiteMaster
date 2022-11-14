@@ -6,61 +6,33 @@
     <div class="col-md-8 no-padding">
         <div class="white-bg padding15 shadow">
             <br />
-          
+
             <div class="form-group">
                 Product Name
                     <asp:TextBox ID="txtproductname" runat="server"></asp:TextBox>
-                <cc1:FilteredTextBoxExtender runat="server" BehaviorID="txtproductname_FilteredTextBoxExtender" FilterType="Custom, UppercaseLetters, LowercaseLetters, Numbers"  TargetControlID="txtproductname" ID="txtproductname_FilteredTextBoxExtender" ValidChars=" "></cc1:FilteredTextBoxExtender>
+                <cc1:FilteredTextBoxExtender runat="server" BehaviorID="txtproductname_FilteredTextBoxExtender" FilterType="Custom, UppercaseLetters, LowercaseLetters, Numbers" TargetControlID="txtproductname" ID="txtproductname_FilteredTextBoxExtender" ValidChars=" "></cc1:FilteredTextBoxExtender>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtproductname" Display="Dynamic" ValidationGroup="pro"></asp:RequiredFieldValidator>
-                  
-                
-                
-                 
             </div>
             <br />
-
 
             <div class="form-group">
                 Short Description
                     <asp:TextBox ID="txtshortdescription" runat="server" TextMode="MultiLine"></asp:TextBox>
                 <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtshortdescription" ID="RegularExpressionValidator1" ValidationExpression="^[\s\S]{30,200}$" runat="server" ErrorMessage="Minimum 30 and Maximum 200 characters required." CssClass="required" ValidationGroup="pro"></asp:RegularExpressionValidator>
-
             </div>
 
             <div class="form-group">
                 Description
                     <asp:TextBox ID="txtdescription" runat="server" TextMode="MultiLine"></asp:TextBox>
 
-
-
                 <script>
                     $(document).ready(function () {
                         //$('#summernote').summernote();
 
-
                         $('[id*=txtdescription]').summernote()
                     });
                 </script>
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
 
         <br />
@@ -76,65 +48,51 @@
                     SKU
                     <asp:TextBox ID="txtsku" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtsku" ValidationGroup="pro" Display="Dynamic"></asp:RequiredFieldValidator>
-
                 </div>
                 <div class="form-group col-md-6">
                     Product Quantity
                     <asp:TextBox ID="txtqty" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtqty" ValidationGroup="pro" Display="Dynamic"></asp:RequiredFieldValidator>
-
                 </div>
                 <div class="form-group col-md-6">
-                    Start Date 
+                    Start Date
                 <asp:TextBox ID="txtstartdate" runat="server" AutoCompleteType="None"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtstartdate" ValidationGroup="pro" Display="Dynamic"></asp:RequiredFieldValidator>
-
                 </div>
                 <div class="form-group col-md-6">
                     End Date
-                           
+
                     <asp:TextBox ID="txtenddate" runat="server" AutoCompleteType="None"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtenddate" ValidationGroup="pro" Display="Dynamic"></asp:RequiredFieldValidator>
-
                 </div>
             </div>
         </div>
 
         <br />
-
-
     </div>
 
     <div class="col-md-4">
         <div class="white-bg padding15 shadow ">
 
             <div class="form-group">
-                Categories 
+                Categories
                 <br />
                 <small>Press Ctrl to slect multiple Categories </small>
                 <br />
                 <%-- <asp:TextBox ID="txtcategories" runat="server"></asp:TextBox>--%>
                 <div class="dropdown">
-                   
-                        Select Categories  
+                    Select Categories
 
-               
-                        <asp:ListBox ID="ListBox1" runat="server"  Height="500px" SelectionMode="Single"></asp:ListBox>
-
-                  
+                        <asp:ListBox ID="ListBox1" runat="server" Height="500px" SelectionMode="Single"></asp:ListBox>
                 </div>
                 <br />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="ListBox1" ValidationGroup="pro" Display="Dynamic"></asp:RequiredFieldValidator>
-
             </div>
             <div class="form-group">
                 Brands
                 <br />
                 <small>Select from list or type to create new </small>
                 <br />
-
-
-
 
                 <%--<div class="dropdown">
                     <button class="btn btn-default w-100 dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--%>
@@ -149,8 +107,6 @@
 
                 <asp:TextBox ID="txtbrands" runat="server"></asp:TextBox>
 
-
-
                 <cc1:AutoCompleteExtender ID="AutoCompleteEx" runat="server" EnableCaching="false"
                     BehaviorID="AutoCompleteEx" MinimumPrefixLength="1" TargetControlID="txtbrands"
                     ServicePath="~/MyService.asmx" ServiceMethod="SearchCustomers" CompletionInterval="1000"
@@ -159,30 +115,23 @@
 
                 <br />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtbrands" ValidationGroup="pro" Display="Dynamic"></asp:RequiredFieldValidator>
-
             </div>
 
-        <div class="form-group checkright">
-            <asp:CheckBox ID="chkpublish" runat="server" Text="Published" Checked="True" />
+            <div class="form-group checkright">
+                <asp:CheckBox ID="chkpublish" runat="server" Text="Published" Checked="True" />
 
+                <asp:CheckBoxList ID="chkstatus" runat="server">
+                </asp:CheckBoxList>
+            </div>
 
-            <asp:CheckBoxList ID="chkstatus" runat="server">
-            </asp:CheckBoxList>
-
-
-        </div>
-
-        <div class="form-group">
-            Tags
+            <div class="form-group">
+                Tags
                     <asp:TextBox ID="txttags" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txttags" ValidationGroup="pro" Display="Dynamic"></asp:RequiredFieldValidator>
-
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txttags" ValidationGroup="pro" Display="Dynamic"></asp:RequiredFieldValidator>
+            </div>
         </div>
-
     </div>
 </div>
-</div>
-
 
 <script>
     $("document").ready(function () {
@@ -197,16 +146,13 @@
 
 <asp:Label ID="lblchklist" Visible="false" runat="server" Text=""></asp:Label>
 
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://resources/demos/style.css">
 <%--  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>--%>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 
 <script>
     $(function () {
@@ -216,8 +162,6 @@
         });
     });
 
-
-
     $(function () {
         $('[id*=txtenddate]').datepicker({
             changeMonth: true,
@@ -226,10 +170,8 @@
     });
 </script>
 
-
 <asp:Label ID="lblcatlist" Visible="false" runat="server" Text=""></asp:Label>
 
 <asp:Label ID="lblbrandlist" Visible="false" runat="server" Text=""></asp:Label>
-
 
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Default %>" ProviderName="<%$ ConnectionStrings:Default.ProviderName %>" SelectCommand="sp_getcat" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

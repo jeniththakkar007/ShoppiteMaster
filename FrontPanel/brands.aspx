@@ -4,14 +4,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-        <div class="container">
- 
-   <div class="row margintb-15">
-        <h4 class="no-margin padding5">  Products By Brand
+    <div class="container">
+
+        <div class="row margintb-15">
+            <h4 class="no-margin padding5">Products By Brand
                 </h4>
-       <div class="row ">
-       <uc1:search_allproducts runat="server" id="search_allproducts" />
-           </div>
-         </div>
- </div>
+            <div class="row ">
+                <uc1:search_allproducts runat="server" ID="search_allproducts" />
+            </div>
+        </div>
+    </div>
 </asp:Content>

@@ -1,9 +1,7 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,19 +9,16 @@ namespace VendorPanel.inbox
 {
     public partial class chatting : System.Web.UI.UserControl
     {
+        private Entities db = new Entities();
 
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (!IsPostBack)
             //{
-
-                allmessagebinding();
+            allmessagebinding();
             //}
-
-
-
         }
+
         public string ConvertTextUrlToLink(string url)
         {
             string str = @"((www\.|(http|https)+\:\/\/)[_.a-z0-9-]+\.[a-z0-9\/_:@=.+?,##%&~-]*[^.|\'|\# |!|\(|?|,| |>|<|;|\)])";
@@ -43,19 +38,19 @@ namespace VendorPanel.inbox
                          where m.ChatID == id
                          select new
                          {
-                             messageid=m.MesageId,
-                             shopname=p.ShopName,
-                             sender=m.sender,
-                             message1=m.Message1,
-                             senddate=m.senddate,
-                             attachment=m.Attachment,
-                             sessionbookingid=m.SessionBookingId
+                             messageid = m.MesageId,
+                             shopname = p.ShopName,
+                             sender = m.sender,
+                             message1 = m.Message1,
+                             senddate = m.senddate,
+                             attachment = m.Attachment,
+                             sessionbookingid = m.SessionBookingId
                          }
 
                            );
 
                 Label1.Text = id.ToString();
-                ListView1.DataSource = q.OrderByDescending(u=>u.messageid).ToList();
+                ListView1.DataSource = q.OrderByDescending(u => u.messageid).ToList();
                 ListView1.DataBind();
             }
         }
@@ -67,20 +62,13 @@ namespace VendorPanel.inbox
                 Label lblusername = ((Label)e.Item.FindControl("lblusername"));
                 Label lblshopname = ((Label)e.Item.FindControl("Label2"));
 
-
-                
                 Image imguserimage = ((Image)e.Item.FindControl("Image1"));
                 LinkButton lnkbtn = ((LinkButton)e.Item.FindControl("LinkButton1"));
 
                 Label lblattachment = ((Label)e.Item.FindControl("lblattachment"));
                 Label lblmessage = ((Label)e.Item.FindControl("Label5"));
 
-
-
                 Panel pnl = ((Panel)e.Item.FindControl("Panel1"));
-
-
-
 
                 Panel pnloofer = ((Panel)e.Item.FindControl("Panel2"));
                 Label lbldatetime = ((Label)e.Item.FindControl("lbldatetime"));
@@ -96,38 +84,27 @@ namespace VendorPanel.inbox
                          where m.UserName == lblusername.Text
                          select m);
 
-
-
                 Users_Profile p = db.Users_Profile.FirstOrDefault(u => u.UserName == lblusername.Text);
-
 
                 //imguserimage.ImageUrl = p.avatar;
 
                 if (lblusername.Text == Page.User.Identity.Name)
                 {
-
                     pnl.CssClass = "chat2";
                 }
-
                 else
                 {
                     pnl.CssClass = "chat1";
-
                 }
 
                 if (lblattachment.Text == "No")
                 {
-
                     lnkbtn.Visible = false;
                 }
                 else
                 {
                     lnkbtn.Visible = true;
-
                 }
-
-
-
 
                 Guid id = Guid.Parse(this.Request.QueryString["ID"].ToString());
 
@@ -139,13 +116,9 @@ namespace VendorPanel.inbox
                 {
                     Message m = db.Messages.FirstOrDefault(u => u.MesageId == item.MesageId);
 
-
                     m.status = "Read";
                     db.SaveChanges();
                 }
-
-
-
             }
         }
 
@@ -155,16 +128,11 @@ namespace VendorPanel.inbox
 
             Label lblbookingid = ((Label)e.Item.FindControl("lblbookingid"));
 
-
             if (e.CommandName == "download")
             {
                 Response.Redirect(id);
             }
-
-
-
         }
-
 
         protected void Timer1_Tick(object sender, EventArgs e)
         {

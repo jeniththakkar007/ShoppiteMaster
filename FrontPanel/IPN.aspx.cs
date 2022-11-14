@@ -1,56 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataLayer.Models;
+using System;
 using System.Collections.Specialized;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using DataLayer.Models;
 
 namespace FrontPanel
 {
     public partial class IPN : System.Web.UI.Page
     {
-
         //string SMTP = "relay-hosting.secureserver.net";
         //string EmailFrom = "info@suzyqbusiness.com";
         //string bcc = "imtiaz.makhani@gmail.com";
 
         //string Password = "BusinessSuzy1!";
 
-
         //string SMTP = "mail.bookevening.com";
         //string BCC = "naunareviews@gmail.com";
         //string EmailFrom = "alert@bookevening.com";
         //string Password = "Software@1";
 
+        private string SMTP = "mail.theblacktrade.com";
+        private string BCC = "imtiaz.makhani@gmail.com";
 
-        string SMTP = "mail.theblacktrade.com";
-        string BCC = "imtiaz.makhani@gmail.com";
+        private string EmailFrom = "noreply@theblacktrade.com";
+        private string Password = "Software@1";
 
-        string EmailFrom = "noreply@theblacktrade.com";
-        string Password = "Software@1";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
-
-
-
-
-
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient(SMTP.ToString());
                 mail.From = new MailAddress(EmailFrom.ToString());
                 //Email acpe = new Email();
                 mail.To.Add("imtiaz.makhani@gmail.com");
-
-
 
                 //mail.Bcc.Add("imtiaz.makhani@gmail.com");
                 //StreamReader reader = new StreamReader(Server.MapPath("~/Paypal/ConfirmationEmail.htm"));
@@ -59,7 +45,6 @@ namespace FrontPanel
                 //myString = readFile;
 
                 myString = "Link http://Blacktraders/  Read from IPN <br/>";
-
 
                 mail.Subject = "IPN work";
                 mail.IsBodyHtml = true;
@@ -82,11 +67,8 @@ namespace FrontPanel
             //Post back to either sandbox or live
             string strSandbox = "https://www.sandbox.paypal.com/cgi-bin/webscr";
 
-
             //post of live
             string strLive = "https://www.paypal.com/cgi-bin/webscr";
-
-
 
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(strLive);
             //Set values for the request back
@@ -121,7 +103,6 @@ namespace FrontPanel
 
                 NameValueCollection these_argies = HttpUtility.ParseQueryString(strResponse_copy);
 
-
                 string user_email = these_argies["payer_email"];
                 string pay_stat = these_argies["payment_status"];
                 //string invoice = these_argies["invoice"];
@@ -143,10 +124,8 @@ namespace FrontPanel
                 //.  more args as needed look at the list from paypal IPN doc
                 //.
 
-
                 if (pay_stat.Equals("Completed"))
                 {
-
                     //FormView1.DataBind();
 
                     //Session["id"] = ((Label)FormView1.FindControl("IdLabel")).Text;
@@ -158,75 +137,55 @@ namespace FrontPanel
                     //Session["invoice"] = invoice.ToString();
                     //Session["UserLogin"] = username.ToString();
 
-
                     try
                     {
+                        Session["custom"] = custom.ToString();
 
-                  
-                    Session["custom"] = custom.ToString();
+                        Entities db = new Entities();
 
+                        Guid id = Guid.Parse(custom.ToString());
 
-                    Entities db = new Entities();
+                        Order_Helper oh = new Order_Helper();
 
+                        oh.Order_Update(Guid.Parse(id.ToString()), "Confirmed", this.Page.User.Identity.Name, "Paypal", user_email);
 
-                    Guid id = Guid.Parse(custom.ToString());
-
-
-                    Order_Helper oh = new Order_Helper();
-
-                    oh.Order_Update(Guid.Parse(id.ToString()), "Confirmed", this.Page.User.Identity.Name, "Paypal", user_email);
-
-
-
-                    //SqlDataSource1.UpdateParameters.Add("Paypal", user_email);
-                    //SqlDataSource1.Update();
-
-
-                    MailMessage mail = new MailMessage();
-                    SmtpClient SmtpServer = new SmtpClient(SMTP.ToString());
-                    mail.From = new MailAddress(EmailFrom.ToString());
-                    //Email acpe = new Email();
-                    mail.To.Add("imtiaz.makhani@gmail.com");
-                    //mail.Bcc.Add("imtiaz.makhani@gmail.com");
-
-
-
-                    //mail.Bcc.Add("imtiaz.makhani@gmail.com");
-                    //StreamReader reader = new StreamReader(Server.MapPath("~/Paypal/ConfirmationEmail.htm"));
-                    //string readFile = reader.ReadToEnd();
-                    string myString = "";
-                    //myString = readFile;
-
-                    myString = Session["custom"].ToString();
-
-
-                    mail.Subject = "Order Confirmation";
-                    mail.IsBodyHtml = true;
-                    mail.Body = myString.ToString();
-                    SmtpServer.Port = 25;
-                    SmtpServer.Credentials = new System.Net.NetworkCredential(EmailFrom.ToString(), Password.ToString());
-                    SmtpServer.EnableSsl = false;
-                    object userState = mail;
-                    SmtpServer.SendCompleted += new SendCompletedEventHandler(SMTPClientForAsy.SmtpClient_OnCompleted);
-                    SmtpServer.SendAsync(mail, userState);
-
-
-
-
-                    }
-                    catch (Exception ex)
-                    {
-
-                        Session["error"] = ex.Message;
-
+                        //SqlDataSource1.UpdateParameters.Add("Paypal", user_email);
+                        //SqlDataSource1.Update();
 
                         MailMessage mail = new MailMessage();
                         SmtpClient SmtpServer = new SmtpClient(SMTP.ToString());
                         mail.From = new MailAddress(EmailFrom.ToString());
                         //Email acpe = new Email();
                         mail.To.Add("imtiaz.makhani@gmail.com");
+                        //mail.Bcc.Add("imtiaz.makhani@gmail.com");
 
+                        //mail.Bcc.Add("imtiaz.makhani@gmail.com");
+                        //StreamReader reader = new StreamReader(Server.MapPath("~/Paypal/ConfirmationEmail.htm"));
+                        //string readFile = reader.ReadToEnd();
+                        string myString = "";
+                        //myString = readFile;
 
+                        myString = Session["custom"].ToString();
+
+                        mail.Subject = "Order Confirmation";
+                        mail.IsBodyHtml = true;
+                        mail.Body = myString.ToString();
+                        SmtpServer.Port = 25;
+                        SmtpServer.Credentials = new System.Net.NetworkCredential(EmailFrom.ToString(), Password.ToString());
+                        SmtpServer.EnableSsl = false;
+                        object userState = mail;
+                        SmtpServer.SendCompleted += new SendCompletedEventHandler(SMTPClientForAsy.SmtpClient_OnCompleted);
+                        SmtpServer.SendAsync(mail, userState);
+                    }
+                    catch (Exception ex)
+                    {
+                        Session["error"] = ex.Message;
+
+                        MailMessage mail = new MailMessage();
+                        SmtpClient SmtpServer = new SmtpClient(SMTP.ToString());
+                        mail.From = new MailAddress(EmailFrom.ToString());
+                        //Email acpe = new Email();
+                        mail.To.Add("imtiaz.makhani@gmail.com");
 
                         //mail.Bcc.Add("imtiaz.makhani@gmail.com");
                         //StreamReader reader = new StreamReader(Server.MapPath("~/Paypal/ConfirmationEmail.htm"));
@@ -235,7 +194,6 @@ namespace FrontPanel
                         //myString = readFile;
 
                         myString = "Link http://Blacktraders/  Error <br/>";
-
 
                         mail.Subject = "IPN work";
                         mail.IsBodyHtml = true;
@@ -250,19 +208,13 @@ namespace FrontPanel
 
                     //condition logic to check the input for dicover or heave database
 
-
                     //discover website logic
 
                     //access 2 is for discover site
                     //access 3 is for heaven site
                     //001 item number is for discover website monthly subscription, 001 item id is define at paypal website on button generator
 
-
-
                     // get last id and add new one
-
-
-
 
                     //string all = Session["payeeemail"].ToString() + " " + Session["custom"].ToString() + " " + Session["txnid"].ToString() + " " + Session["item_name"].ToString() + " " + Session["item_number"].ToString() + " " + Session["last_name"].ToString() + " " + Session["payer_id"].ToString() + " " + Session["paydate"].ToString() + " " + Session["nextpaydate"].ToString() + " " + Session["plan"].ToString() + " " + Session["Cnvar1"].ToString() + " " + Session["id"].ToString();
 
@@ -287,7 +239,6 @@ namespace FrontPanel
 
                     ////myString = myString.Replace("{#message}", TextBox4.Text);
 
-
                     //mail.Subject = "Congrats! You have sucessfully subscribed"  ;
                     //mail.IsBodyHtml = true;
                     //mail.Body = myString.ToString();
@@ -298,13 +249,7 @@ namespace FrontPanel
                     //SmtpServer.SendCompleted += new SendCompletedEventHandler(SMTPClientForAsy.SmtpClient_OnCompleted);
                     //SmtpServer.SendAsync(mail, userState);
                     //end of email sending code
-
-
-
-
-
                 }
-
 
                 // more checks needed here specially your account number and related stuff
             }
@@ -312,24 +257,19 @@ namespace FrontPanel
             {
                 //log for manual investigation
 
-
-
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient(SMTP.ToString());
                 mail.From = new MailAddress(EmailFrom.ToString());
                 //Email acpe = new Email();
                 mail.To.Add("imtiaz.makhani@gmail.com");
 
-
-
                 //mail.Bcc.Add("imtiaz.makhani@gmail.com");
                 //StreamReader reader = new StreamReader(Server.MapPath("~/Paypal/ConfirmationEmail.htm"));
                 //string readFile = reader.ReadToEnd();
-                string myString ="Invalid";
+                string myString = "Invalid";
                 //myString = readFile;
 
                 myString = "Link http://Blacktraders/  Invalid Response <br/>";
-
 
                 mail.Subject = "IPN work";
                 mail.IsBodyHtml = true;
@@ -348,6 +288,3 @@ namespace FrontPanel
         }
     }
 }
-
-
-

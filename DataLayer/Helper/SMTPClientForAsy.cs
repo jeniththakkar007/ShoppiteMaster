@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Net.Mail;
 using System.ComponentModel;
+using System.Net.Mail;
 
 /// <summary>
 /// Summary description for SMTPClient

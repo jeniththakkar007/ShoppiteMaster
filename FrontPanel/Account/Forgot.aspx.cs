@@ -1,32 +1,21 @@
-﻿using System;
-using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
-
+﻿using DataLayer.Helper;
+using DataLayer.Models;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Net.Mail;
-using System.Drawing;
-using DataLayer.Models;
-using DataLayer.Helper;
+using System.Web;
 
 namespace FrontPanel.Account
 {
     public partial class ForgotPassword : Page
     {
-
-
-
-        Entities db = new Entities();
-      
+        private Entities db = new Entities();
 
         protected void Forgot(object sender, EventArgs e)
         {
-
-           
             string id = string.Empty;
             string password = string.Empty;
             string email = string.Empty;
@@ -52,21 +41,15 @@ namespace FrontPanel.Account
             }
             if (!string.IsNullOrEmpty(id))
             {
-
                 Website_Setup_Helper wsh = new Website_Setup_Helper();
 
                 wsh.setupemail();
-
 
                 string SMTP = wsh.smtp;
                 string BCC = wsh.bcc; ;
                 string EmailFrom = wsh.emailfrom;
                 string Password = wsh.password;
 
-
-
-
-               
                 string host = HttpContext.Current.Request.Url.Host;
                 // localhost
                 MailMessage mail = new MailMessage();
@@ -83,7 +66,6 @@ namespace FrontPanel.Account
                 myString = myString.Replace("{#memberid}", id.ToString());
                 myString = myString.Replace("{#URL}", host.ToString());
 
-
                 mail.Subject = "Recover Password" + " " + DateTime.Now.ToString("dd/MMM/yyyy hh:mm:ss tt");
                 mail.IsBodyHtml = true;
                 mail.Body = myString.ToString();
@@ -94,11 +76,9 @@ namespace FrontPanel.Account
                 SmtpServer.SendCompleted += new SendCompletedEventHandler(SMTPClientForAsy.SmtpClient_OnCompleted);
                 SmtpServer.SendAsync(mail, userState);
 
-
                 Label1.ForeColor = Color.Green;
                 Label1.Text = "Password Reset link has been sent to your email address";
             }
-           
             else
             {
                 Label1.ForeColor = Color.Red;

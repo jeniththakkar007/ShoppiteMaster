@@ -1,30 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
 
 namespace AdminPanel
 {
     public class Global : HttpApplication
     {
-        void Application_Start(object sender, EventArgs e)
+        private void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        void Application_Error(object sender, EventArgs e)
+        private void Application_Error(object sender, EventArgs e)
         {
-
-
             //try
             //{
-
             //    string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             //    string sqlStatment = "INSERT INTO ErrorLog VALUES(@Date,@Message)";
             //    using (System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection(constr))
@@ -52,11 +45,8 @@ namespace AdminPanel
 
             //catch
             //{
-
             //Response.Redirect("~/Account/Login.aspx");
             //}
-
-
         }
     }
 }

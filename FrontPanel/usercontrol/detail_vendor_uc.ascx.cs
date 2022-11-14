@@ -1,21 +1,12 @@
-﻿using DataLayer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace FrontPanel.usercontrol
 {
     public partial class detail_vendor_uc : System.Web.UI.UserControl
     {
-
-
-       
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (Global.IsVendorChat.ToString() == "True")
             {
                 LinkButton2.Visible = true;
@@ -23,18 +14,10 @@ namespace FrontPanel.usercontrol
 
                 if (Request.QueryString["ID"] != null)
                 {
-
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "chatvisible();", true);
                 }
             }
-
-
-
-            
-            
         }
-
-
 
         public string Vendor_lblshopnameurlpath
         {
@@ -42,14 +25,11 @@ namespace FrontPanel.usercontrol
             set { lblurlpath.Text = value; }
         }
 
-
         public string Vendor_lblshopname
         {
             get { return lblshopname.Text; }
             set { lblshopname.Text = value; }
         }
-
-
 
         public string Vendor_imglogo
         {
@@ -63,9 +43,6 @@ namespace FrontPanel.usercontrol
             set { hdnshopusername.Value = value; }
         }
 
-
-        
-
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Response.RedirectToRoute("Store", new { Shopname = lblurlpath.Text.Replace(" ", "-").Replace("/", "-").Replace("&", "").Replace(" ", "") });
@@ -75,45 +52,32 @@ namespace FrontPanel.usercontrol
         {
             C_ContactMe cht = new C_ContactMe();
             UserRegisterHelper ur = new UserRegisterHelper();
-            
-            Profile_Helper ph= new Profile_Helper();
 
+            Profile_Helper ph = new Profile_Helper();
 
-            string senderusername ="";
-
-
+            string senderusername = "";
 
             string receiverusername = ph.getvendoruser_byshopname(lblurlpath.Text);
 
-
             string host = HttpContext.Current.Request.Url.Host;
-           
-           senderusername = Page.User.Identity.Name;
 
+            senderusername = Page.User.Identity.Name;
 
-
-
-           string message = "Hello, how you doing? <br/> I want to discuss about this product <br/> " + "https://" + host+ "/"+ this.Page.RouteData.Values["URL"].ToString() +"/show";
+            string message = "Hello, how you doing? <br/> I want to discuss about this product <br/> " + "https://" + host + "/" + this.Page.RouteData.Values["URL"].ToString() + "/show";
 
             string chatid = cht.contactbnt(senderusername, receiverusername, message);
 
-
             if (Global.IsEmailOnChat.ToString() == "True")
             {
-
                 //if (Session["Email"] == null)
                 //{
-
-                    cht.sendmail(message, receiverusername);
-                    Session["Email"] = "Sent";
+                cht.sendmail(message, receiverusername);
+                Session["Email"] = "Sent";
 
                 //}
             }
 
-
             Response.RedirectToRoute("Detail", new { URL = this.Page.RouteData.Values["URL"].ToString(), ID = chatid });
-
         }
-        
     }
 }

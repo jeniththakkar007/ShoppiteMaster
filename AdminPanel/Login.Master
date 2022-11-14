@@ -2,9 +2,6 @@
 
 <%@ Register Src="~/usercontrol/Logo_uc.ascx" TagPrefix="uc1" TagName="Logo_uc" %>
 
-
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -17,10 +14,10 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-  
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet"> 
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
     <link href="Content/roots.css" rel="stylesheet" />
     <link href="Content/admin.css" rel="stylesheet" />
     <link href="Content/Style.css" rel="stylesheet" />
@@ -28,18 +25,13 @@
     <link href="Content/Site.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-
-
-    
- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="https://resources/demos/style.css">
-<%--  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>--%>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://resources/demos/style.css">
+    <%--  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>--%>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body class="white-smoke-bg">
-  
+
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -61,24 +53,14 @@
             </Scripts>
         </asp:ScriptManager>
 
-          <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar-menu.js")%>" ></script>
-        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar.js")%>" ></script>
-        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar.min.js")%>" ></script>
-<div class="body-content container  padding15 ">
-            
-       
-                       
-           <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar-menu.js")%>"></script>
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar.js")%>"></script>
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/sidebar.min.js")%>"></script>
+        <div class="body-content container  padding15 ">
+
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-
         </div>
-    
-
-
-      
-      
-       
-
     </form>
 </body>
 </html>

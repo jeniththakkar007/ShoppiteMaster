@@ -1,9 +1,8 @@
-﻿using System;
-using System.Web;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Owin;
+using System;
+using System.Web;
 using VendorPanel.Models;
 
 namespace VendorPanel.Account
@@ -78,8 +77,8 @@ namespace VendorPanel.Account
                     email.Text = loginInfo.Email;
                 }
             }
-        }        
-        
+        }
+
         protected void LogIn_Click(object sender, EventArgs e)
         {
             CreateAndLoginUser();
@@ -119,9 +118,9 @@ namespace VendorPanel.Account
             AddErrors(result);
         }
 
-        private void AddErrors(IdentityResult result) 
+        private void AddErrors(IdentityResult result)
         {
-            foreach (var error in result.Errors) 
+            foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error);
             }

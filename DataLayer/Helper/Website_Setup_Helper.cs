@@ -1,16 +1,11 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace DataLayer.Helper
 {
     public class Website_Setup_Helper
     {
-
-
-
         public string logo { get; set; }
         public string companyname { get; set; }
         public string favicon { get; set; }
@@ -26,66 +21,55 @@ namespace DataLayer.Helper
         public string smtp { get; set; }
         public int port { get; set; }
 
-        Entities db = new Entities();
-         public void getwebsiteinfo()
+        private Entities db = new Entities();
+        private Product_Helper ph = new Product_Helper();
+
+        public void getwebsiteinfo()
         {
+            Logo lo = db.Logoes.FirstOrDefault(x => x.LogoId == 1);
+            if (lo != null)
+            {
+                logo = lo.Logo1;
+                companyname = lo.CompanyName;
+                favicon = lo.Favicon;
 
-            Logo lo = db.Logoes.FirstOrDefault(u => u.LogoId == 1);
-
-            logo = lo.Logo1;
-            companyname = lo.CompanyName;
-            favicon = lo.Favicon;
-
-
-             ///meta tag
-             ///
-            title = lo.Title;
-            keyword = lo.Keyword;
-            description = lo.Description;
+                ///meta tag
+                ///
+                title = lo.Title;
+                keyword = lo.Keyword;
+                description = lo.Description;
+            }
         }
 
-
         public string paymetgateway_return(string type)
-         {
-
-             string value;
-             Website_Setup md = db.Website_Setup.FirstOrDefault(u => u.ItemKey == type);
-
-
-
-             value = md.ItemDescription;
-
-             return value;
-
-         }
-        public string Website_description_return(string type)
         {
-
             string value;
             Website_Setup md = db.Website_Setup.FirstOrDefault(u => u.ItemKey == type);
 
+            value = md.ItemDescription;
 
+            return value;
+        }
+
+        public string Website_description_return(string type)
+        {
+            string value;
+            Website_Setup md = db.Website_Setup.FirstOrDefault(u => u.ItemKey == type);
 
             value = md.ItemDescription.ToString();
 
             return value;
-
         }
 
         public string Vendormembershipstatus_return(string type)
         {
-
             string value;
             Website_Setup md = db.Website_Setup.FirstOrDefault(u => u.ItemKey == type);
-
-
 
             value = md.ItemValue.ToString();
 
             return value;
-
         }
-
 
         public bool Setup_Enable(string itemname)
         {
@@ -95,20 +79,16 @@ namespace DataLayer.Helper
 
             if (ws != null)
             {
-
                 isactive = bool.Parse(ws.IsActive.ToString());
             }
 
             return isactive;
         }
 
-
         public string GetSubDomain(Uri url)
         {
-
             if (url.HostNameType == UriHostNameType.Dns)
             {
-
                 string host = url.Host;
 
                 var nodes = host.Split('.');
@@ -116,7 +96,6 @@ namespace DataLayer.Helper
                 if (nodes[0] == "www") startNode = 1;
 
                 return string.Format("{0}.{1}", nodes[startNode], nodes[startNode]);
-
             }
 
             return null;
@@ -126,7 +105,7 @@ namespace DataLayer.Helper
         {
             Email_Setup es = db.Email_Setup.FirstOrDefault(u => u.EmailSettingId == 1);
 
-            if(es!=null)
+            if (es != null)
             {
                 emailfrom = es.EmailFrom;
                 password = es.Password;
@@ -134,9 +113,6 @@ namespace DataLayer.Helper
                 port = int.Parse(es.SMTPPort.ToString());
                 smtp = es.Host;
             }
-           
-
-          
         }
     }
 }

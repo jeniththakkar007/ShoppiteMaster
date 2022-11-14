@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using FrontPanel.Models;
 
 namespace FrontPanel.Account
 {
@@ -18,7 +12,6 @@ namespace FrontPanel.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
         }
     }
 }

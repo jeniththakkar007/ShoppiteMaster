@@ -1,8 +1,4 @@
-﻿using DataLayer.Models;
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Security.Principal;
+﻿using System;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -62,7 +58,6 @@ namespace VendorPanel
                 if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
                     || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
                 {
-
                     string host = "http://" + HttpContext.Current.Request.Url.Host;
                     Response.Redirect(host);
                     //throw new InvalidOperationException("Validation of Anti-XSRF token failed.");
@@ -70,13 +65,10 @@ namespace VendorPanel
             }
         }
 
-
-       
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Page.User.Identity.Name=="")
+            if (Page.User.Identity.Name == "")
             {
-
                 Response.Redirect("~/account/login");
                 //string host = "http://" + HttpContext.Current.Request.Url.Host;
                 //Response.Redirect(host);
@@ -91,5 +83,4 @@ namespace VendorPanel
             //Response.Redirect(host);
         }
     }
-
 }

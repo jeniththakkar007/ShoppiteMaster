@@ -1,20 +1,17 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace FrontPanel.usercontrol
 {
     public partial class header_searchbar : System.Web.UI.UserControl
     {
+        private Entities db = new Entities();
 
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 getmaincat();
             }
@@ -24,12 +21,11 @@ namespace FrontPanel.usercontrol
         {
             //Response.RedirectToRoute("Key", new { MainCategory = DropDownList1.SelectedValue,  Keyword = TextBox1.Text });
 
-            if(DropDownList1.SelectedValue =="0" && TextBox1.Text==string.Empty)
+            if (DropDownList1.SelectedValue == "0" && TextBox1.Text == string.Empty)
             {
                 lblerror.Text = "Please select search criteria";
                 return;
             }
-
 
             if (DropDownList1.SelectedValue == "0" && TextBox1.Text != string.Empty)
             {
@@ -46,53 +42,41 @@ namespace FrontPanel.usercontrol
                         if (cm != null)
                         {
                             string cat = cm.category_id + "-" + cm.URLPath;
-                            Response.RedirectToRoute("Key", new { MainCategory =cat , Keyword = TextBox1.Text });
+                            Response.RedirectToRoute("Key", new { MainCategory = cat, Keyword = TextBox1.Text });
                         }
-
                     }
                 }
-
                 else
                 {
                     lblerror.Text = "No matching result found.";
                     return;
                 }
             }
-
-
-            else if(DropDownList1.SelectedValue != "0")
+            else if (DropDownList1.SelectedValue != "0")
             {
-
                 Response.RedirectToRoute("CategoryMain", new { MainCategory = DropDownList1.SelectedValue, Type = "MC" });
             }
-
-            else 
+            else
             {
                 lblerror.Text = "No matching result found.";
                 return;
             }
         }
 
-
         protected void getmaincat()
         {
+            var q = (from c in db.category_master
 
-            var q=(from c in db.category_master
+                     where c.parent_category_id == 0 && c.IsPublished == true
+                     select new
+                     {
+                         Urlpath = c.category_id + "-" + c.URLPath,
+                         categoryname = c.category_name
+                     }
 
-                   where c.parent_category_id == 0 && c.IsPublished == true
-                   select new
-                   {
-                       Urlpath= c.category_id  + "-"+c.URLPath,
-                       categoryname=c.category_name
-
-
-                   }
-                       
                        ).Distinct();
 
-
-
-            DropDownList1.DataValueField =  "URLPath";
+            DropDownList1.DataValueField = "URLPath";
             DropDownList1.DataTextField = "categoryname";
 
             DropDownList1.DataSource = q.ToList();

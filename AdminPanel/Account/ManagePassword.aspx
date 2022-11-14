@@ -35,7 +35,6 @@
                             <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="confirmPassword"
                                 CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match."
                                 ValidationGroup="SetPassword" />
-
                         </div>
                     </div>
                     <div class="form-group">

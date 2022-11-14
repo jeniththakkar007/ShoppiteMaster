@@ -1,8 +1,4 @@
-﻿using DataLayer.Helper;
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Security.Principal;
+﻿using System;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -74,49 +70,38 @@ namespace FrontPanel
         {
             if (!IsPostBack)
             {
-
-
-            
-
                 this.Page.Title += Global.MyCompanyName.ToString();
 
                 //string isdonat=Global.IsDonation.ToString();
 
                 if (Global.IsDonation.ToString() == "True")
                 {
-
                     dvdonation.Visible = true;
                     fundsreceivetotal_uc.getdonationtotal();
-
-                   
                 }
 
                 //favicon
-                 hrfav.Href = Global.Myfavicon.ToString();
-
+                hrfav.Href = Global.Myfavicon.ToString();
 
                 //meta tag
-                 string page = Request.Url.Segments[Request.Url.Segments.Length - 1];
-                
+                string page = Request.Url.Segments[Request.Url.Segments.Length - 1];
 
-                 //Add Page Title.
-                 this.Page.Title = Global.Title.ToString();
+                //Add Page Title.
+                this.Page.Title = Global.Title.ToString();
 
-                 //Add Keywords Meta Tag.
-                 HtmlMeta keywords = new HtmlMeta();
-                 keywords.HttpEquiv = "keywords";
-                 keywords.Name = "keywords";
-                 keywords.Content = Global.keywords.ToString();
-                 this.Page.Header.Controls.Add(keywords);
+                //Add Keywords Meta Tag.
+                HtmlMeta keywords = new HtmlMeta();
+                keywords.HttpEquiv = "keywords";
+                keywords.Name = "keywords";
+                keywords.Content = Global.keywords.ToString();
+                this.Page.Header.Controls.Add(keywords);
 
-                 //Add Description Meta Tag.
-                 HtmlMeta description = new HtmlMeta();
-                 description.HttpEquiv = "description";
-                 description.Name = "description";
-                 description.Content = Global.description.ToString();
-                 this.Page.Header.Controls.Add(description);
-
-
+                //Add Description Meta Tag.
+                HtmlMeta description = new HtmlMeta();
+                description.HttpEquiv = "description";
+                description.Name = "description";
+                description.Content = Global.description.ToString();
+                this.Page.Header.Controls.Add(description);
 
                 //// get footer script
                 ///
@@ -126,7 +111,6 @@ namespace FrontPanel
 
                 script_footer1.getdata("Header");
             }
-
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
@@ -134,5 +118,4 @@ namespace FrontPanel
             Context.GetOwinContext().Authentication.SignOut();
         }
     }
-
 }

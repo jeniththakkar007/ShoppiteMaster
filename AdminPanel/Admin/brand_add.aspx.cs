@@ -1,29 +1,25 @@
-﻿using DataLayer.Models;
-using DataLayer;
+﻿using DataLayer.Helper;
+using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DataLayer.Helper;
-using System.Web.Configuration;
 
 namespace AdminPanel.Admin
 {
     public partial class brand_add : System.Web.UI.Page
     {
+        private Entities db = new Entities();
 
-
-        Entities db = new Entities();
         //CheckFile cf = new CheckFile();
-        AWS_Helper aw = new AWS_Helper();
+        private AWS_Helper aw = new AWS_Helper();
+
         protected void Page_PreRender(object sender, EventArgs e)
         {
             getcat();
-            if(Request.QueryString["ID"]!=null)
+            if (Request.QueryString["ID"] != null)
             {
-
                 int id = int.Parse(Request.QueryString["ID"].ToString());
                 Brand b = db.Brands.FirstOrDefault(u => u.BrandId == id);
 
@@ -32,30 +28,23 @@ namespace AdminPanel.Admin
                 txtdesc.Text = b.BrandDescription;
                 imgicon.ImageUrl = b.BrandImage;
                 chckpublish.Checked = bool.Parse(b.IsPublished.ToString());
-
-            
             }
-
         }
-
-
 
         protected void getcat()
         {
             String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int selectedOrg = Convert.ToInt32(masterDropDown);
-            var q=(from c in db.category_master
-                       where c.parent_category_id==0 && c.OrgId == selectedOrg
-                       select c);
+            var q = (from c in db.category_master
+                     where c.parent_category_id == 0 && c.OrgId == selectedOrg
+                     select c);
 
             ddlcategory.DataTextField = "category_name";
             ddlcategory.DataValueField = "category_id";
 
-
             ddlcategory.DataSource = q.ToList();
             ddlcategory.DataBind();
         }
-
 
         protected void fileupload()
         {
@@ -69,19 +58,15 @@ namespace AdminPanel.Admin
                 bannerfilepath = bannerfilepath + "/" + fuicon.FileName;
                 imgicon.ImageUrl = aw.uploadfile(fuicon, bannerfilepath);
             }
-
         }
 
         protected void lnksave_Click(object sender, EventArgs e)
         {
-
             String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int selectedOrg = Convert.ToInt32(masterDropDown);
             fileupload();
             if (Request.QueryString["ID"] == null)
             {
-
-
                 Brand b = new Brand();
 
                 b.Category_Id = int.Parse(ddlcategory.SelectedValue);
@@ -96,10 +81,8 @@ namespace AdminPanel.Admin
                 db.Brands.Add(b);
                 db.SaveChanges();
             }
-
             else
             {
-
                 int id = int.Parse(Request.QueryString["ID"].ToString());
                 Brand b = db.Brands.FirstOrDefault(u => u.BrandId == id);
 
@@ -113,7 +96,6 @@ namespace AdminPanel.Admin
                 b.OrgId = selectedOrg;
                 db.SaveChanges();
             }
-
 
             Response.Redirect("~/admin/brand_view");
         }

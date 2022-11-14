@@ -1,37 +1,29 @@
-﻿
-using DataLayer.Helper;
+﻿using DataLayer.Helper;
 using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
+using System.Web.Configuration;
 using System.Web.UI.WebControls;
 
 namespace FrontPanel.usercontrol
 {
     public partial class imagemultiupload_uc : System.Web.UI.UserControl
     {
-
-        Entities db = new Entities();
-        
+        private Entities db = new Entities();
+        private Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-
                 getallimags();
             }
         }
 
-
-        protected  void insertimages(string image)
+        protected void insertimages(string image)
         {
-
-
             Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
             Product_Images pi = new Product_Images();
-
 
             pi.Image = image;
             pi.ProductGUID = id;
@@ -40,34 +32,25 @@ namespace FrontPanel.usercontrol
 
             db.Product_Images.Add(pi);
             db.SaveChanges();
-
-
-
-
-
-         
-
-
         }
-
-
 
         protected void getallimags()
         {
-                Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
+            Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
             var q = (from pi in db.Product_Images
-                   where pi.ProductGUID==id
-                       select pi);
+                     where pi.ProductGUID == id
+                     select pi);
 
             ListView1.DataSource = q.ToList();
             ListView1.DataBind();
-
         }
 
         public void Upload()
         {
-         
-
+            
+            int orgid = ph.GetOrgID();
+            string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
+            string filepath = fileconfigpath + orgid + "/OtherProducts";
             if (fuUpload1.HasFiles)
             {
                 foreach (HttpPostedFile postedFile in fuUpload1.PostedFiles)
@@ -75,27 +58,22 @@ namespace FrontPanel.usercontrol
                     //CheckFile cf = new CheckFile();
 
                     AWS_Helper aw = new AWS_Helper();
-                    lblfile.Text = aw.uploadfilemulti(postedFile);
-
-                    insertimages(lblfile.Text);
+                    string bannerfilepath = filepath + "/files";
+                    bannerfilepath = bannerfilepath + "/" + postedFile.FileName;
+                    lblfile.Text = aw.uploadfilemulti(postedFile, bannerfilepath);
+                    insertimages(bannerfilepath);
                 }
             }
 
-
-
             getallimags();
         }
-
 
         protected void delimage(int id)
         {
             Product_Images pi = db.Product_Images.FirstOrDefault(u => u.ProductImagesId == id);
 
-
             db.Product_Images.Remove(pi);
             db.SaveChanges();
-
-
         }
 
         protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)

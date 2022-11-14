@@ -1,33 +1,25 @@
 ﻿using DataLayer.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace FrontPanel.usercontrol
 {
     public partial class uc_newsletter : System.Web.UI.UserControl
     {
+        private Entities db = new Entities();
 
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-
             NewsLetter nl = new NewsLetter();
 
             nl.Email = TextBox1.Text;
             nl.InsertDate = DateTime.Now;
-
 
             db.NewsLetters.Add(nl);
             db.SaveChanges();
@@ -35,10 +27,9 @@ namespace FrontPanel.usercontrol
 
             try
             {
-                 ServicePointManager.Expect100Continue = true;
+                ServicePointManager.Expect100Continue = true;
                 ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
                 ServicePointManager.DefaultConnectionLimit = 9999;
-
 
                 var apiKey = "b2b930e76b25d494b3d1d204fc4b3348-us4";
                 var listId = "bca7d647ac";
@@ -70,14 +61,12 @@ namespace FrontPanel.usercontrol
                     // Post and get JSON response
                     //string result = wc.UploadString(url, json);
 
-
                     string myresult = wc.UploadString(url, json);
                 }
             }
             catch (Exception ex)
             {
-                
-                  Label1.Text = "Subscribed Successfully";
+                Label1.Text = "Subscribed Successfully";
             }
         }
     }

@@ -1,8 +1,6 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -10,24 +8,21 @@ namespace AdminPanel.Admin
 {
     public partial class CustomersAll : System.Web.UI.Page
     {
-        Entities db = new Entities();
+        private Entities db = new Entities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 Page.LoadComplete += new EventHandler(Page_PreRender);
                 //getdata();
             }
-
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
             getdata();
-
         }
-
 
         protected void getdata()
         {
@@ -41,7 +36,6 @@ namespace AdminPanel.Admin
             lblrowscount.Text = "Total Records Found: " + q.Count().ToString();
         }
 
-
         protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             string username = ((Label)e.Item.FindControl("Label1")).Text;
@@ -50,17 +44,14 @@ namespace AdminPanel.Admin
             {
                 UserRegisterHelper u = new UserRegisterHelper();
 
-
                 u.userlockout(username);
 
                 Response.Redirect(Request.RawUrl);
             }
 
-
             if (e.CommandName == "del")
             {
                 Users_Profile up = db.Users_Profile.FirstOrDefault(u => u.UserName == username);
-
 
                 db.Users_Profile.Remove(up);
                 db.SaveChanges();

@@ -1,24 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="googlepay.aspx.cs" Inherits="FrontPanel.googlepay" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<%--    https://developers.google.com/pay/api/web/guides/resources/demos--%>
+    <%--    https://developers.google.com/pay/api/web/guides/resources/demos--%>
 
-<%--    https://dashboard.stripe.com/account/checkout/settings--%>
+    <%--    https://dashboard.stripe.com/account/checkout/settings--%>
 
+    <%--  https://stripe.com/docs/payments/checkout/subscriptions/starting--%>
 
+    <%--    https://stripe.com/docs/payments/checkout/wallets#google-pay-display--%>
 
-  <%--  https://stripe.com/docs/payments/checkout/subscriptions/starting--%>
-
-
-
-<%--    https://stripe.com/docs/payments/checkout/wallets#google-pay-display--%>
-
-<div id="container"></div>
-<script async
-  src="https://pay.google.com/gp/p/js/pay.js"
-  onload="onGooglePayLoaded()"></script>
+    <div id="container"></div>
+    <script async
+        src="https://pay.google.com/gp/p/js/pay.js"
+        onload="onGooglePayLoaded()"></script>
 
     <script>
-
 
         /**
  * Define the version of the Google Pay API referenced when creating your
@@ -250,7 +246,6 @@
             };
         }
 
-
         /**
          * Show Google Pay payment sheet when Google Pay payment button is clicked
          */
@@ -283,8 +278,5 @@
                 }, 500);
             });
         }
-
     </script>
-  
-      
 </asp:Content>
