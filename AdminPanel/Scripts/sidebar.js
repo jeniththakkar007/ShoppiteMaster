@@ -5,7 +5,7 @@
  * ======================================================================== */
 (function ($) {
     jQuery.fn.extend({
-        sidebar: function(options) {
+        sidebar: function (options) {
             // Options Valid
             if (!isValid(options)) {
                 return this;
@@ -22,16 +22,16 @@
                     Wrapper.removeClass(opts.minimized);
                 }
                 var Toggler = $(opts.toggler)
-                Toggler.on('click', function(event) {
+                Toggler.on('click', function (event) {
                     event.preventDefault();
                     if (Wrapper.hasClass(opts.minimized)) {
                         Wrapper.addClass(opts.animating);
-                        setTimeout(function() {
+                        setTimeout(function () {
                             Wrapper.removeClass(opts.minimized + ' ' + opts.animating);
                         }, opts.duration);
                     } else {
                         Wrapper.addClass(opts.animating);
-                        setTimeout(function() {
+                        setTimeout(function () {
                             Wrapper.addClass(opts.minimized);
                             Wrapper.removeClass(opts.animating);
                         }, opts.duration);

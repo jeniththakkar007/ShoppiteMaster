@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Web;
 using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using AdminPanel.Models;
 
 namespace AdminPanel.Account
 {
     public partial class Login : Page
     {
+        private UserRegisterHelper ur = new UserRegisterHelper();
 
-        UserRegisterHelper ur = new UserRegisterHelper();
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
@@ -29,21 +25,12 @@ namespace AdminPanel.Account
         {
             if (IsValid)
             {
-
                 FailureText.Text = ur.login(txtemail.Text, txtpassword.Text, RememberMe.Checked);
 
                 if (FailureText.Text == "Success")
                 {
-
-
-
-                
-
-                       
-                        Response.Redirect("~/default");
-                   
+                    Response.Redirect("~/default");
                 }
-
             }
         }
     }

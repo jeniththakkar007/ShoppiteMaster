@@ -1,42 +1,31 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace FrontPanel.customer
 {
     public partial class customer_profile : System.Web.UI.Page
     {
+        private Entities db = new Entities();
 
-
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                
-
                 Users_Profile us = db.Users_Profile.FirstOrDefault(u => u.UserName == this.Page.User.Identity.Name);
 
-                if(us!=null)
+                if (us != null)
                 {
-
                     txtshopname.Text = us.ShopName;
                     txtphone.Text = us.ContactNumber;
                     tagline.Text = us.ShopDescription;
-                   ImageUploadJquery_uc.Image_imgurl = us.Logo;
+                    ImageUploadJquery_uc.Image_imgurl = us.Logo;
                 }
             }
         }
 
-      
-
         protected void Button1_Click(object sender, EventArgs e)
         {
-
             ImageUploadJquery_uc.fileupload();
 
             Users_Profile us = db.Users_Profile.FirstOrDefault(u => u.UserName == this.Page.User.Identity.Name);
@@ -50,8 +39,5 @@ namespace FrontPanel.customer
 
             Response.Redirect(Request.RawUrl);
         }
-
-
-
     }
 }

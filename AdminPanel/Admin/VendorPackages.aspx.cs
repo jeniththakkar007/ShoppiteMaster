@@ -1,18 +1,14 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace AdminPanel.Admin
 {
     public partial class VendorPackages : System.Web.UI.Page
     {
+        private Entities db = new Entities();
 
-
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,7 +20,6 @@ namespace AdminPanel.Admin
 
                     Vendor_Membership_Package vmpupdate = db.Vendor_Membership_Package.FirstOrDefault(u => u.Membershipid == id);
 
-
                     txttitle.Text = vmpupdate.Title;
                     txtdescription.Text = vmpupdate.Description;
                     RadioButtonList2.SelectedValue = vmpupdate.Membershiptype;
@@ -35,17 +30,13 @@ namespace AdminPanel.Admin
                     ddlcurrency.SelectedValue = vmpupdate.CurrencyId.ToString();
                     txtunit.Text = vmpupdate.Unit;
 
-
                     db.SaveChanges();
-
                 }
             }
         }
 
-
         protected void getcurrency()
         {
-
             var q = (from c in db.Currencies
                      where c.IsPublished == true
                      select c);
@@ -55,16 +46,12 @@ namespace AdminPanel.Admin
 
             ddlcurrency.DataSource = q.ToList();
             ddlcurrency.DataBind();
-
-
-
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-            if(Request.QueryString["ID"]==null)
+            if (Request.QueryString["ID"] == null)
             {
-
                 Vendor_Membership_Package vmp = new Vendor_Membership_Package();
 
                 vmp.Title = txttitle.Text;
@@ -80,7 +67,6 @@ namespace AdminPanel.Admin
                 db.Vendor_Membership_Package.Add(vmp);
                 db.SaveChanges();
             }
-
             else
             {
                 int id = int.Parse(Request.QueryString["ID"].ToString());
@@ -96,32 +82,25 @@ namespace AdminPanel.Admin
                 vmpupdate.IsActive = CheckBox1.Checked;
                 vmpupdate.CurrencyId = int.Parse(ddlcurrency.SelectedValue);
                 vmpupdate.Unit = txtunit.Text;
-              
+
                 db.SaveChanges();
-
-
             }
 
             Response.Redirect("~/admin/vendorpackage_view");
-
         }
 
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RadioButtonList2.SelectedValue == "Recurring")
             {
-
                 recurringperiod.Visible = true;
             }
             else if (RadioButtonList2.SelectedValue == "Free")
             {
-
                 recurringperiod.Visible = true;
             }
-
             else
             {
-
                 recurringperiod.Visible = false;
                 recurringperiod.InnerText = "365";
             }

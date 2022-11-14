@@ -1,10 +1,5 @@
 ﻿using DataLayer.Helper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace FrontPanel.usercontrol
 {
@@ -12,18 +7,13 @@ namespace FrontPanel.usercontrol
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
-
-
-       
         public string Image_imgurl
         {
             get { return imgicon.ImageUrl; }
             set { imgicon.ImageUrl = value; }
         }
-
 
         public void fileupload()
         {
@@ -36,6 +26,5 @@ namespace FrontPanel.usercontrol
                 imgicon.ImageUrl = aw.uploadfile(fuicon);
             }
         }
-        
     }
 }

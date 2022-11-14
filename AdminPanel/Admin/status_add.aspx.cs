@@ -1,9 +1,7 @@
 ﻿using DataLayer.Helper;
 using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,14 +10,12 @@ namespace AdminPanel.Admin
 {
     public partial class status_add : System.Web.UI.Page
     {
+        private Entities db = new Entities();
 
-
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-
                 getdata();
 
                 if (Request.QueryString["ID"] != null)
@@ -30,20 +26,16 @@ namespace AdminPanel.Admin
                     txtstatus.Text = s.Status1;
                     chckhomepage.Checked = bool.Parse(s.ShowOnFront.ToString());
                     Image1.ImageUrl = s.CssClass;
-                    
                 }
-
             }
-
         }
 
         protected void getdata()
         {
-
-            var q=(from s in db.Status
-                   where s.ShowOnFront==true
-                       orderby s.Status1
-                       select s);
+            var q = (from s in db.Status
+                     where s.ShowOnFront == true
+                     orderby s.Status1
+                     select s);
 
             ListView1.DataSource = q.ToList();
             ListView1.DataBind();
@@ -56,20 +48,16 @@ namespace AdminPanel.Admin
             String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int selectedOrg = Convert.ToInt32(masterDropDown);
             string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-            string filepath = fileconfigpath + selectedOrg + "/Status/"+FileUpload1.FileName;
+            string filepath = fileconfigpath + selectedOrg + "/Status/" + FileUpload1.FileName;
             Image1.ImageUrl = aw.uploadfile(FileUpload1, filepath);
-            if(Image1.ImageUrl=="")
+            if (Image1.ImageUrl == "")
             {
-
                 lblerror.Text = "Status Image is required.";
                 return;
             }
 
-          
-
-            if(Request.QueryString["ID"]==null)
+            if (Request.QueryString["ID"] == null)
             {
-
                 Status s = new Status();
 
                 s.Status1 = txtstatus.Text;
@@ -83,7 +71,6 @@ namespace AdminPanel.Admin
             }
             else
             {
-
                 int id = int.Parse(Request.QueryString["ID"].ToString());
                 Status s = db.Status.FirstOrDefault(u => u.StatusId == id);
 
@@ -94,7 +81,6 @@ namespace AdminPanel.Admin
                 s.CssClass = Image1.ImageUrl;
 
                 db.SaveChanges();
-
             }
 
             Response.Redirect("~/admin/status_add");
@@ -105,10 +91,8 @@ namespace AdminPanel.Admin
             string ID = ((Label)e.Item.FindControl("Label2")).Text;
             if (e.CommandName == "ed")
             {
-
                 Response.Redirect("~/admin/status_add?ID=" + ID);
             }
-
 
             if (e.CommandName == "del")
             {
@@ -120,7 +104,6 @@ namespace AdminPanel.Admin
                 db.SaveChanges();
 
                 getdata();
-              
             }
         }
     }

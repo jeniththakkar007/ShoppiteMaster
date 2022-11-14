@@ -5,20 +5,14 @@
         <div class="box-center row">
             <div class=" col-md-7 border radius padding15 margintb">
                 <div class="row">
-                    <h3 class="center">
-                    Registration Success
-   
+                    <h3 class="center">Registration Success
                     </h3>
                     <hr />
-                   
+                </div>
 
-           </div>
-
-          
-              
-              
-              <div class="center">
-             Your account is under review and will be update in 24 to 48 hours.</div>
+                <div class="center">
+                    Your account is under review and will be update in 24 to 48 hours.
+                </div>
             </div>
         </div>
     </div>

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Web;
+﻿using AdminPanel.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Owin;
-using AdminPanel.Models;
+using System;
+using System.Web;
 
 namespace AdminPanel.Account
 {
@@ -78,8 +77,8 @@ namespace AdminPanel.Account
                     email.Text = loginInfo.Email;
                 }
             }
-        }        
-        
+        }
+
         protected void LogIn_Click(object sender, EventArgs e)
         {
             CreateAndLoginUser();
@@ -119,9 +118,9 @@ namespace AdminPanel.Account
             AddErrors(result);
         }
 
-        private void AddErrors(IdentityResult result) 
+        private void AddErrors(IdentityResult result)
         {
-            foreach (var error in result.Errors) 
+            foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error);
             }

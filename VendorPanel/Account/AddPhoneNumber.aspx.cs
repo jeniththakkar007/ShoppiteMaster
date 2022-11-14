@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System.Threading.Tasks;
-using VendorPanel.Models;
+using System;
+using System.Web;
 
 namespace VendorPanel.Account
 {
@@ -33,7 +27,6 @@ namespace VendorPanel.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

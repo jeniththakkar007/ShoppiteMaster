@@ -1,33 +1,24 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ImageUploadJquery_uc.ascx.cs" Inherits="FrontPanel.usercontrol.ImageUploadJquery_uc" %>
-        
-
-
 
 <div class="border padding5 radius pull-left w-100 form-group">
 
-
-<span class="pull-right">
-  <asp:Image ID="imgicon" runat="server" CssClass="radius" Width="100px" />
-<br />
-
-</span>
- Upload Image <br />
-   <%-- <small class="grey-c visible-lg">
-        Follow our guidelines to choose or take a great photo. 
-
+    <span class="pull-right">
+        <asp:Image ID="imgicon" runat="server" CssClass="radius" Width="100px" />
+        <br />
+    </span>
+    Upload Image
+    <br />
+    <%-- <small class="grey-c visible-lg">
+        Follow our guidelines to choose or take a great photo.
     </small> --%>
     <br />
-  <label class="file-upload">
-                                        <span class="btn btn-default margin5"> Select Image</span>
-                                    <asp:FileUpload ID="fuicon" runat="server" />  
-                                        
-                                      
-                                    </label>
+    <label class="file-upload">
+        <span class="btn btn-default margin5">Select Image</span>
+        <asp:FileUpload ID="fuicon" runat="server" />
+    </label>
 </div>
 
-
-
- <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
         $(function () {
             $('[id*=fuicon]').change(function () {
                 if (typeof (FileReader) != "undefined") {

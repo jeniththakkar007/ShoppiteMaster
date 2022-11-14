@@ -1,35 +1,25 @@
-﻿
-using DataLayer.Helper;
+﻿using DataLayer.Helper;
 using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Mail;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace leaveittome.usercontrol
 {
     public partial class contact : System.Web.UI.UserControl
     {
+        private Entities db = new Entities();
 
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
-
-      
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
             Website_Setup_Helper wsh = new Website_Setup_Helper();
 
             wsh.setupemail();
-
 
             string SMTP = wsh.smtp;
             string BCC = wsh.bcc; ;
@@ -51,8 +41,6 @@ namespace leaveittome.usercontrol
             //Email acpe = new Email();
             mail.To.Add(BCC);
             mail.CC.Add(BCC.ToString());
-           
-
 
             StreamReader reader = new StreamReader(Server.MapPath("~/email/Contact.html"));
             string readFile = reader.ReadToEnd();
@@ -61,13 +49,11 @@ namespace leaveittome.usercontrol
             myString = myString.Replace("{#Name}", TextBox1.Text);
             myString = myString.Replace("{#Email}", TextBox2.Text);
 
-
             myString = myString.Replace("{#Phone}", TextBox3.Text);
             myString = myString.Replace("{#Message}", TextBox4.Text);
 
             //myString = myString.Replace("{#Address}", Address.ToString());
             //myString = myString.Replace("{#State}", StateId.ToString());
-
 
             //myString = myString.Replace("{#City}", City.ToString());
             //myString = myString.Replace("{#ZC}", Zipcode.ToString());
@@ -78,9 +64,6 @@ namespace leaveittome.usercontrol
             //myString = myString.Replace("{#Description}", Description.ToString());
             //myString = myString.Replace("{#InsertDate}", Insertdate.ToString());
 
-
-
-
             mail.Subject = "New Contact" + " " + DateTime.Now.ToString("dd/MMM/yyyy hh:mm:ss tt");
             mail.IsBodyHtml = true;
             mail.Body = myString.ToString();
@@ -90,8 +73,6 @@ namespace leaveittome.usercontrol
             object userState = mail;
             SmtpServer.SendCompleted += new SendCompletedEventHandler(SMTPClientForAsy.SmtpClient_OnCompleted);
             SmtpServer.SendAsync(mail, userState);
-
-
 
             Label1.Text = "We have received your inquiry, We will get back to you in 24 hours.";
 

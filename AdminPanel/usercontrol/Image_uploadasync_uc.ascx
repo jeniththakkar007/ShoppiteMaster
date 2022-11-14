@@ -1,17 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Image_uploadasync_uc.ascx.cs" Inherits="AdminPanel.usercontrol.Image_uploadasync_uc" %>
-  <div class="col-md-6" style="padding: 0px;">
-      <label class="file-upload" style="border: 1px solid grey;">
-                            <span class="border radius padding15">Select Image</span>
-                            <asp:FileUpload ID="fubanner" runat="server" />
-                        </label>
+<div class="col-md-6" style="padding: 0px;">
+    <label class="file-upload" style="border: 1px solid grey;">
+        <span class="border radius padding15">Select Image</span>
+        <asp:FileUpload ID="fubanner" runat="server" />
+    </label>
 
-                        <asp:Image ID="imgbanner" runat="server"  Width="100px" />
-                     </div>
+    <asp:Image ID="imgbanner" runat="server" Width="100px" />
+</div>
 
-
-
-
-    <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
         $(function () {
             $('[id*=fubanner]').change(function () {
                 if (typeof (FileReader) != "undefined") {

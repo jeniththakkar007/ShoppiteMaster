@@ -1,29 +1,23 @@
 ﻿using DataLayer.Helper;
 using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace FrontPanel.usercontrol
 {
     public partial class header_productstatus : System.Web.UI.UserControl
     {
+        private Entities db = new Entities();
 
-
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-
                 getproductstatus();
             }
         }
-
-
 
         protected void getproductstatus()
         {
@@ -41,7 +35,6 @@ namespace FrontPanel.usercontrol
                 orgid = orgObject.id;
             }
 
-           
             var q = db.SP_Status_HasProducts(orgid);
 
             //var q=(from stat in db.Status
@@ -49,7 +42,6 @@ namespace FrontPanel.usercontrol
             //           orderby stat.Status1 ascending
             //           where stat.ShowOnFront==true
             //           select stat).Distinct().ToList();
-
 
             ListView1.DataSource = q.ToList();
             ListView1.DataBind();

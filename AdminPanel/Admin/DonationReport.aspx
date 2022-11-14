@@ -1,84 +1,57 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DonationReport.aspx.cs" Inherits="AdminPanel.Admin.DonationReport" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <div class="grid">
+        <h3 class="bold">Donation Report
+        </h3>
 
-     <div class="grid">   <h3 class="bold">
+        <table>
+            <tr>
+                <th>Total Amount
+                </th>
 
-          Donation Report
-        </h3> 
+                <th>Administrative amount
+                </th>
 
+                <th>Community Fund
+                </th>
 
-            <table>
-    <tr>  
-        <th>
-       Total Amount
-        </th>
+                <th>Payment Date
+                </th>
 
-          <th>
-        Administrative amount
-        </th>
+                <th>Paypal Id
+                </th>
+            </tr>
+            <small>
+                <asp:Label ID="lblrowscount" runat="server" Text=""></asp:Label></small>
+            <asp:ListView ID="ListView1" runat="server">
+                <ItemTemplate>
 
-         <th>
-      Community Fund
-        </th>
+                    <tr>
 
-           <th>
-     Payment Date
-        </th>
+                        <td>
+                            <asp:Label ID="Label1" runat="server" Text='<%#Eval("totalamount") %>'></asp:Label>
+                        </td>
 
-         <th>
-    Paypal Id
-        </th>
-
-        
-
-
-
-        
-       
-      
-      
-      
-    </tr>
-       <small> <asp:Label ID="lblrowscount" runat="server" Text=""></asp:Label></small>
-    <asp:ListView ID="ListView1" runat="server"  >
-        <ItemTemplate>
-          
-             <tr>
-  
-                  <td>
-      <asp:Label ID="Label1" runat="server" Text='<%#Eval("totalamount") %>'></asp:Label>
-           
-        </td>
-
-                     <td>
-      <asp:Label ID="Label3" runat="server" Text='<%#Eval("administrativefund") %>'></asp:Label>
-           
-        </td>
+                        <td>
+                            <asp:Label ID="Label3" runat="server" Text='<%#Eval("administrativefund") %>'></asp:Label>
+                        </td>
 
                         <td>
                             <asp:Label ID="Label2" runat="server" Text='<%#Eval("Communittyfund") %>'></asp:Label>
-           
-        </td>
+                        </td>
 
-                    <td>
+                        <td>
                             <asp:Label ID="Label4" runat="server" Text='<%#Eval("paymentdate") %>'></asp:Label>
-           
-        </td>
+                        </td>
 
-                  <td>
-      <asp:Label ID="Label5" runat="server" Text='<%#Eval("paypalid") %>'></asp:Label>
-           
-        </td>
-
-                 
-    </tr>
-            
-
-        </ItemTemplate>
-    </asp:ListView>
-
+                        <td>
+                            <asp:Label ID="Label5" runat="server" Text='<%#Eval("paypalid") %>'></asp:Label>
+                        </td>
+                    </tr>
+                </ItemTemplate>
+            </asp:ListView>
         </table>
-
-     </div>
+    </div>
 </asp:Content>

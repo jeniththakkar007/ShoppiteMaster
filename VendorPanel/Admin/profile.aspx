@@ -1,163 +1,134 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="VendorPanel.Admin.profile" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
- <%--   <div class="alert alert-danger">
-        Please complete your profile to add Product 
+    <%--   <div class="alert alert-danger">
+        Please complete your profile to add Product
     </div>--%>
     <div class="row">
-           <div class="col-md-6 col-md-offset-3 no-padding">
+        <div class="col-md-6 col-md-offset-3 no-padding">
 
-          <div class="alert alert-success center alert-dismissible" role="alert" id="dvsave" runat="server"  visible="false">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  Your Profile has been succesfully save
-</div>
-  
-               <div class="white-bg padding15 shadow form">
- <h3 class="bold  no-margin"> 
-      
-     My Profile
-           
-        </h3>
-               <br />
-
-                   
-            <div class="border padding5 radius form-group ">
-
-
-
-    <div class="c-logo pull-right">
-        <asp:Image ID="imgicon" runat="server" Width="50px" />  <br>
-</div>
-
-     Cover Image <br>
-    <small class="grey-c visible-lg">
-      Upload your Cover Image here <br> 
-
-    </small><br> 
-  <label class="file-upload ">
-                                        <span class="btn btn-default margin5"> Upload Photo</span>
- <asp:FileUpload ID="fuicon" runat="server" />
-                                    </label>
-            
-</div>
-
-
-
-            <div class="border padding5 radius form-group ">
-
-
-
-    <div class="c-logo pull-right">
-       <asp:Image ID="imgbanner" runat="server"  />  <br>
-</div>
-
-     Logo <br>
-    <small class="grey-c visible-lg">
-      Upload your company logo here <br> 
-
-    </small><br> 
-  <label class="file-upload ">
-                                        <span class="btn btn-default margin5"> Upload Photo</span>
-   <asp:FileUpload ID="fubanner" runat="server" />
-                                    </label>
-            
-</div>
-  <div class="form-group">
-                Shop Name
-           <asp:TextBox ID="txtshopname" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtshopname" Display="Dynamic" ValidationGroup="profile"></asp:RequiredFieldValidator>
-
+            <div class="alert alert-success center alert-dismissible" role="alert" id="dvsave" runat="server" visible="false">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Your Profile has been succesfully save
             </div>
-        <div class="textbox-2">
-                     <div class="form-group">
-               Contact Number
+
+            <div class="white-bg padding15 shadow form">
+                <h3 class="bold  no-margin">My Profile
+                </h3>
+                <br />
+
+                <div class="border padding5 radius form-group ">
+
+                    <div class="c-logo pull-right">
+                        <asp:Image ID="imgicon" runat="server" Width="50px" />
+                        <br>
+                    </div>
+
+                    Cover Image
+                    <br>
+                    <small class="grey-c visible-lg">Upload your Cover Image here
+                        <br>
+                    </small>
+                    <br>
+                    <label class="file-upload ">
+                        <span class="btn btn-default margin5">Upload Photo</span>
+                        <asp:FileUpload ID="fuicon" runat="server" />
+                    </label>
+                </div>
+
+                <div class="border padding5 radius form-group ">
+
+                    <div class="c-logo pull-right">
+                        <asp:Image ID="imgbanner" runat="server" />
+                        <br>
+                    </div>
+
+                    Logo
+                    <br>
+                    <small class="grey-c visible-lg">Upload your company logo here
+                        <br>
+                    </small>
+                    <br>
+                    <label class="file-upload ">
+                        <span class="btn btn-default margin5">Upload Photo</span>
+                        <asp:FileUpload ID="fubanner" runat="server" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    Shop Name
+           <asp:TextBox ID="txtshopname" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtshopname" Display="Dynamic" ValidationGroup="profile"></asp:RequiredFieldValidator>
+                </div>
+                <div class="textbox-2">
+                    <div class="form-group">
+                        Contact Number
            <asp:TextBox ID="txtcontactnumber" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtcontactnumber" Display="Dynamic" ValidationGroup="profile"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtcontactnumber" Display="Dynamic" ValidationGroup="profile"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="textbox-2">
+                    <div class="form-group">
+                        Country
 
-            </div></div>
-         <div class="textbox-2">             
-<div class="form-group">
- Country 
-
- 
    <asp:DropDownList ID="ddlcountry" runat="server">
        <asp:ListItem Value="0">Select Country</asp:ListItem>
-      
    </asp:DropDownList>
-     <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlcountry"
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlcountry"
                             CssClass="required" ErrorMessage="Field Required." ValidationGroup="profile" InitialValue="0" />
-</div>
+                    </div>
 
-<div class="form-group">
-  City
-      
-   
-    
-   
+                    <div class="form-group">
+                        City
+
     <asp:TextBox ID="txtcity" runat="server"></asp:TextBox>
-         <asp:RequiredFieldValidator runat="server" ControlToValidate="txtcity"
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtcity"
                             CssClass="required" ErrorMessage="Field Required." ValidationGroup="profile" />
-</div>  </div>
-                   <div class="textbox-2">  
-<div class="form-group">
-  Zip 
-
+                    </div>
+                </div>
+                <div class="textbox-2">
+                    <div class="form-group">
+                        Zip
 
     <asp:TextBox ID="txtzipcode" runat="server"></asp:TextBox>
-     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtzipcode"
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtzipcode"
                             CssClass="required" ErrorMessage="Field Required." ValidationGroup="profile" />
-</div>
+                    </div>
 
-<div class="form-group">
-  State
-   
-    
-   
+                    <div class="form-group">
+                        State
+
     <asp:TextBox ID="txtstate" runat="server"></asp:TextBox>
-     
-</div> 
+                    </div>
+                </div>
 
-                       </div>
-           
-<div class="form-group">
-  Address
+                <div class="form-group">
+                    Address
 
-   
     <asp:TextBox ID="txtaddress" runat="server"></asp:TextBox>
-<asp:RequiredFieldValidator runat="server" ControlToValidate="txtaddress"
-                            CssClass="required" ErrorMessage="Field Required." ValidationGroup="profile" />
-</div>
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtaddress"
+                        CssClass="required" ErrorMessage="Field Required." ValidationGroup="profile" />
+                </div>
 
- 
-
-                     <div class="form-group">
-               Shop Description
+                <div class="form-group">
+                    Shop Description
            <asp:TextBox ID="txtshortdesc" runat="server" TextMode="MultiLine"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtshortdesc" Display="Dynamic" ValidationGroup="profile"></asp:RequiredFieldValidator>
-
-            </div>
-                     <div class="form-group">
-             Paypal Id
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtshortdesc" Display="Dynamic" ValidationGroup="profile"></asp:RequiredFieldValidator>
+                </div>
+                <div class="form-group">
+                    Paypal Id
            <asp:TextBox ID="txtpaypalid" runat="server"></asp:TextBox>
-                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtpaypalid" Display="Dynamic" ValidationGroup="profile"></asp:RequiredFieldValidator>--%>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Field Required" CssClass="required" ControlToValidate="txtpaypalid" Display="Dynamic" ValidationGroup="profile"></asp:RequiredFieldValidator>--%>
+                </div>
 
+                <div class="form-group">
+                    <asp:Button ID="Button1" runat="server" Text="Save" ValidationGroup="profile" OnClick="Button1_Click" />
+                    <br />
+                    <br />
+                </div>
             </div>
-
-                   <div class="form-group">
-                       <asp:Button ID="Button1" runat="server" Text="Save" ValidationGroup="profile" OnClick="Button1_Click" />    <br /><br />
-                   </div>
-        
-
-
-
-
-               </div>
         </div>
     </div>
 
-
-
-
-    
     <script language="javascript" type="text/javascript">
         $(function () {
             $('[id*=fubanner]').change(function () {
@@ -181,9 +152,7 @@
                 }
             });
         });
-</script>
-
-
+    </script>
 
     <script type="text/javascript">
         $(function () {
@@ -196,20 +165,16 @@
                 });
             });
         });
-</script>
+    </script>
 
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyCXH-IGTEU4esvnu4S7QQYLpGDLUoFDU40"></script>
-<script type="text/javascript">
-
-
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyCXH-IGTEU4esvnu4S7QQYLpGDLUoFDU40"></script>
+    <script type="text/javascript">
 
     $(function () {
 
         var textbox1 = $(this).find('[id*=txtaddress]');
 
         ApplyAutoComplete(textbox1);
-
 
     });
     function ApplyAutoComplete(input) {
@@ -243,19 +208,10 @@
     google.maps.event.addDomListener(window, 'load', function () {
         initialize(document.getElementById('<%=txtaddress.ClientID%>'));
 
-
         directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
     })
+    </script>
 
-
-
-
-
-
-</script>
-
-
-   
     <script language="javascript" type="text/javascript">
         $(function () {
             $('[id*=fubanner]').change(function () {
@@ -279,10 +235,7 @@
                 }
             });
         });
-</script>
-
-
-
+    </script>
 
     <script language="javascript" type="text/javascript">
         $(function () {
@@ -307,6 +260,5 @@
                 }
             });
         });
-</script>
-
+    </script>
 </asp:Content>

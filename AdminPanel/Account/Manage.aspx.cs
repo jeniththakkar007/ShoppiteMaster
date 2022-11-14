@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Owin;
-using AdminPanel.Models;
+using System;
+using System.Web;
 
 namespace AdminPanel.Account
 {
@@ -80,7 +73,6 @@ namespace AdminPanel.Account
             }
         }
 
-
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -116,7 +108,7 @@ namespace AdminPanel.Account
             Response.Redirect("/Account/Manage");
         }
 
-        //EnableTwoFactorAuthentication 
+        //EnableTwoFactorAuthentication
         protected void TwoFactorEnable_Click(object sender, EventArgs e)
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();

@@ -1,19 +1,15 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace FrontPanel.customer
 {
     public partial class shippingdetail : System.Web.UI.Page
     {
+        private Entities db = new Entities();
+        private Product_Helper ph = new Product_Helper();
 
-
-        Entities db = new Entities();
-        Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -23,7 +19,6 @@ namespace FrontPanel.customer
                     HiddenField1.Value = Session["OrderID"].ToString();
 
                     getdata(Guid.Parse(HiddenField1.Value));
-
                 }
             }
         }
@@ -35,12 +30,10 @@ namespace FrontPanel.customer
             Response.Redirect("~/customer/paymentmethod?ID=" + HiddenField1.Value);
         }
 
-
-
         protected void getdata(Guid orderid)
         {
             var orgID = ph.GetOrgID();
-            var q = (from p in db.f_order_detail(orderid,orgID)
+            var q = (from p in db.f_order_detail(orderid, orgID)
 
                      where p.OrderStatus == "Cart"
                      select new
@@ -59,12 +52,8 @@ namespace FrontPanel.customer
                      }
                      );
 
-
-
-
             ListView1.DataSource = q.ToList();
             ListView1.DataBind();
-
         }
     }
 }

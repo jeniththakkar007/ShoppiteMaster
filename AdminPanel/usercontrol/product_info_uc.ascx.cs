@@ -1,10 +1,6 @@
-﻿
-using DataLayer.Models;
-using DataLayer;
+﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,60 +8,40 @@ namespace AdminPanel.usercontrol
 {
     public partial class product_info_uc : System.Web.UI.UserControl
     {
+        private CommaSeperation cs = new CommaSeperation();
+        private Entities db = new Entities();
 
-
-        CommaSeperation cs = new CommaSeperation();
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-
                 txtstartdate.Attributes.Add("readonly", "true");
                 txtenddate.Attributes.Add("readonly", "true");
-               
-                
+
                 getstatus();
 
-                    Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
+                Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
 
+                ////multiple cateogry re populate
 
-                    ////multiple cateogry re populate
-                    
+                var productstatus = (from ps in db.Product_Status
+                                     where ps.ProductGUID == id
+                                     select ps);
 
-
-                      
-
-
-                     var productstatus = (from ps in db.Product_Status
-                                              where ps.ProductGUID==id
-                                              select ps);
-
-                     if (productstatus != null)
-                     {
-
-
-                         foreach (var item in productstatus)
-                         {
-
-                             foreach (ListItem citem in chkstatus.Items)
-                             {
-
-                                 string statusid = item.StatusId.ToString();
-                                 if (citem.Value == statusid)
-                                 {
-
-                                     citem.Selected = true;
-                                 }
-                             }
-                             
-                         }
-
-                         
-                     }
-
-
-
+                if (productstatus != null)
+                {
+                    foreach (var item in productstatus)
+                    {
+                        foreach (ListItem citem in chkstatus.Items)
+                        {
+                            string statusid = item.StatusId.ToString();
+                            if (citem.Value == statusid)
+                            {
+                                citem.Selected = true;
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -78,49 +54,33 @@ namespace AdminPanel.usercontrol
                      where pc.ProductGUID == id
                      select pc).ToList();
 
-
             if (q != null)
             {
-
                 foreach (var productcategory in q)
                 {
-
                     foreach (ListItem item in ListBox1.Items)
                     {
                         string catid = productcategory.Category_Id.ToString();
                         if (item.Value == catid)
                         {
-
                             item.Selected = true;
                         }
-
-
                     }
                 }
-
-
             }
 
             Product_Brands productbrands = db.Product_Brands.FirstOrDefault(u => u.ProductGUID == id);
 
             if (productbrands != null)
             {
-
-
-
                 foreach (ListItem item in ListBox2.Items)
                 {
-
                     string brandid = productbrands.BrandId.ToString();
-
 
                     if (item.Value == brandid)
                     {
-
                         item.Selected = true;
                     }
-
-
                 }
             }
         }
@@ -130,7 +90,6 @@ namespace AdminPanel.usercontrol
             get { return txtqty.Text; }
             set { txtqty.Text = value; }
         }
-     
 
         public string ProductBasic_txtproductname
         {
@@ -138,13 +97,11 @@ namespace AdminPanel.usercontrol
             set { txtproductname.Text = value; }
         }
 
-
         public string ProductBasic_txtshortdescription
         {
             get { return txtshortdescription.Text; }
             set { txtshortdescription.Text = value; }
         }
-
 
         public string ProductBasic_txtdescription
         {
@@ -152,25 +109,17 @@ namespace AdminPanel.usercontrol
             set { txtdescription.Text = value; }
         }
 
-
-
         public string ProductBasic_txtsku
         {
             get { return txtsku.Text; }
             set { txtsku.Text = value; }
         }
 
-
-
         public string ProductBasic_txtcategories
         {
             get { return ListBox1.SelectedValue; }
-            set { ListBox1.SelectedValue= value; }
+            set { ListBox1.SelectedValue = value; }
         }
-
-
-       
-
 
         public string ProductBasic_txttags
         {
@@ -178,15 +127,11 @@ namespace AdminPanel.usercontrol
             set { txttags.Text = value; }
         }
 
-
-
         public string ProductBasic_txtstartdate
         {
             get { return txtstartdate.Text; }
             set { txtstartdate.Text = value; }
         }
-
-
 
         public string ProductBasic_txtenddate
         {
@@ -194,14 +139,11 @@ namespace AdminPanel.usercontrol
             set { txtenddate.Text = value; }
         }
 
-
         public bool ProductBasic_chkpublish
         {
             get { return chkpublish.Checked; }
             set { chkpublish.Checked = value; }
         }
-
-
 
         public string ProductBasic_lblchklist
         {
@@ -215,44 +157,35 @@ namespace AdminPanel.usercontrol
             set { lblcatlist.Text = value; }
         }
 
-
         public string ProductBasic_lblbranlist
         {
             get { return lblbrandlist.Text; }
             set { lblbrandlist.Text = value; }
         }
-        
 
         public void getchklist()
         {
-
-          lblchklist.Text=  cs.chcklistreturn(chkstatus);
+            lblchklist.Text = cs.chcklistreturn(chkstatus);
         }
-
 
         public void getcat()
         {
-
-           lblcatlist.Text= cs.listboxreturn(ListBox1);
-            
+            lblcatlist.Text = cs.listboxreturn(ListBox1);
         }
 
         public void getbrand()
         {
-
             lblbrandlist.Text = cs.listboxreturn(ListBox2);
-
         }
 
-
-       protected void getbranddata()
+        protected void getbranddata()
         {
             String masterDropDown = (((this.Parent.Page.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int orgid = Convert.ToInt32(masterDropDown);
-            var q=(from b in db.Brands where b.OrgId == orgid 
-                       orderby b.BrandName
-                       select b);
-
+            var q = (from b in db.Brands
+                     where b.OrgId == orgid
+                     orderby b.BrandName
+                     select b);
 
             ListBox2.DataTextField = "BrandName";
             ListBox2.DataValueField = "BrandID";
@@ -261,32 +194,28 @@ namespace AdminPanel.usercontrol
             ListBox2.DataBind();
         }
 
-
-
         protected void getstatus()
-       {
-
-            var q =(from s in db.Status
-                        orderby s.Status1
-                        select s);
+        {
+            var q = (from s in db.Status
+                     orderby s.Status1
+                     select s);
 
             chkstatus.DataTextField = "Status1";
             chkstatus.DataValueField = "Statusid";
 
             chkstatus.DataSource = q.ToList();
             chkstatus.DataBind();
-       }
+        }
+
         protected void getcategorydata()
         {
             String masterDropDown = (((this.Parent.Page.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
             int orgid = Convert.ToInt32(masterDropDown);
             var data = db.sp_getcat_withoutparent(orgid);
-            ListBox1.DataSource= data.ToList();
+            ListBox1.DataSource = data.ToList();
             ListBox1.DataTextField = "catnames";
             ListBox1.DataValueField = "ID";
             ListBox1.DataBind();
         }
-
-      
     }
 }

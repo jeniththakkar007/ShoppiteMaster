@@ -1,5 +1,4 @@
-﻿
-html {
+﻿html {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
@@ -16,13 +15,13 @@ body {
     display: inline-block;
 }
 
-.w-100{
-    width:100% !important;
-    display:block;
+.w-100 {
+    width: 100% !important;
+    display: block;
 }
 
-.wide-border{
-    height:20px;
+.wide-border {
+    height: 20px;
 }
 
 .sticky {
@@ -32,11 +31,11 @@ body {
     background: whitesmoke;
 }
 
-
 /*-----------------------------------------------------------headings-----------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--fonts) !important;
 }
+
 @media screen and (max-width: 768px) {
     h1,
     .h1 {
@@ -69,24 +68,19 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-
 /*-----------------------------------------------------------Fonts name-----------------------------------------------------------*/
 
-
-.i-fonts{
+.i-fonts {
     font-family: var(--i-fonts) !important;
 }
 
-
-.h-fonts{
+.h-fonts {
     font-family: var(--h-fonts) !important;
 }
 
-.fonts{
+.fonts {
     font-family: var(--fonts) !important;
 }
-
-
 
 /*-----------------------------------------------------------Fonts wieght-----------------------------------------------------------*/
 
@@ -98,34 +92,30 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: var(--s-bold) !important;
 }
 
-
 .m-bold {
     font-weight: var(--m-bold) !important;
 }
 
-.bold{
-    font-weight:bold !important;
+.bold {
+    font-weight: bold !important;
 }
-
 
 .e-bold {
     font-weight: var(--e-bold) !important;
 }
 
-
-
 /*-----------------------------------------------------------Fonts size-----------------------------------------------------------*/
 
-.small{
-    font-size:11px !important;
+.small {
+    font-size: 11px !important;
 }
 
-.medium{
-    font-size :14px !important;
+.medium {
+    font-size: 14px !important;
 }
 
-.large{
-    font-size:18px !important
+.large {
+    font-size: 18px !important
 }
 
 /*-----------------------------------------------------------paddings-----------------------------------------------------------*/
@@ -159,33 +149,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (max-width: 768px) {
-
     .o-padding {
-    padding: 0px !important;
-}
+        padding: 0px !important;
+    }
 
     .padding15 {
-    padding: 5px !important;
-}
+        padding: 5px !important;
+    }
 
     .paddingtb {
-    padding: 2% 0px;
-}
+        padding: 2% 0px;
+    }
 
     .paddingtb-15 {
-    padding: 5px 0px;
+        padding: 5px 0px;
+    }
+
+    .paddingrf-15 {
+        padding: 0px 5px;
+    }
 }
-
-.paddingrf-15 {
-    padding: 0px 5px;
-}
-
-
-}
-
 
 /*-----------------------------------------------------------margins-----------------------------------------------------------*/
-
 
 .no-margin {
     margin: 0px !important;
@@ -216,34 +201,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (max-width: 768px) {
-
     .o-margin {
-    margin: 0px !important;
-}
+        margin: 0px !important;
+    }
 
     .pmargin15 {
-    margin: 5px !important;
-}
+        margin: 5px !important;
+    }
 
     .margintb {
-    margin: 2% 0px !important;
-}
+        margin: 2% 0px !important;
+    }
 
     .margintb-15 {
-    margin: 5px 0px !important;
+        margin: 5px 0px !important;
+    }
+
+    .marginrf-15 {
+        margin: 0px 5px !important;
+    }
 }
-
-.marginrf-15 {
-    margin: 0px 5px !important;
-}
-
-
-}
-
 
 /*-----------------------------------------------------------shadow-----------------------------------------------------------*/
-
-
 
 .shadow {
     webkit-box-shadow: 0px 2px 12px -4px rgba(0, 0, 0, 0.1);
@@ -267,7 +246,6 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0px 1px 7px -4px var(--lgt-theme) !important;
 }
 
-
 /*-----------------------------------------------------------line height-----------------------------------------------------------*/
 
 .line20 {
@@ -277,7 +255,6 @@ h1, h2, h3, h4, h5, h6 {
 .line30 {
     line-height: 30px !important;
 }
-
 
 /*-----------------------------------------------------------text transform-----------------------------------------------------------*/
 
@@ -291,53 +268,41 @@ h1, h2, h3, h4, h5, h6 {
 
 /*-----------------------------------------------------------radius-----------------------------------------------------------*/
 
-
-
-.radius{
-    border-radius:4px !important;
+.radius {
+    border-radius: 4px !important;
 }
 
-.radius100{
-    border-radius:100% !important;
+.radius100 {
+    border-radius: 100% !important;
 }
 
-.radius-r{
-    border-radius:4px 0px 0px 4px !important;
+.radius-r {
+    border-radius: 4px 0px 0px 4px !important;
 }
 
-.radius-f{
-    border-radius:0px 4px 4px 0px !important;
+.radius-f {
+    border-radius: 0px 4px 4px 0px !important;
 }
-
-
 
 /*-----------------------------------------------------------aligns-----------------------------------------------------------*/
-
 
 .center {
     text-align: center !important;
 }
 
-
 .right {
     text-align: right !important;
 }
-
 
 .left {
     text-align: left !important;
 }
 
-
 .justify {
     text-align: justify !important;
 }
 
-
 /*-----------------------------------------------------------box-center-----------------------------------------------------------*/
-
-
-
 
 .box-center {
     display: flex;
@@ -345,34 +310,25 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
-
 .box-middle {
     display: flex;
     align-items: center;
 }
-
 
 .form-center {
     display: flex;
     justify-content: center;
 }
 
-
-
 @media screen and (max-width: 768px) {
-
-     .box-center {
+    .box-center {
         display: initial !important;
         align-items: center;
         justify-content: center;
     }
-
-
 }
 
-
 /*-----------------------------------------------------------footer-----------------------------------------------------------*/
-
 
 footer {
     background-color: var(--footer-bg);
@@ -380,56 +336,50 @@ footer {
     clear: both;
     width: 100%;
     color: var(--footer-c);
-    
 }
 
-
-footer h5{
-    font-weight:bold;
-    font-size:18px;
-}
-
-footer ul {
-    
-    padding: 0px;
-    margin-bottom:30px;
-    display: inline-block;
-    width: 300px;
-}
-
-footer ul > li {
-    list-style: none;
-}
-
-footer ul > li a {
-color: var(--footer-c);
-font-size: 13px;
-font-weight: 300;
-}
-
-    footer ul > li a:hover {
-        color: var(--theme-color);
-
+    footer h5 {
+        font-weight: bold;
+        font-size: 18px;
     }
 
-    footer p{
-     padding:0px;
-     margin:0px;
+    footer ul {
+        padding: 0px;
+        margin-bottom: 30px;
+        display: inline-block;
+        width: 300px;
+    }
+
+        footer ul > li {
+            list-style: none;
+        }
+
+            footer ul > li a {
+                color: var(--footer-c);
+                font-size: 13px;
+                font-weight: 300;
+            }
+
+                footer ul > li a:hover {
+                    color: var(--theme-color);
+                }
+
+    footer p {
+        padding: 0px;
+        margin: 0px;
         color: var(--footer-c);
     }
 
-    footer .links{
+    footer .links {
         -webkit-columns: 4;
-columns: 4;
--webkit-column-fill: balance;
-column-fill: balance;
--webkit-column-gap: 1em;
-column-gap: 0em;
+        columns: 4;
+        -webkit-column-fill: balance;
+        column-fill: balance;
+        -webkit-column-gap: 1em;
+        column-gap: 0em;
     }
 
-
 @media screen and (max-width: 768px) {
-
     footer h5 {
         font-weight: bold;
         font-size: 14px;
@@ -464,10 +414,12 @@ column-gap: 0em;
     .confirmation img {
         width: 130px;
     }
- .confirmation i {
-            font-size: 30px;
-            color:var(--theme-color)
-        }
+
+    .confirmation i {
+        font-size: 30px;
+        color: var(--theme-color)
+    }
+
     .confirmation h1 {
         font-size: 25px;
         font-weight: bold;
@@ -477,10 +429,6 @@ column-gap: 0em;
         padding: 10px;
         color: var(--grey);
     }
-
-
-
-
 
 @media screen and (max-width: 768px) {
     .confirmation {
@@ -493,8 +441,6 @@ column-gap: 0em;
             font-size: 18px;
         }
 
-       
-
         .confirmation img {
             width: 70px;
         }
@@ -504,12 +450,7 @@ column-gap: 0em;
         }
 }
 
-
-
-
 /*-----------------------------------------------------------file-upload-----------------------------------------------------------*/
-
-
 
 .file-upload { /*! height: 2.3em; */
 }
@@ -533,41 +474,29 @@ column-gap: 0em;
             text-align: center;
             vertical-align: middle;
         }
-      
 
-            .file-upload span::before {
-                content: " ";
-            }
-
-   
-
+        .file-upload span::before {
+            content: " ";
+        }
 
 /*-----------------------------------------------------------or div-----------------------------------------------------------*/
 
-
-.or-div{
+.or-div {
     height: 11px;
     margin: 15px 0;
     text-align: center;
     border-bottom: 1px solid #e4e5e7;
 }
 
-
-.or-div span{
-
-    font-size: 14px;
-    line-height: 22px;
-    padding: 0 8px;
-    background-color: #fff;
-    color: var(--grey);
-
-}
-
-
-
+    .or-div span {
+        font-size: 14px;
+        line-height: 22px;
+        padding: 0 8px;
+        background-color: #fff;
+        color: var(--grey);
+    }
 
 /*-----------------------------------------------------------validation-----------------------------------------------------------*/
-
 
 .required {
     color: #e50016 !important;
@@ -582,8 +511,6 @@ column-gap: 0em;
     box-shadow: 2px 2px 3px #dce8de;
     position: relative;
 }
-
-
 
     .required:after, .required:before {
         bottom: 100%;
@@ -610,20 +537,17 @@ column-gap: 0em;
         margin-left: 3px;
     }
 
-
-    .required:empty{
-        display:none;
+    .required:empty {
+        display: none;
     }
 
-    .alert:empty{
-        display:none;
-    }
+.alert:empty {
+    display: none;
+}
 
-    /*----------------------------------------------------------------forms----------------------------------------------------------*/
+/*----------------------------------------------------------------forms----------------------------------------------------------*/
 
-
-
-.form .tagsinput, .form input[type="email"], .form input[type="text"], .form input[type="password"], .form input[type="number"],  .form input[type="date"], .form input[type="time"], .form select {
+.form .tagsinput, .form input[type="email"], .form input[type="text"], .form input[type="password"], .form input[type="number"], .form input[type="date"], .form input[type="time"], .form select {
     background-color: var(--white);
     border: 1px solid #d8d6d6;
     padding: 12px;
@@ -643,18 +567,16 @@ column-gap: 0em;
     padding: 17px 20px;
     transition: all 0.3s ease 0s;
     color: var(--f-theme);
-
-    font-weight:bold;
+    font-weight: bold;
 }
 
-    .form .form-group .input-group input {
-        border-radius: 0px 5px 5px 0px !important;
-    }
+.form .form-group .input-group input {
+    border-radius: 0px 5px 5px 0px !important;
+}
 
-
-    .form a {
-        color: var(--theme-color);
-    }
+.form a {
+    color: var(--theme-color);
+}
 
 .form textarea {
     background-color: var(--white);
@@ -667,7 +589,6 @@ column-gap: 0em;
     font-size: 16px;
 }
 
-
 .form .note-editor.note-frame {
     border: 1px solid var(--l-grey) !important;
 }
@@ -676,69 +597,56 @@ column-gap: 0em;
     height: 300px;
 }
 
+.form .input-group {
+    border: 1px solid var(--l-grey);
+    border-radius: 5px;
+    padding: 1px;
+}
 
-    .form .input-group{
-        border: 1px solid var(--l-grey);
-        border-radius: 5px;
-        padding:1px;
+    .form .input-group input {
+        border: transparent;
     }
 
+.form .input-group-addon {
+    background: transparent;
+    border: transparent;
+}
 
-    .form .input-group input{
-        border:transparent;
-    }
-
-    .form .input-group-addon{
-        background:transparent;
-        border:transparent;
-    }
-
-
-
-    
 /*--------------------------------------------------2 textbox in one line-------------------------------------------------*/
 
-      .textbox-2{
-        display: inline-block;
-width: 100%;
-    }
+.textbox-2 {
+    display: inline-block;
+    width: 100%;
+}
 
-    .textbox-2 .form-group{
-        width:47.8%;
+    .textbox-2 .form-group {
+        width: 47.8%;
         float: left;
     }
 
+        .textbox-2 .form-group:first-child {
+            margin-right: 10px;
+        }
 
-     .textbox-2 .form-group:first-child{
-         margin-right:10px;
-     }
+/*--------------------------------------------------3 textbox in one line-------------------------------------------------*/
 
+.textbox-3 {
+    display: inline-block;
+    width: 100%;
+}
 
-     /*--------------------------------------------------3 textbox in one line-------------------------------------------------*/
-
-      .textbox-3{
-        display: inline-block;
-width: 100%;
-    }
-
-    .textbox-3 .form-group{
-        width:31.8%;
+    .textbox-3 .form-group {
+        width: 31.8%;
         float: left;
     }
 
+        .textbox-3 .form-group:first-child {
+            margin-right: 10px;
+        }
 
-     .textbox-3 .form-group:first-child{
-         margin-right:10px;
-     }
-
-
-        .textbox-3 .form-group:last-child{
-         margin-left:10px;
-     }
-
-
-
-
+        .textbox-3 .form-group:last-child {
+            margin-left: 10px;
+        }
 
 /*---------------------all bgs----------------------------*/
 
@@ -750,7 +658,6 @@ width: 100%;
     background: var(--grad) !important;
 }
 
-
 .lgt-theme-bg {
     background: var(--lgt-theme) !important;
 }
@@ -758,7 +665,6 @@ width: 100%;
 .theme-bg {
     background: var(--theme-color) !important;
 }
-
 
 .black-bg {
     background: var(--black) !important;
@@ -820,7 +726,6 @@ width: 100%;
     background: var(--d-pink) !important;
 }
 
-
 .l-red-bg {
     background: var(--l-red) !important;
 }
@@ -832,7 +737,6 @@ width: 100%;
 .d-red-bg {
     background: var(--d-red) !important;
 }
-
 
 .lorange-bg {
     background: var(--l-orange) !important;
@@ -846,10 +750,10 @@ width: 100%;
     background: var(--d-orange) !important;
 }
 
-
 .l-yellow-bg {
     background: var(--l-yellow) !important;
 }
+
 .yellow-bg {
     background: var(--yellow) !important;
 }
@@ -857,7 +761,6 @@ width: 100%;
 .d-yellow-bg {
     background: var(--d-yellow) !important;
 }
-
 
 .d-green-bg {
     background: var(--d-green) !important;
@@ -875,10 +778,7 @@ width: 100%;
     background: var(--c-green) !important;
 }
 
-
-
 /*------------------------------------------all borders----------------------------------------------*/
-
 
 .border {
     border: solid 1px #eee;
@@ -888,12 +788,9 @@ width: 100%;
     border: none !important;
 }
 
-
-
 .theme-bd {
     border-color: var(--theme-color) !important;
 }
-
 
 .black-bd {
     border-color: var(--black) !important;
@@ -947,7 +844,6 @@ width: 100%;
     border-color: var(--orange) !important;
 }
 
-
 .yellow-bd {
     border-color: var(--yellow) !important;
 }
@@ -963,7 +859,6 @@ width: 100%;
 .c-green-bd {
     border-color: var(--c-green) !important;
 }
-
 
 /*----------------------------------------------all colors-------------------------------------------------------*/
 
@@ -1003,7 +898,6 @@ width: 100%;
     color: var(--l-blue) !important;
 }
 
-
 .blue-c {
     color: var(--blue) !important;
 }
@@ -1028,7 +922,6 @@ width: 100%;
     color: var(--orange) !important;
 }
 
-
 .yellow-c {
     color: var(--yellow) !important;
 }
@@ -1045,27 +938,23 @@ width: 100%;
     color: var(--c-green) !important;
 }
 
-
-
 /*--------------------------------------------------radio btns-----------------------------------------------------------*/
-
 
 .radiobtn > table > tbody > tr {
     display: inline-block;
 }
 
-
     .radiobtn > table > tbody > tr > th {
         background-color: #f9f9f9;
         border-color: #ccc;
     }
-.radiobtn > table > tbody > tr > td {
-    font-size: 12px;
-    /*padding: 5px;*/
-    display: inline-table;
-    margin-right: 5px;
-}
 
+    .radiobtn > table > tbody > tr > td {
+        font-size: 12px;
+        /*padding: 5px;*/
+        display: inline-table;
+        margin-right: 5px;
+    }
 
 .radiobtn > table a {
     font-size: 12px;
@@ -1084,14 +973,12 @@ width: 100%;
 .radiobtn label {
     border: 1px solid var(--l-grey);
     border-radius: 3px;
-    
     padding: 5px 10px;
     font-size: 15px;
     margin-left: -14px;
     background: #fff;
     color: var(--d-grey);
 }
-
 
 .radiobtn input {
     opacity: 0;
@@ -1103,20 +990,15 @@ width: 100%;
         color: white;
     }
 
-
-
-    
 /*--------------------------------------------------drop down on hover-----------------------------------------------------------*/
 
-
-    .d-hover {
+.d-hover {
     position: relative;
     display: inline-block;
 }
 
 .d-hover-content {
     display: none;
-
 }
 
 .d-hover:hover .d-hover-content {
@@ -1125,19 +1007,13 @@ width: 100%;
 
 /*--------------------------------------------------drop down on right-----------------------------------------------------------*/
 
-
-.d-right{
+.d-right {
     left: 100%;
-
-margin: 0px 0px;
-
-top: 0;
+    margin: 0px 0px;
+    top: 0;
 }
 
-
-
 /*------------------------------------------all borders----------------------------------------------*/
-
 
 .edit {
     margin: 5px;
@@ -1164,6 +1040,7 @@ top: 0;
     height: 28px;
     display: inline-block;
 }
+
     .delete::after {
         content: '';
         background-image: url('../Images/deleteicon.png');
@@ -1177,11 +1054,7 @@ top: 0;
         background-size: contain;
     }
 
-
-
 /*-----------------------------------------Checkright ----------------------------------------------*/
-
-
 
 .checkright input[type=checkbox] + label,
 .checkright input[type=radio] + label {
@@ -1237,12 +1110,7 @@ top: 0;
         border-color: #bfb;
     }
 
-    
 /*------------------------------------------image box----------------------------------------------*/
-
-
-
-
 
 .img-box {
     width: 100%;
@@ -1251,12 +1119,9 @@ top: 0;
     justify-content: center;
 }
 
-
-.img-box img {
-    max-width: 100%;
- 
-}
-
+    .img-box img {
+        max-width: 100%;
+    }
 
 .v-image img {
     max-width: 50px;
@@ -1267,7 +1132,7 @@ top: 0;
 
 .h-30 {
     height: 33px !important;
-    overflow:hidden
+    overflow: hidden
 }
 
 .h-40 {
@@ -1293,14 +1158,7 @@ top: 0;
         max-height: 200px !important;
     }
 
-
-
-
-
-
-
 @media screen and (max-width: 768px) {
-
     .h-155,
     .h-220 {
         height: 120px !important;
@@ -1311,7 +1169,7 @@ top: 0;
             max-height: 120px !important;
         }
 
-        .no-form-center{
-            display:initial !important;
-        }
+    .no-form-center {
+        display: initial !important;
+    }
 }

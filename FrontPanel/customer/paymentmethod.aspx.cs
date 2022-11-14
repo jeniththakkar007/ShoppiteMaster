@@ -5,38 +5,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace FrontPanel.customer
 {
     public partial class paymentmethod : System.Web.UI.Page
     {
+        private Entities db = new Entities();
 
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 getpaymentgateway();
             }
         }
 
-
         protected void getpaymentgateway()
         {
-            var q=(from ws in db.Website_Setup
-                 where ws.Type == "Payment Gateway" && ws.IsActive==true
-                       select ws);
-
-
+            var q = (from ws in db.Website_Setup
+                     where ws.Type == "Payment Gateway" && ws.IsActive == true
+                     select ws);
 
             RadioButtonList1.DataTextField = "Itemname";
             RadioButtonList1.DataValueField = "Itemname";
 
             RadioButtonList1.DataSource = q.ToList();
             RadioButtonList1.DataBind();
-           
         }
 
         public class CurrencyRate
@@ -60,73 +55,46 @@ namespace FrontPanel.customer
                 string cancelurl = host + "/customer/cancel?OrderID=" + uc_ordersummury.OS_HiddenField1;
                 string ipn = host + "/IPN.aspx";
 
-
-
                 ///HTG does not support by paypal so covert it to USD
                 ///
-
-
 
                 decimal convertedfees = decimal.Parse(uc_ordersummury.OS_lbltotal);
                 if (uc_ordersummury.OS_lblcurrency == "HTG")
                 {
-
                     string json = new System.Net.WebClient()
                  .DownloadString("https://openexchangerates.org/api/latest.json?app_id=c5624ad197e141ccb5d45c919aeed097&symbols=" + uc_ordersummury.OS_lblcurrency);
                     System.Web.Script.Serialization.JavaScriptSerializer js = new System.Web.Script.Serialization.JavaScriptSerializer();
                     CurrencyRate rates = js.Deserialize<CurrencyRate>(json);
                     KeyValuePair<string, decimal> rate = rates.Rates.FirstOrDefault();
                     decimal currentrate = decimal.Parse(rate.Value.ToString());
-                   
 
-
-
-                     convertedfees = decimal.Parse(uc_ordersummury.OS_lbltotal) / currentrate;
+                    convertedfees = decimal.Parse(uc_ordersummury.OS_lbltotal) / currentrate;
                 }
 
-
-
-                ph.Paypal_send(ws.paymetgateway_return("PaypalID"),true, this.Page.User.Identity.Name, convertedfees, uc_ordersummury.OS_HiddenField1, uc_ordersummury.OS_lblcurrency, successurl, cancelurl, ipn);
+                ph.Paypal_send(ws.paymetgateway_return("PaypalID"), true, this.Page.User.Identity.Name, convertedfees, uc_ordersummury.OS_HiddenField1, uc_ordersummury.OS_lblcurrency, successurl, cancelurl, ipn);
             }
-
             else if (RadioButtonList1.SelectedValue == "Card")
             {
-
                 //Response.Redirect("~/cashfree/cashfree?OrderID=" + uc_ordersummury.OS_HiddenField1 + "&Amount=" + uc_ordersummury.OS_lbltotal + "&Signature=" + getsignature());
-                stripe_uc.stripecrud(decimal.Parse(uc_ordersummury.OS_lbltotal), "Vendor" , uc_ordersummury.OS_lblcurrency);
-
+                stripe_uc.stripecrud(decimal.Parse(uc_ordersummury.OS_lbltotal), "Vendor", uc_ordersummury.OS_lblcurrency);
             }
-
-
             else if (RadioButtonList1.SelectedValue == "Cash On Delivery")
             {
-                
-
-
                 Order_Helper oh = new Order_Helper();
 
                 oh.Order_Update(Guid.Parse(uc_ordersummury.OS_HiddenField1), "Confirmed", this.Page.User.Identity.Name, "Cash On Delivery", "COD");
 
-
-
-
                 Response.Redirect("~/customer/orderconfirmation?OrderID=" + uc_ordersummury.OS_HiddenField1 + "&Type=COD");
-
             }
-
-            else if(RadioButtonList1.SelectedValue == "Cash Free")
+            else if (RadioButtonList1.SelectedValue == "Cash Free")
             {
-
-                Response.Redirect("~/cashfree/cashfree?OrderID=" + uc_ordersummury.OS_HiddenField1 + "&Amount="+ uc_ordersummury.OS_lbltotal+ "&Signature="+ getsignature());
+                Response.Redirect("~/cashfree/cashfree?OrderID=" + uc_ordersummury.OS_HiddenField1 + "&Amount=" + uc_ordersummury.OS_lbltotal + "&Signature=" + getsignature());
             }
-
             else if (RadioButtonList1.SelectedValue == "Moncash")
             {
-
                 Response.Redirect("~/moncash/moncash?OrderID=" + uc_ordersummury.OS_HiddenField1 + "&Amount=" + uc_ordersummury.OS_lbltotal);
             }
         }
-
 
         protected string getsignature()
         {
@@ -152,7 +120,6 @@ namespace FrontPanel.customer
             string signature = CreateToken(data, secret);
             //Console.WriteLine(signature);
 
-
             return signature;
         }
 
@@ -177,16 +144,10 @@ namespace FrontPanel.customer
                 //Response.Redirect("~/cashfree/freecash?OrderID=" + uc_ordersummury.OS_HiddenField1 + "&Amount=" + uc_ordersummury.OS_lbltotal + "&Signature=" + getsignature());
                 stripe_uc.Visible = true;
             }
-
             else
             {
-
                 stripe_uc.Visible = false;
             }
-
-
         }
-
-     
     }
 }

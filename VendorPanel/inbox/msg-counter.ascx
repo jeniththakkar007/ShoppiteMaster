@@ -10,19 +10,16 @@
 </script>
 
 <style>
-    #msgcounter_UpdatePanel1{
-display:inline-block
+    #msgcounter_UpdatePanel1 {
+        display: inline-block
     }
 </style>
 
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
 
+        <asp:Label ID="lblmsg" runat="server" Text="" CssClass="badge theme-bg white-c"></asp:Label>
 
-
-<asp:Label ID="lblmsg" runat="server" Text="" CssClass="badge theme-bg white-c"></asp:Label>   
-
-         
-       <%-- <asp:Timer ID="Timer1" runat="server" Interval="5000"></asp:Timer>--%>
+        <%-- <asp:Timer ID="Timer1" runat="server" Interval="5000"></asp:Timer>--%>
     </ContentTemplate>
-    </asp:UpdatePanel>
+</asp:UpdatePanel>

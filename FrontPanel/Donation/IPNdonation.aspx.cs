@@ -1,49 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataLayer.Models;
+using System;
 using System.Collections.Specialized;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using DataLayer.Models;
 
 namespace FrontPanel.Donation
 {
     public partial class IPNdonation : System.Web.UI.Page
     {
-
         //string SMTP = "mail.bookevening.com";
         //string BCC = "naunareviews@gmail.com";
         //string EmailFrom = "alert@bookevening.com";
         //string Password = "Software@1";
 
+        private string SMTP = "mail.theblacktrade.com";
+        private string BCC = "imtiaz.makhani@gmail.com";
 
-        string SMTP = "mail.theblacktrade.com";
-        string BCC = "imtiaz.makhani@gmail.com";
+        private string EmailFrom = "noreply@theblacktrade.com";
+        private string Password = "Software@1";
 
-        string EmailFrom = "noreply@theblacktrade.com";
-        string Password = "Software@1";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
-
-
-
-
-
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient(SMTP.ToString());
                 mail.From = new MailAddress(EmailFrom.ToString());
                 //Email acpe = new Email();
                 mail.To.Add("imtiaz.makhani@gmail.com");
-
-
 
                 //mail.Bcc.Add("imtiaz.makhani@gmail.com");
                 //StreamReader reader = new StreamReader(Server.MapPath("~/Paypal/ConfirmationEmail.htm"));
@@ -52,7 +39,6 @@ namespace FrontPanel.Donation
                 //myString = readFile;
 
                 myString = "Link http://ecommrece/  Read from IPN <br/>";
-
 
                 mail.Subject = "IPN work donation";
                 mail.IsBodyHtml = true;
@@ -75,11 +61,8 @@ namespace FrontPanel.Donation
             //Post back to either sandbox or live
             string strSandbox = "https://www.sandbox.paypal.com/cgi-bin/webscr";
 
-
             //post of live
             string strLive = "https://www.paypal.com/cgi-bin/webscr";
-
-
 
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(strLive);
             //Set values for the request back
@@ -114,7 +97,6 @@ namespace FrontPanel.Donation
 
                 NameValueCollection these_argies = HttpUtility.ParseQueryString(strResponse_copy);
 
-
                 string user_email = these_argies["payer_email"];
                 string pay_stat = these_argies["payment_status"];
                 //string invoice = these_argies["invoice"];
@@ -136,10 +118,8 @@ namespace FrontPanel.Donation
                 //.  more args as needed look at the list from paypal IPN doc
                 //.
 
-
                 if (pay_stat.Equals("Completed"))
                 {
-
                     //FormView1.DataBind();
 
                     //Session["id"] = ((Label)FormView1.FindControl("IdLabel")).Text;
@@ -152,22 +132,15 @@ namespace FrontPanel.Donation
                     //Session["UserLogin"] = username.ToString();
                     Session["custom"] = custom.ToString();
 
-
                     Entities db = new Entities();
 
-
                     Guid id = Guid.Parse(custom.ToString());
-
 
                     Order_Helper oh = new Order_Helper();
 
                     Donation_Received dr = new Donation_Received();
 
-
-
-
                     dr.RequestFundGUID = id;
-                 
 
                     //decimal amountdiv = decimal.Parse(amount.ToString()) / 100;
 
@@ -175,8 +148,7 @@ namespace FrontPanel.Donation
 
                     decimal reverseamount = decimal.Parse(amount.ToString()) / decimal.Parse(perf.ToString());
 
-
-                    dr.AdministrativeAmount =  decimal.Parse(amount.ToString()) - reverseamount;
+                    dr.AdministrativeAmount = decimal.Parse(amount.ToString()) - reverseamount;
 
                     dr.Amount = reverseamount;
                     dr.PaymentDate = DateTime.Now;
@@ -188,15 +160,12 @@ namespace FrontPanel.Donation
                     //SqlDataSource1.UpdateParameters.Add("Paypal", user_email);
                     //SqlDataSource1.Update();
 
-
                     MailMessage mail = new MailMessage();
                     SmtpClient SmtpServer = new SmtpClient(SMTP.ToString());
                     mail.From = new MailAddress(EmailFrom.ToString());
                     //Email acpe = new Email();
                     mail.To.Add("imtiaz.makhani@gmail.com");
                     //mail.Bcc.Add("imtiaz.makhani@gmail.com");
-
-
 
                     //mail.Bcc.Add("imtiaz.makhani@gmail.com");
                     //StreamReader reader = new StreamReader(Server.MapPath("~/Paypal/ConfirmationEmail.htm"));
@@ -205,7 +174,6 @@ namespace FrontPanel.Donation
                     //myString = readFile;
 
                     myString = Session["custom"].ToString();
-
 
                     mail.Subject = "Donation ipn";
                     mail.IsBodyHtml = true;
@@ -217,13 +185,7 @@ namespace FrontPanel.Donation
                     SmtpServer.SendCompleted += new SendCompletedEventHandler(SMTPClientForAsy.SmtpClient_OnCompleted);
                     SmtpServer.SendAsync(mail, userState);
 
-
-
-
-
-
                     //condition logic to check the input for dicover or heave database
-
 
                     //discover website logic
 
@@ -231,12 +193,7 @@ namespace FrontPanel.Donation
                     //access 3 is for heaven site
                     //001 item number is for discover website monthly subscription, 001 item id is define at paypal website on button generator
 
-
-
                     // get last id and add new one
-
-
-
 
                     //string all = Session["payeeemail"].ToString() + " " + Session["custom"].ToString() + " " + Session["txnid"].ToString() + " " + Session["item_name"].ToString() + " " + Session["item_number"].ToString() + " " + Session["last_name"].ToString() + " " + Session["payer_id"].ToString() + " " + Session["paydate"].ToString() + " " + Session["nextpaydate"].ToString() + " " + Session["plan"].ToString() + " " + Session["Cnvar1"].ToString() + " " + Session["id"].ToString();
 
@@ -261,7 +218,6 @@ namespace FrontPanel.Donation
 
                     ////myString = myString.Replace("{#message}", TextBox4.Text);
 
-
                     //mail.Subject = "Congrats! You have sucessfully subscribed"  ;
                     //mail.IsBodyHtml = true;
                     //mail.Body = myString.ToString();
@@ -272,20 +228,13 @@ namespace FrontPanel.Donation
                     //SmtpServer.SendCompleted += new SendCompletedEventHandler(SMTPClientForAsy.SmtpClient_OnCompleted);
                     //SmtpServer.SendAsync(mail, userState);
                     //end of email sending code
-
-
-
-
-
                 }
-
 
                 // more checks needed here specially your account number and related stuff
             }
             else if (strResponse == "INVALID")
             {
                 //log for manual investigation
-
 
                 Response.Redirect("https://thievesmarketonline.com/customer/success.aspx?PayPal=Cancel");
             }

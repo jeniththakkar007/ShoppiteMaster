@@ -1,36 +1,27 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Adminweb.Admin
 {
     public partial class PageDetails : System.Web.UI.Page
     {
-        Entities db = new Entities();
+        private Entities db = new Entities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-
                 getpagecat();
             }
         }
 
-
-
         protected void getpagecat()
         {
-
-            var q=(from pg in db.PageCategories
-                   where pg.IsURL==false
-                       select pg);
-
-
+            var q = (from pg in db.PageCategories
+                     where pg.IsURL == false
+                     select pg);
 
             ddlpage.DataTextField = "PageCategory1";
             ddlpage.DataValueField = "PageCategoryId";
@@ -39,14 +30,8 @@ namespace Adminweb.Admin
             ddlpage.DataBind();
         }
 
-
-
         protected void getpagetext(int id)
         {
-
-
-
-
             PageCategoryDetail pcd = db.PageCategoryDetails.FirstOrDefault(u => u.PageCategoryId == id);
 
             if (pcd != null)
@@ -62,12 +47,10 @@ namespace Adminweb.Admin
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-          int id=  int.Parse(ddlpage.SelectedValue);
+            int id = int.Parse(ddlpage.SelectedValue);
             PageCategoryDetail pcd = db.PageCategoryDetails.FirstOrDefault(u => u.PageCategoryId == id);
 
-
-            if(pcd==null)
+            if (pcd == null)
             {
                 PageCategoryDetail pd = new PageCategoryDetail();
 
@@ -77,9 +60,7 @@ namespace Adminweb.Admin
 
                 db.PageCategoryDetails.Add(pd);
                 db.SaveChanges();
-
             }
-
             else
             {
                 pcd.PageCategoryId = id;
@@ -87,7 +68,6 @@ namespace Adminweb.Admin
                 pcd.InsertDate = DateTime.Now;
 
                 db.SaveChanges();
-
             }
 
             lblerror.Text = "Updated successfully";

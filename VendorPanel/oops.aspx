@@ -154,6 +154,7 @@
                 width: 94%;
             }
         }
+
         .auto-style1 {
             width: 100%;
             margin-left: auto;
@@ -164,18 +165,17 @@
 </head>
 <body>
     <form id="form1" runat="server">
-     <div class="auto-style1">
-        <div class="logo">
-            <h1>OPPS..!</h1>
-            <p>Some thing went wrong. Please try again!</p>
-            <div class="sub">
-                <p><a href="../Default"> Back to App</a></p>
+        <div class="auto-style1">
+            <div class="logo">
+                <h1>OPPS..!</h1>
+                <p>Some thing went wrong. Please try again!</p>
+                <div class="sub">
+                    <p><a href="../Default">Back to App</a></p>
 
-
-                 <%-- <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Click here to confirm your understanding" LogoutPageUrl="~/account/login" OnLoggingOut="Unnamed_LoggingOut" />--%>
+                    <%-- <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Click here to confirm your understanding" LogoutPageUrl="~/account/login" OnLoggingOut="Unnamed_LoggingOut" />--%>
+                </div>
             </div>
         </div>
-    </div>
     </form>
 </body>
 </html>

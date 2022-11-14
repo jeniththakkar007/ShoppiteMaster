@@ -1,47 +1,34 @@
-﻿
-using DataLayer;
-using DataLayer.Models;
+﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace VendorPanel.usercontrol
 {
     public partial class product_price_uc : System.Web.UI.UserControl
     {
+        private Entities db = new Entities();
 
-        Entities db = new Entities();
-
-   
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-
                 getcurrency();
             }
         }
 
         protected void getcurrency()
         {
-
-            var q=(from c in db.Currencies
-                   where c.IsPublished==true
-                       select c);
+            var q = (from c in db.Currencies
+                     where c.IsPublished == true
+                     select c);
 
             ddlcurrency.DataTextField = "CurrencyName";
             ddlcurrency.DataValueField = "CurrencyID";
 
             ddlcurrency.DataSource = q.ToList();
             ddlcurrency.DataBind();
-
-
-
         }
-
 
         public string ProductPrice_ddlcurrency
         {
@@ -61,18 +48,11 @@ namespace VendorPanel.usercontrol
             set { txtoldprice.Text = value; }
         }
 
-
-          public string ProductPrice_txtdeliveryfees
+        public string ProductPrice_txtdeliveryfees
         {
             get { return txtdeliveryfees.Text; }
             set { txtdeliveryfees.Text = value; }
         }
-
-
-
-                   
-
-
 
         public bool ProductPrice_chckdisablebuybutton
         {

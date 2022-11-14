@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Membershipsusbcription.aspx.cs" Inherits="VendorPanel.Admin.Membershipsusbcription" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h3>Membership Payment</h3>
@@ -15,9 +16,9 @@
                 <asp:BoundField DataField="PaymentMode" HeaderText="Payment Mode" ReadOnly="True" SortExpression="PaymentMode"></asp:BoundField>
                 <asp:BoundField DataField="ReferenceId" HeaderText="Reference Id" ReadOnly="True" SortExpression="ReferenceId"></asp:BoundField>
                 <asp:BoundField DataField="MembershipStatus" HeaderText="Membership Status" ReadOnly="True" SortExpression="MembershipStatus"></asp:BoundField>
-                   <asp:BoundField DataField="PaymentStatus" HeaderText="Payment Status" ReadOnly="True" SortExpression="PaymentStatus"></asp:BoundField>
+                <asp:BoundField DataField="PaymentStatus" HeaderText="Payment Status" ReadOnly="True" SortExpression="PaymentStatus"></asp:BoundField>
                 <asp:BoundField DataField="CancelStatus" HeaderText="Cancel Status" ReadOnly="True" SortExpression="CancelStatus"></asp:BoundField>
-             
+
                 <asp:BoundField DataField="Cancellationdate" HeaderText="Cancellation Date" ReadOnly="True" SortExpression="Cancellationdate"></asp:BoundField>
             </Columns>
         </asp:GridView>

@@ -1,34 +1,26 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace VendorPanel.inbox
 {
     public partial class chatinsert : System.Web.UI.UserControl
     {
+        private Entities db = new Entities();
 
-
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
             //FileUpload1.Attributes["onchange"] = "UploadFile(this)";
 
-
             if (Request.QueryString["ID"] == null)
             {
-
                 Button1.Enabled = false;
             }
         }
 
-
         //protected void Upload(object sender, EventArgs e)
         //{
-
         //    if (FileUpload1.HasFile)
         //    {
         //        CheckFile image = new CheckFile();
@@ -38,19 +30,11 @@ namespace VendorPanel.inbox
 
         //}
 
-
-
-
-
-
-
-
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Message i = new Message();
 
             string recipient = "";
-
 
             Guid id = Guid.Parse(this.Request.QueryString["ID"].ToString());
 
@@ -58,16 +42,12 @@ namespace VendorPanel.inbox
 
             if (m.sender == Page.User.Identity.Name)
             {
-
                 recipient = m.recipient;
             }
-
             else
             {
-
                 recipient = m.sender;
             }
-
 
             i.ChatID = id;
             i.sender = Page.User.Identity.Name;
@@ -82,7 +62,6 @@ namespace VendorPanel.inbox
 
             if (Global.IsEmailOnChat.ToString() == "True")
             {
-
                 //if (Session["Email"] == null)
                 //{
                 C_ContactMe cht = new C_ContactMe();
@@ -94,7 +73,6 @@ namespace VendorPanel.inbox
 
             TextBox1.Text = string.Empty;
             //Response.Redirect(Request.RawUrl);
-
         }
     }
 }

@@ -1,24 +1,20 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace FrontPanel.Donation
 {
     public partial class Donate : System.Web.UI.Page
     {
-        Entities db = new Entities();
+        private Entities db = new Entities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Request.QueryString["ID"] != null)
                 {
-
-
                     Guid id = Guid.Parse(Request.QueryString["ID"].ToString());
 
                     HiddenField1.Value = id.ToString();
@@ -26,22 +22,12 @@ namespace FrontPanel.Donation
 
                     foreach (var item in q)
                     {
-
-                       
                         lbltitle.Text = item.Title;
                         lbldescription.Text = item.Description;
                         lblpaypalid.Text = item.paypalid;
                         lblcurrency.Text = "USD";
-
-
-
-                       
-
                     }
-
-
                 }
-
             }
         }
 
@@ -65,7 +51,7 @@ namespace FrontPanel.Donation
 
             lbladministrativefees.Text = adminfees.ToString();
 
-            decimal totalfees=decimal.Parse(lbladministrativefees.Text) + decimal.Parse(txtamount.Text);
+            decimal totalfees = decimal.Parse(lbladministrativefees.Text) + decimal.Parse(txtamount.Text);
 
             lblamount.Text = totalfees.ToString();
         }

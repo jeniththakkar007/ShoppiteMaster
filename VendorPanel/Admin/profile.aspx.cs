@@ -1,31 +1,27 @@
 ﻿using DataLayer.Helper;
 using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
+using System.Web.Configuration;
 using System.Web.UI.WebControls;
 
 namespace VendorPanel.Admin
 {
     public partial class profile : System.Web.UI.Page
     {
+        private Entities db = new Entities();
 
+        private Profile_Helper ph = new Profile_Helper();
+        private Product_Helper pdh = new Product_Helper();
 
-        Entities db = new Entities();
-
-        Profile_Helper ph = new Profile_Helper();
         //CheckFile cs = new CheckFile();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
                 getcountry();
 
                 ph.getprofile(this.Page.User.Identity.Name);
-                
                 imgbanner.ImageUrl = ph.logo;
                 txtshopname.Text = ph.shopname;
                 txtcontactnumber.Text = ph.contactnumber;
@@ -36,59 +32,50 @@ namespace VendorPanel.Admin
                 txtaddress.Text = ph.address;
                 txtshortdesc.Text = ph.shopdescription;
                 txtpaypalid.Text = ph.paypalid;
-            
             }
         }
 
-
-        
-
-
         protected void getcountry()
         {
-
             var q = (from c in db.Countries
                      orderby c.CountryName
                      select c);
-
 
             ddlcountry.DataTextField = "CountryName";
             ddlcountry.DataValueField = "CountryName";
 
             ddlcountry.DataSource = q.ToList();
             ddlcountry.DataBind();
-
-
-
         }
 
         protected void fileupload()
         {
-
             AWS_Helper aw = new AWS_Helper();
+
+            string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
+            var orgvalue = pdh.GetOrgID();
+            string filepath = fileconfigpath + orgvalue + "/Profile";
             if (fuicon.HasFile)
             {
-                imgicon.ImageUrl = aw.uploadfile(fuicon);
+                string categoryfilepath = filepath + "/fuicon";
+                categoryfilepath = categoryfilepath + "/" + fuicon.FileName;
+                imgicon.ImageUrl = aw.uploadfile(fuicon, categoryfilepath);
             }
 
             if (fubanner.HasFile)
             {
-                imgbanner.ImageUrl = aw.uploadfile(fubanner);
+                string bannerfilepath = filepath + "/fubanner";
+
+                bannerfilepath = bannerfilepath + "/" + fubanner.FileName;
+                imgbanner.ImageUrl = aw.uploadfile(fubanner, bannerfilepath);
             }
-
-
-
-
-
         }
-
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
             fileupload();
-
-            Users_Profile upudate = db.Users_Profile.FirstOrDefault(u => u.UserName == this.Page.User.Identity.Name);
+            var orgid = pdh.GetOrgID();
+            Users_Profile upudate = db.Users_Profile.FirstOrDefault(u => u.UserName == this.Page.User.Identity.Name && u.OrgId == orgid);
 
             upudate.CoverImage = imgicon.ImageUrl;
             upudate.Logo = imgbanner.ImageUrl;
@@ -101,18 +88,11 @@ namespace VendorPanel.Admin
             upudate.Address = txtaddress.Text;
             upudate.ShopDescription = txtshortdesc.Text;
             upudate.PaypalId = txtpaypalid.Text;
-            
-          
-              
+            upudate.OrgId = orgid;
 
             db.SaveChanges();
 
             dvsave.Visible = true;
         }
-
-
-
-
-
     }
 }

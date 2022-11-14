@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using DataLayer.Models;
-using FrontPanel;
 
 namespace FrontPanel.Account
 {
     public partial class Login : Page
     {
+        private UserRegisterHelper ur = new UserRegisterHelper();
 
-        UserRegisterHelper ur = new UserRegisterHelper();
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
@@ -30,44 +24,30 @@ namespace FrontPanel.Account
         {
             if (IsValid)
             {
-              
-             FailureText.Text = ur.login(txtemail.Text,txtpassword.Text, RememberMe.Checked);
+                FailureText.Text = ur.login(txtemail.Text, txtpassword.Text, RememberMe.Checked);
 
-             if (FailureText.Text == "Success")
-             {
+                if (FailureText.Text == "Success")
+                {
+                    if (Session["OrderID"] != null)
+                    {
+                        ur.login(txtemail.Text, txtpassword.Text, true);
+                        Response.Redirect("~/cart");
+                    }
+                    else
+                    {
+                        Profile_Helper ph = new Profile_Helper();
 
-
-
-                 if (Session["OrderID"] != null)
-                 {
-
-                     ur.login(txtemail.Text, txtpassword.Text, true);
-                     Response.Redirect("~/cart");
-                 }
-
-                 else
-                 {
-
-                      Profile_Helper ph = new Profile_Helper();
-
-                      if (ph.isvendor_status(txtemail.Text) == false)
-                      {
-
-                          Response.Redirect("~/Default");
-                      }
-
-                      else
-                      {
-
-                          Response.Redirect("~/Vendor");
-                      }
-                 }
-             }
-               
+                        if (ph.isvendor_status(txtemail.Text) == false)
+                        {
+                            Response.Redirect("~/Default");
+                        }
+                        else
+                        {
+                            Response.Redirect("~/Vendor");
+                        }
+                    }
+                }
             }
         }
-
-
-       
     }
 }

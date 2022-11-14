@@ -1,33 +1,26 @@
-﻿using DataLayer.Helper;
-using DataLayer.Models;
+﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace FrontPanel.Admin
 {
     public partial class Order_Master : System.Web.UI.Page
     {
+        private Entities db = new Entities();
 
-        Entities db = new Entities();
+        private Product_Helper phh = new Product_Helper();
 
-        Product_Helper phh = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 //Page.LoadComplete += new EventHandler(Page_PreRender);
                 getdata();
             }
-
         }
+
         //protected void Page_PreRender(object sender, EventArgs e)
         //{
         //    getdata();
@@ -55,23 +48,20 @@ namespace FrontPanel.Admin
             //}
             var orgid = phh.GetOrgID();
             var q = db.SP_Order_Master(orgid).Where(u => u.BuyerId == profileid &&
-                        u.orderdeliverystatus==RadioButtonList1.SelectedValue);
+                        u.orderdeliverystatus == RadioButtonList1.SelectedValue);
 
-            if(txtsearch.Text!=string.Empty)
+            if (txtsearch.Text != string.Empty)
             {
-
                 q = q.Where(u => u.orderid.ToLower().Contains(txtsearch.Text.ToLower()));
             }
 
             ListView1.DataSource = q.ToList();
             ListView1.DataBind();
-
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             getdata();
-
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)

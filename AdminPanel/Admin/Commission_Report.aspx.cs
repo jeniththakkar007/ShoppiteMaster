@@ -1,8 +1,6 @@
 ﻿using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -10,14 +8,12 @@ namespace AdminPanel.Admin
 {
     public partial class Commission_Report : System.Web.UI.Page
     {
+        private Entities db = new Entities();
+        private Product_Helper ph = new Product_Helper();
 
-
-        Entities db = new Entities();
-        Product_Helper ph = new Product_Helper();
-       
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 Page.LoadComplete += new EventHandler(Page_PreRender);
                 //getdata();
@@ -36,24 +32,17 @@ namespace AdminPanel.Admin
 
             var q = db.f_disbursement(selectedOrg).ToList();
 
-            if(RadioButtonList1.SelectedValue=="Paid Disbursement")
+            if (RadioButtonList1.SelectedValue == "Paid Disbursement")
             {
-
-                q = q.Where(u => u.disbursementamount >0).ToList();
-               
+                q = q.Where(u => u.disbursementamount > 0).ToList();
             }
-
             else if (RadioButtonList1.SelectedValue == "Balance Disbursement")
             {
-
                 q = q.Where(u => u.disbursementamount <= 0).ToList();
             }
 
             GridView1.DataSource = q.ToList();
             GridView1.DataBind();
-
-
-
 
             var qs = db.f_disbursement_summary(selectedOrg);
 
@@ -72,7 +61,7 @@ namespace AdminPanel.Admin
 
             int id = int.Parse(GridView1.SelectedDataKey.Value.ToString());
 
-           //Accessing BoundField Column.
+            //Accessing BoundField Column.
             string amount = GridView1.SelectedRow.Cells[10].Text;
 
             decimal m = decimal.Parse(amount.ToString());
@@ -86,7 +75,6 @@ namespace AdminPanel.Admin
             db.Order_Disbursement.Add(ord);
             db.SaveChanges();
             getdata();
-
         }
     }
 }

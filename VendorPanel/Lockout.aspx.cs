@@ -1,32 +1,25 @@
 ﻿using DataLayer.Helper;
 using DataLayer.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace VendorPanel
 {
     public partial class Lockout : System.Web.UI.Page
     {
+        private Entities db = new Entities();
 
-        Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 getvendorfees();
                 check_status();
-
             }
         }
 
-
         protected void getvendorfees()
         {
-
             Website_Setup_Helper ws = new Website_Setup_Helper();
 
             lblfees.Text = ws.Vendormembershipstatus_return("VendorMembership");
@@ -35,13 +28,10 @@ namespace VendorPanel
             lbltitle.Text = ws.Website_description_return("VendorMembership");
         }
 
-
         protected void check_status()
         {
-
             if (Request.QueryString["Status"] != null)
             {
-
                 string status = Request.QueryString["Status"].ToString();
                 int id = 0;
 
@@ -50,29 +40,23 @@ namespace VendorPanel
                 if (Request.QueryString["ID"] != null)
                 {
                     id = int.Parse(Request.QueryString["ID"].ToString());
-
                 }
 
                 if (status == "Pending")
                 {
                     lblmessage.CssClass = "alert alert-warning";
                     lblmessage.Text = "Subscription payment is pending.";
-
                 }
-
                 else if (status == "Expired")
                 {
-
                     if (id != 0)
                     {
-
                         Users_Membership ms = db.Users_Membership.FirstOrDefault(u => u.MembershipId == id && u.ProfileId == profileid);
 
                         if (ms != null)
                         {
                             lblmessage.CssClass = "alert alert-danger";
-                            lblmessage.Text = "Your subscription was expired on " +DateTime.Parse(ms.EndDate.ToString()).ToString("dd MMM, yyyy");
-
+                            lblmessage.Text = "Your subscription was expired on " + DateTime.Parse(ms.EndDate.ToString()).ToString("dd MMM, yyyy");
 
                             if (ms.Cancellationdate != null)
                             {
@@ -81,17 +65,11 @@ namespace VendorPanel
                             }
                         }
                     }
-
-
                 }
-
                 else if (status == "Cancelled")
                 {
                     if (id != 0)
                     {
-
-
-
                         Users_Membership ms = db.Users_Membership.FirstOrDefault(u => u.MembershipId == id && u.ProfileId == profileid);
 
                         if (ms != null)
@@ -106,7 +84,6 @@ namespace VendorPanel
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

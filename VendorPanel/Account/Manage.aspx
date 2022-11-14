@@ -25,7 +25,6 @@
                     <dt>External Logins:</dt>
                     <dd><%: LoginsCount %>
                         <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />
-
                     </dd>
                     <%--
                         Phone Numbers can used as a second factor of verification in a two-factor authentication system.
@@ -58,14 +57,14 @@
                             for details on setting up this ASP.NET application to support two-factor authentication.
                         </p>
                         <% if (TwoFactorEnabled)
-                          { %> 
+                            { %>
                         <%--
                         Enabled
                         <asp:LinkButton Text="[Disable]" runat="server" CommandArgument="false" OnClick="TwoFactorDisable_Click" />
                         --%>
                         <% }
-                          else
-                          { %> 
+                            else
+                            { %>
                         <%--
                         Disabled
                         <asp:LinkButton Text="[Enable]" CommandArgument="true" OnClick="TwoFactorEnable_Click" runat="server" />
@@ -76,5 +75,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>
