@@ -17,9 +17,14 @@ namespace AdminPanel.Admin
         {
             if(!IsPostBack)
             {
-
-                getdata();
+                Page.LoadComplete += new EventHandler(page_prerender);
+                //getdata();
             }
+        }
+
+        private void page_prerender(object sender, EventArgs e)
+        {
+            getdata();
         }
 
         protected void getdata()

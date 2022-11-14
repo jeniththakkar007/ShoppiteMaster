@@ -16,12 +16,15 @@ namespace Adminweb.Admin
         {
             if(!IsPostBack)
             {
-
-                getpagecat();
+                Page.LoadComplete += new EventHandler(Page_PreRender);
+               // getpagecat();
             }
         }
 
-
+        private void Page_PreRender(object sender, EventArgs e)
+        {
+            getpagecat();
+        }
 
         protected void getpagecat()
         {

@@ -18,7 +18,7 @@ namespace AdminPanel.Admin
 
             if (!IsPostBack)
             {
-                getdata();
+                //getdata();
                 if (Request.QueryString["ID"] != null)
                 {
 
@@ -33,7 +33,13 @@ namespace AdminPanel.Admin
 
               
                 }
+                Page.LoadComplete += new EventHandler(page_prerender);
             }
+        }
+
+        private void page_prerender(object sender, EventArgs e)
+        {
+            getdata();
         }
 
         protected void Button1_Click(object sender, EventArgs e)

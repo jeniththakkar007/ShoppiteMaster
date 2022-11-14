@@ -16,7 +16,7 @@ namespace AdminPanel.Admin
         {
             if(!IsPostBack)
             {
-                getdata();
+                //getdata();
                 if (Request.QueryString["ID"]!=null)
                 {
 
@@ -31,7 +31,14 @@ namespace AdminPanel.Admin
                         txtscript.Text = wss.Scriptname;
                     }
                 }
+
+                Page.LoadComplete += new EventHandler(Page_PreRender);
             }
+        }
+
+        private void Page_PreRender(object sender, EventArgs e)
+        {
+            getdata();
         }
 
         protected void getdata()

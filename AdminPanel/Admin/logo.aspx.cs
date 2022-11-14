@@ -120,7 +120,7 @@ namespace Adminweb.Admin
                     String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
                     int selectedOrg = Convert.ToInt32(masterDropDown);
                     string fileconfigpath = WebConfigurationManager.AppSettings["filepath"];
-                    string bannerfilepath = fileconfigpath + selectedOrg + "\\Logo\\"+ FileUpload2.FileName;
+                    string bannerfilepath = fileconfigpath + selectedOrg + "/Logo/"+ FileUpload2.FileName;
                     Image3.ImageUrl = aw.uploadfile(FileUpload2, bannerfilepath);
                 }
 

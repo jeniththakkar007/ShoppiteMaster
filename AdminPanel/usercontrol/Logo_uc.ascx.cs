@@ -24,8 +24,8 @@ namespace FrontPanel.usercontrol
 
                 ws.getwebsiteinfo();
 
-                Image1.ImageUrl = ws.logo;
-                
+                Image1.ImageUrl = "~/images/shopitelogo.png";
+                /*ws.logo*/
             }
         }
     }
