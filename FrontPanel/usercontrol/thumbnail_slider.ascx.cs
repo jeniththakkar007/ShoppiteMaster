@@ -65,6 +65,7 @@ namespace FrontPanel.usercontrol
 
         public void getlastcatdata(int id)
         {
+            
             var q = db.f_getproducts_By_CategoryID(id).OrderByDescending(u => u.InsertDate).ToList().Take(10).OrderBy(u => Guid.NewGuid());
 
             ListView1.DataSource = q.ToList();

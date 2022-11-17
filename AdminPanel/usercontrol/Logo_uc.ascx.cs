@@ -12,8 +12,9 @@ namespace FrontPanel.usercontrol
                 Website_Setup_Helper ws = new Website_Setup_Helper();
 
                 ws.getwebsiteinfo();
+                /*ws.logo*/
 
-                Image1.ImageUrl = ws.logo;
+                Image1.ImageUrl = "~/images/shopitelogo.png";
             }
         }
     }

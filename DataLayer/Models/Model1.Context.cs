@@ -152,9 +152,13 @@ namespace DataLayer.Models
         }
     
         [DbFunction("Entities", "f_Orders_All")]
-        public virtual IQueryable<f_Orders_All_Result> f_Orders_All()
+        public virtual IQueryable<f_Orders_All_Result> f_Orders_All(Nullable<int> orgid)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_Orders_All_Result>("[Entities].[f_Orders_All]()");
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_Orders_All_Result>("[Entities].[f_Orders_All](@orgid)", orgidParameter);
         }
     
         [DbFunction("Entities", "f_All_getcat")]
@@ -239,13 +243,17 @@ namespace DataLayer.Models
         }
     
         [DbFunction("Entities", "f_getproducts_By_StatusID")]
-        public virtual IQueryable<f_getproducts_By_StatusID_Result> f_getproducts_By_StatusID(Nullable<int> iD)
+        public virtual IQueryable<f_getproducts_By_StatusID_Result> f_getproducts_By_StatusID(Nullable<int> iD, Nullable<int> orgid)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
                 new ObjectParameter("ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_getproducts_By_StatusID_Result>("[Entities].[f_getproducts_By_StatusID](@ID)", iDParameter);
+            var orgidParameter = orgid.HasValue ?
+                new ObjectParameter("orgid", orgid) :
+                new ObjectParameter("orgid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_getproducts_By_StatusID_Result>("[Entities].[f_getproducts_By_StatusID](@ID, @orgid)", iDParameter, orgidParameter);
         }
     
         [DbFunction("Entities", "f_getproducts_By_ProductId")]

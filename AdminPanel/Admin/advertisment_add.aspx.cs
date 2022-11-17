@@ -99,12 +99,14 @@ namespace AdminPanel.Admin
 
         protected void getposition()
         {
+           
             var q = (from p in db.Ads_Placement
                      where p.Status == "Active"
                      select new
                      {
                          Description = p.PlacementName + "-" + p.Description,
                          AdsPlacementId = p.AdsPlacementId
+                         
                      }
                        );
 
@@ -117,6 +119,7 @@ namespace AdminPanel.Admin
 
         protected void getrecord()
         {
+
             int id = int.Parse(Request.QueryString["ID"].ToString());
 
             Ads_Detail ad = db.Ads_Detail.FirstOrDefault(u => u.AdId == id);
@@ -129,7 +132,8 @@ namespace AdminPanel.Admin
             RadioButtonList1.SelectedValue = ad.Status;
             getpagename(int.Parse(ddlposition.SelectedValue));
             Label1.Text = ddlposition.SelectedItem.ToString();
-
+            
+            
             foreach (ListItem cBox in chckpage.Items)
                 if (cBox.Value == ad.AdsPageId.ToString())
                 {
@@ -139,6 +143,7 @@ namespace AdminPanel.Admin
 
         protected void getpagename(int id)
         {
+
             var q = (from pn in db.Ads_PageName
                      where pn.Status == "Active" && pn.AdsPlacementId == id
                      select pn);
@@ -170,6 +175,9 @@ namespace AdminPanel.Admin
 
         protected void crud(int pageid)
         {
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
+
             if (Request.QueryString["ID"] == null)
             {
                 Ads_Detail ad = new Ads_Detail();
@@ -183,6 +191,7 @@ namespace AdminPanel.Admin
                 ad.Status = RadioButtonList1.SelectedValue;
                 ad.InsertDate = DateTime.Now;
                 ad.UserName = this.Page.User.Identity.Name;
+                ad.OrgId = selectedOrg;
 
                 db.Ads_Detail.Add(ad);
                 db.SaveChanges();
@@ -202,6 +211,7 @@ namespace AdminPanel.Admin
                 ad.Status = RadioButtonList1.SelectedValue;
                 ad.ModifiedDate = DateTime.Now;
                 ad.UserName = this.Page.User.Identity.Name;
+                ad.OrgId = selectedOrg;
 
                 db.SaveChanges();
             }

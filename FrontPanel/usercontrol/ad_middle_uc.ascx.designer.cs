@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FrontPanel.usercontrol {
-    
-    
-    public partial class ad_middle_uc {
-        
+namespace FrontPanel.usercontrol
+{
+
+
+    public partial class ad_middle_uc
+    {
+
         /// <summary>
         /// ListView1 control.
         /// </summary>

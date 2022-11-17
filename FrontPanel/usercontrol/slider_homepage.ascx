@@ -1,20 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="slider_homepage.ascx.cs" Inherits="FrontPanel.usercontrol.slider_homepage" %>
 
 <link rel="stylesheet" type='text/css' href="<%= Page.ResolveClientUrl("~/homepage_Slider/frontslider.css")%>" />
-<div class="swiper-containercos">
-    <div class="swiper-wrappercos">
-
-        <asp:ListView ID="ListView1" runat="server">
-            <ItemTemplate>
-
-                <div class="swiper-slidecos">
-                    <asp:Image ID="Image1" runat="server" ImageUrl='<%#Eval("Image") %>' />
-                </div>
-            </ItemTemplate>
-        </asp:ListView>
-    </div>
-</div>
-
 <style>
     .swiper-containercos {
         width: 100%;
@@ -40,6 +26,22 @@
     }
 </style>
 
+<div class="swiper swiper-containercos">
+    <div class="swiper-wrappercos">
+
+        <asp:ListView ID="ListView1" runat="server">
+            <ItemTemplate>
+
+                <div class="swiper-slidecos">
+                    <asp:Image ID="Image1" runat="server" ImageUrl='<%#Eval("Image") %>' />
+                </div>
+            </ItemTemplate>
+        </asp:ListView>
+    </div>
+</div>
+
+
+
 <!-- Swiper -->
 
 <!-- Swiper JS -->
@@ -51,7 +53,7 @@
                        spaceBetween: 30,
                        centeredSlides: true,
                        autoplay: 1000,
-                       speed: 3000, // Speed in milliseconds.
+                       speed: 5000, // Speed in milliseconds.
                        pagination: {
                            el: '.swiper-pagination',
                            clickable: true

@@ -13,8 +13,14 @@ namespace Adminweb.Admin
         {
             if (!IsPostBack)
             {
-                getpagecat();
+                Page.LoadComplete += new EventHandler(page_preRender);
+                //getpagecat();
             }
+        }
+
+        private void page_preRender(object sender, EventArgs e)
+        {
+            getpagecat();
         }
 
         protected void getpagecat()

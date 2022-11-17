@@ -10,6 +10,7 @@ namespace FrontPanel.usercontrol
     public partial class header_productstatus : System.Web.UI.UserControl
     {
         private Entities db = new Entities();
+        Product_Helper ph = new Product_Helper();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,20 +22,20 @@ namespace FrontPanel.usercontrol
 
         protected void getproductstatus()
         {
-            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
-            var Url = HttpContext.Current.Request.Url;
-            var subdomain = website_Setup_Helper.GetSubDomain(Url);
-            var orgid = 0;
-            if (subdomain.Contains("localhost"))
-            {
-                orgid = 1;
-            }
-            else
-            {
-                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
-                orgid = orgObject.id;
-            }
-
+            //Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
+            //var Url = HttpContext.Current.Request.Url;
+            //var subdomain = website_Setup_Helper.GetSubDomain(Url);
+            //var orgid = 0;
+            //if (subdomain.Contains("localhost"))
+            //{
+            //    orgid = 1;
+            //}
+            //else
+            //{
+            //    var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+            //    orgid = orgObject.id;
+            //}
+            var orgid = ph.GetOrgID();
             var q = db.SP_Status_HasProducts(orgid);
 
             //var q=(from stat in db.Status

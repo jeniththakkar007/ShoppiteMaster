@@ -8,7 +8,7 @@ namespace FrontPanel.usercontrol
     public partial class slider_homepage : System.Web.UI.UserControl
     {
         private Entities db = new Entities();
-
+        private Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,11 +20,11 @@ namespace FrontPanel.usercontrol
         protected void getdata()
         {
             string page = this.Page.Title.ToString();
-
+            var orgid = ph.GetOrgID();
             var q = (from ad_detail in db.Ads_Detail
                      join ad_place in db.Ads_Placement on ad_detail.AdsPlacementId equals ad_place.AdsPlacementId
                      join ad_pagename in db.Ads_PageName on ad_detail.AdsPageId equals ad_pagename.AdsPageId
-                     where ad_pagename.PageName.Contains("Home") && ad_place.PlacementName == "Home"
+                     where ad_pagename.PageName.Contains("Home") && ad_place.PlacementName == "Home" && ad_detail.OrgId == orgid
                      select new
                      {
                          AdId = ad_detail.AdId,

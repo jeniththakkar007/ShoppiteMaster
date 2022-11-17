@@ -30,12 +30,12 @@
 
 <div class="alert-dismissible">
 
-    <div class="swiper-container">
+    <div class="swiper swiper-container">
         <div class="swiper-wrapper">
 
             <asp:ListView ID="ListView1" runat="server">
                 <ItemTemplate>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="color:#ff6801"><span aria-hidden="true">×</span></button>
                     <div class="swiper-slide">
                         <img src='<%#Eval("Image") %>' width="100%" />
                     </div>
@@ -57,19 +57,9 @@
     <!-- Initialize Swiper -->
     <script>
       var swiper = new Swiper('.swiper-container', {
-
       effect: 'fade',
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-        },
-         autoplay: {
-        delay: 2500,
+      autoplay: {
+        delay: 3000,
         disableOnInteraction: false,
       },
     });

@@ -25,7 +25,7 @@ namespace AdminPanel.Account
         {
             if (IsValid)
             {
-                FailureText.Text = ur.login(txtemail.Text, txtpassword.Text, RememberMe.Checked);
+                FailureText.Text = ur.login(txtemail.Text, txtpassword.Text, RememberMe.Checked, true);
 
                 if (FailureText.Text == "Success")
                 {

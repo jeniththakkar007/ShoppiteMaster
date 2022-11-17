@@ -1,6 +1,7 @@
 ﻿using DataLayer.Models;
 using System;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace AdminPanel.Admin
@@ -13,15 +14,25 @@ namespace AdminPanel.Admin
         {
             if (!IsPostBack)
             {
-                getads();
+                Page.LoadComplete += new EventHandler(page_preRender);
+                //getads();
             }
+        }
+
+        private void page_preRender(object sender, EventArgs e)
+        {
+            getads();
         }
 
         protected void getads()
         {
+            String masterDropDown = (((this.Master) as MasterPage).FindControl("ddlorganization") as DropDownList).SelectedItem.Value;
+            int selectedOrg = Convert.ToInt32(masterDropDown);
+
             var q = (from ad_detail in db.Ads_Detail
                      join ad_place in db.Ads_Placement on ad_detail.AdsPlacementId equals ad_place.AdsPlacementId
-                     join ad_pagename in db.Ads_PageName on ad_detail.AdsPageId equals ad_pagename.AdsPageId
+                     join ad_pagename in db.Ads_PageName on ad_detail.AdsPageId equals ad_pagename.AdsPageId 
+                     where ad_detail.OrgId == selectedOrg
                      select new
                      {
                          AdId = ad_detail.AdId,

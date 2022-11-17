@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="AMMultivendor2Model.Category_One" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AMMultivendor2Model.Category_Three" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AMMultivendor2Model.Category_Two" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AMMultivendor2Model.Currency" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMMultivendor2Model.Currency" Width="1.5" PointX="8.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AMMultivendor2Model.Customer_Wishlist" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AMMultivendor2Model.MainPageCategory" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AMMultivendor2Model.NewsLetter" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />

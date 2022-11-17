@@ -20,7 +20,7 @@
                         <asp:Label ID="Label2" runat="server" Text='<%#Eval("category_name") %>'></asp:Label>
                     </a>
 
-                    <ul class="d-hover-content mega-dropdown collapse " id="collapseExample<%#Container.DataItemIndex%>" aria-labelledby="dropdownMenu1">
+                    <%--<ul class="d-hover-content mega-dropdown collapse " id="collapseExample<%#Container.DataItemIndex%>" aria-labelledby="dropdownMenu1">
 
                         <asp:Image ID="Image1" runat="server" CssClass="h-c-banner" ImageUrl='<%#Eval("Banner") %>' />
                         <asp:ListView ID="ListView2" runat="server" DataSourceID="SqlDataSource1" OnItemDataBound="ListView2_ItemDataBound">
@@ -33,7 +33,7 @@
                                 </li>
                             </ItemTemplate>
                         </asp:ListView>
-                    </ul>
+                    </ul>--%>
                 </li>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Default %>" ProviderName="<%$ ConnectionStrings:Default.ProviderName %>" SelectCommand="SELECT displayorder, catnames, Displayname, NAME, HLevel, PARENT_NAMEID, ID, CAST(ID AS nvarchar(20)) + '-' + urlpath AS urlpath, (SELECT CAST(category_id AS nvarchar(20)) + '-' + urlpath AS mainurlpath FROM dbo.f_topcat(getcat_1.ID) AS f_topcat_1) AS topcat FROM dbo.getcat(@ID) AS getcat_1 ORDER BY catnames">
                     <SelectParameters>

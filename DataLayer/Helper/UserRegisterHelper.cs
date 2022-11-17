@@ -74,12 +74,19 @@ public class UserRegisterHelper
         db.SaveChanges();
     }
 
-    public string login(string username, string password, bool rememberme)
+    public string login(string username, string password, bool rememberme,bool isAdmin = false)
     {
         var orgid = ph.GetOrgID();
         string ps = this.eh.Encrypt(password);
-
-        User userValidate = db.Users.FirstOrDefault(u => u.Username == username && u.Password == ps && u.OrgId == orgid);
+        User userValidate = new User();
+        if (!isAdmin)
+        {
+            userValidate = db.Users.FirstOrDefault(u => u.Username == username && u.Password == ps && u.OrgId == orgid);
+        }
+        else
+        {
+            userValidate = db.Users.FirstOrDefault(u => u.Username == username && u.Password == ps);
+        }
 
         if (userValidate != null)
         {

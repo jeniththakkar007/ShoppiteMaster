@@ -8,6 +8,7 @@ namespace FrontPanel.usercontrol
     public partial class header_categories : System.Web.UI.UserControl
     {
         private Entities db = new Entities();
+        Product_Helper ph = new Product_Helper();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,8 +20,9 @@ namespace FrontPanel.usercontrol
 
         protected void getcat()
         {
+            var orgid = ph.GetOrgID();
             var q = (from c in db.category_master
-                     where c.parent_category_id == 0 && c.IsPublished == true
+                     where c.parent_category_id == 0 && c.IsPublished == true && orgid == c.OrgId
                      orderby c.DisplayOrder
                      select new
                      {

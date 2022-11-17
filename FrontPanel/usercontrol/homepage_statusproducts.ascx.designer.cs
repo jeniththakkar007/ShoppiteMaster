@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FrontPanel.usercontrol {
-    
-    
-    public partial class homepage_statusproducts {
-        
+namespace FrontPanel.usercontrol
+{
+
+
+    public partial class homepage_statusproducts
+    {
+
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace FrontPanel.usercontrol {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// ListView1 control.
         /// </summary>

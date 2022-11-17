@@ -1,5 +1,8 @@
 ﻿using DataLayer.Models;
 using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web.UI.WebControls;
 
@@ -18,6 +21,9 @@ namespace FrontPanel.usercontrol
             //}
         }
 
+       
+
+
         public void getproductstatus()
         {
             var orgId = ph.GetOrgID();
@@ -25,7 +31,7 @@ namespace FrontPanel.usercontrol
 
             //var q = (from stat in db.Status
             //         join productstatus in db.Product_Status on stat.StatusId equals productstatus.StatusId
-            //         join pr in db.f_getproducts() on productstatus.ProductGUID equals pr.ProductGUID
+            //         join pr in db.f_getproducts(orgId) on productstatus.ProductGUID equals pr.ProductGUID
             //         orderby stat.Status1 ascending
             //         where stat.ShowOnFront == true
             //         select stat).Distinct().ToList();
@@ -73,6 +79,36 @@ namespace FrontPanel.usercontrol
                     //lblprice.Text = String.Format("#,##0.00", coversionprice);
 
                     lblprice.Text = coversionprice.ToString("#,##0.00");
+                }
+            }
+        }
+
+        protected void ListView1_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            var orgId = ph.GetOrgID();
+            string constr = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                if (e.Item.ItemType == ListViewItemType.DataItem)
+                {
+                    var ListView2 = e.Item.FindControl("ListView2") as ListView;
+                    var Label2 = e.Item.FindControl("Label2") as Label;
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.CommandText = "SELECT TOP (6) totalpick, ProductId, ProductGUID, ProductName, image, Price, OldPrice, CAST(ProductId AS nvarchar(20)) + '-' + URLPath AS urlpath, CurrencyName FROM dbo.f_getproducts_By_StatusID(@ID,@orgid) AS f_getproducts_By_StatusID_1 ORDER BY NEWID()";
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@ID", Label2.Text);
+                        cmd.Parameters.AddWithValue("@orgid", orgId);
+                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            sda.Fill(dt);
+                            ListView2.DataSource = dt;
+                            ListView2.DataBind();
+
+                        }
+                    }
                 }
             }
         }

@@ -217,7 +217,7 @@
             <PropertyRef Name="CurrencyId" />
           </Key>
           <Property Name="CurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsPublished" Type="bit" />
           <Property Name="InsertDate" Type="date" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" />
@@ -1094,7 +1094,7 @@
                 <Property Name="maincatid" Type="int" />
                 <Property Name="deals" Type="nvarchar(max)" Nullable="false" />
                 <Property Name="badgestatus" Type="nvarchar" MaxLength="1000" />
-                <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+                <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="shopname" Type="nvarchar" MaxLength="200" />
                 <Property Name="ShopURLPath" Type="nvarchar" MaxLength="500" />
                 <Property Name="logo" Type="nvarchar" MaxLength="200" />
@@ -1109,6 +1109,7 @@
         </Function>
         <Function Name="f_getproducts_By_StatusID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="orgid" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -1135,7 +1136,7 @@
                 <Property Name="maincatid" Type="int" />
                 <Property Name="deals" Type="nvarchar(max)" Nullable="false" />
                 <Property Name="badgestatus" Type="nvarchar" MaxLength="1000" />
-                <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+                <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="shopname" Type="nvarchar" MaxLength="200" />
                 <Property Name="ShopURLPath" Type="nvarchar" MaxLength="500" />
                 <Property Name="logo" Type="nvarchar" MaxLength="200" />
@@ -1177,7 +1178,7 @@
                 <Property Name="maincatid" Type="int" />
                 <Property Name="deals" Type="nvarchar(max)" Nullable="false" />
                 <Property Name="badgestatus" Type="nvarchar" MaxLength="1000" />
-                <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+                <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="shopname" Type="nvarchar" MaxLength="200" />
                 <Property Name="ShopURLPath" Type="nvarchar" MaxLength="500" />
                 <Property Name="logo" Type="nvarchar" MaxLength="200" />
@@ -1263,7 +1264,7 @@
                 <Property Name="Commission" Type="decimal" Precision="18" Scale="2" />
                 <Property Name="Donation" Type="decimal" Precision="18" Scale="2" />
                 <Property Name="OrderVariation" Type="nvarchar" MaxLength="2000" />
-                <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+                <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -1321,6 +1322,7 @@
           </ReturnType>
         </Function>
         <Function Name="f_Orders_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orgid" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -1699,7 +1701,7 @@
             <PropertyRef Name="CurrencyId" />
           </Key>
           <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsPublished" Type="Boolean" />
           <Property Name="InsertDate" Type="DateTime" Precision="0" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
@@ -2047,7 +2049,9 @@
           <FunctionImport Name="f_Donation_BYID" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_Donation_BYID_Result)" />
           <FunctionImport Name="f_donation_total" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_donation_total_Result)" />
           <EntitySet Name="Users_Membership" EntityType="AMMultivendor2Model.Users_Membership" />
-          <FunctionImport Name="f_Orders_All" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_Orders_All_Result)" />
+          <FunctionImport Name="f_Orders_All" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_Orders_All_Result)" >
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="f_All_getcat" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_All_getcat_Result)" />
           <EntitySet Name="Order_Disbursement" EntityType="AMMultivendor2Model.Order_Disbursement" />
           <EntitySet Name="Order_Status" EntityType="AMMultivendor2Model.Order_Status" />
@@ -2081,6 +2085,7 @@
           </FunctionImport>
           <FunctionImport Name="f_getproducts_By_StatusID" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_StatusID_Result)">
           <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_getproducts_By_ProductId" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_ProductId_Result)">
           <Parameter Name="ID" Mode="In" Type="String" />
@@ -2122,7 +2127,7 @@
             <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_order_detail" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_order_detail_Result)">
-          <Parameter Name="ID" Mode="In" Type="Guid" />
+            <Parameter Name="ID" Mode="In" Type="Guid" />
             <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="organizations" EntityType="AMMultivendor2Model.organization" />

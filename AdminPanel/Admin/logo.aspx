@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="img-box h-155">
-                                        <asp:Image ID="Image1" runat="server" />
+                                        <asp:Image ID="Image1" runat="server" Height="53px" Width="53px" />
                                     </div>
                                 </div>
                             </div>

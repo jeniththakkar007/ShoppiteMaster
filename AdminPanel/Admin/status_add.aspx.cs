@@ -16,7 +16,7 @@ namespace AdminPanel.Admin
         {
             if (!IsPostBack)
             {
-                getdata();
+                //getdata();
 
                 if (Request.QueryString["ID"] != null)
                 {
@@ -27,7 +27,13 @@ namespace AdminPanel.Admin
                     chckhomepage.Checked = bool.Parse(s.ShowOnFront.ToString());
                     Image1.ImageUrl = s.CssClass;
                 }
+                Page.LoadComplete += new EventHandler(page_PreRender);
             }
+        }
+
+        private void page_PreRender(object sender, EventArgs e)
+        {
+            getdata();
         }
 
         protected void getdata()

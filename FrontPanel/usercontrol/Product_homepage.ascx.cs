@@ -65,20 +65,21 @@ namespace FrontPanel.usercontrol
 
         public void getparentcat()
         {
-            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
-            var Url = HttpContext.Current.Request.Url;
-            var subdomain = website_Setup_Helper.GetSubDomain(Url);
-            var orgid = 0;
-            if (subdomain.Contains("localhost"))
-            {
-                orgid = 1;
-            }
-            else
-            {
-                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
-                orgid = orgObject.id;
-            }
+            //Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
+            //var Url = HttpContext.Current.Request.Url;
+            //var subdomain = website_Setup_Helper.GetSubDomain(Url);
+            //var orgid = 0;
+            //if (subdomain.Contains("localhost"))
+            //{
+            //    orgid = 1;
+            //}
+            //else
+            //{
+            //    var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+            //    orgid = orgObject.id;
+            //}
 
+            var orgid = ph.GetOrgID();
             var q = (from c in db.category_master
                      where c.IsPublished == true && c.IsShowHomePage == true && c.parent_category_id == 0 && c.OrgId == orgid
                      select c).ToList();
