@@ -34,59 +34,7 @@ namespace FrontPanel
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             RegisterRoutes(System.Web.Routing.RouteTable.Routes);
 
-            Website_Setup_Helper ws = new Website_Setup_Helper();
-
-            ws.getwebsiteinfo();
-
-            MyCompanyName = ws.companyname;
-            MyLogo = ws.logo;
-
-            ///check if donation enable
-            ///
-
-            IsDonation = ws.Setup_Enable("Donation");
-
-            //Vendor Chat Enable or not
-            IsVendorChat = ws.Setup_Enable("IsVendorChat");
-
-            //Email Chat Enable or not
-            IsEmailOnChat = ws.Setup_Enable("ChatEmail");
-
-            ///pagenumber settings
-            ///
-
-            //My Favicon
-
-            Myfavicon = ws.favicon != null ? ws.favicon.ToString() : null;
-
-            ///meta tag
-            ///
-            Title = ws.title;
-            keywords = ws.keyword;
-            description = ws.description;
-
-            ////// currency get
-            ///
-
-            Entities db = new Entities();
-
-            Currency cur = db.Currencies.FirstOrDefault(u => u.ISBase == true);
-
-            if (cur != null)
-            {
-                Order_Helper.currencyid = cur.CurrencyId;
-                Order_Helper.currency_code = cur.CurrencyName;
-            }
-
-            //get all active currencies
-            var q = (from c in db.Currencies
-                     where c.IsPublished == true
-                     select c);
-
-            foreach (var item in q)
-            {
-                Order_Helper.getsetcurrencies += item.CurrencyName + ",";
-            }
+            
         }
 
         private void Application_Error(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Helper;
+using DataLayer.Models;
 using System;
 using System.Linq;
 
@@ -58,8 +59,9 @@ namespace FrontPanel.inbox
             i.Attachment = HiddenField1.Value;
             db.Messages.Add(i);
             db.SaveChanges();
-
-            if (Global.IsEmailOnChat.ToString() == "True")
+            Website_Setup_Helper ws = new Website_Setup_Helper();
+            ws.getwebsiteinfo();
+            if (ws.Setup_Enable("ChatEmail").ToString() == "True")
             {
                 //if (Session["Email"] == null)
                 //{

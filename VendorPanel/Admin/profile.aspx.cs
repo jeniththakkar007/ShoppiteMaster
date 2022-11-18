@@ -1,6 +1,9 @@
 ﻿using DataLayer.Helper;
 using DataLayer.Models;
 using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Configuration;
 using System.Web.UI.WebControls;
@@ -68,6 +71,24 @@ namespace VendorPanel.Admin
 
                 bannerfilepath = bannerfilepath + "/" + fubanner.FileName;
                 imgbanner.ImageUrl = aw.uploadfile(fubanner, bannerfilepath);
+            }
+            string constr = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            string strSQL = string.Empty;
+            
+            strSQL = "UPDATE dbo.Logo SET Logo = @Image where OrgId = @orgid";
+            
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = strSQL;
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Image", imgbanner.ImageUrl);
+                    cmd.Parameters.AddWithValue("@orgid", orgvalue);
+                    cmd.ExecuteNonQuery();
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Record updated successfully');", true);
+                }
+
             }
         }
 

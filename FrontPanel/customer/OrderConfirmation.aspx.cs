@@ -114,7 +114,9 @@ namespace FrontPanel.customer
             string BCC = wsh.bcc; ;
             string EmailFrom = wsh.emailfrom;
             string Password = wsh.password;
+            Website_Setup_Helper ws = new Website_Setup_Helper();
 
+            ws.getwebsiteinfo();
             //emailbinding();
             using (StringWriter sw = new StringWriter())
             {
@@ -132,7 +134,7 @@ namespace FrontPanel.customer
                     myString = readFile;
 
                     myString = myString.Replace("#orderid", orderid);
-                    myString = myString.Replace("#logo", Global.MyLogo.ToString());
+                    myString = myString.Replace("#logo", ws.logo.ToString());
                     myString = myString.Replace("#WebsiteName", host);
 
                     myString = myString.Replace("#client", name);
@@ -196,7 +198,7 @@ namespace FrontPanel.customer
             //emailbinding();
 
             Website_Setup_Helper wsh = new Website_Setup_Helper();
-
+            wsh.getwebsiteinfo();
             wsh.setupemail();
             string SMTP = wsh.smtp;
             string BCC = wsh.bcc; ;
@@ -216,7 +218,7 @@ namespace FrontPanel.customer
             string myString = "";
             myString = readFile;
 
-            myString = myString.Replace("#logo", Global.MyLogo.ToString());
+            myString = myString.Replace("#logo", wsh.logo.ToString());
             myString = myString.Replace("#WebsiteName", host);
 
             myString = myString.Replace("#client", name);

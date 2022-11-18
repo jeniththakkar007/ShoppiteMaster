@@ -18,21 +18,10 @@ public class Order_Helper
     {
         Guid orderid = new Guid();
         Order_Master om = new Order_Master();
-
+        Product_Helper ph = new Product_Helper();
         om.OrderKeyStatus = "Active";
         om.InsertDate = DateTime.Now;
-        Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
-        var Url = HttpContext.Current.Request.Url;
-        var subdomain = website_Setup_Helper.GetSubDomain(Url);
-        var orgid = 0;
-        if (subdomain.Contains("localhost"))
-        {
-            orgid = 1;
-        }
-        else
-        {
-            var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
-        }
+        var orgid = ph.GetOrgID();
         om.OrgId = orgid;
         db.Order_Master.Add(om);
         db.SaveChanges();

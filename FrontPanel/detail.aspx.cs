@@ -184,19 +184,8 @@ namespace FrontPanel
             //tax per product fees
 
             //cfc.calculat_VAT(decimal.Parse(price.Price.ToString()), int.Parse(TextBox1.Text));
-
-            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
-            var Url = HttpContext.Current.Request.Url;
-            var subdomain = website_Setup_Helper.GetSubDomain(Url);
-            var orgid = 0;
-            if (subdomain.Contains("localhost"))
-            {
-                orgid = 1;
-            }
-            else
-            {
-                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
-            }
+            Product_Helper phd = new Product_Helper();
+            var orgid = phd.GetOrgID();
             Order_Basic ob = new Order_Basic();
 
             ob.ProductId = int.Parse(ProductId.ToString());

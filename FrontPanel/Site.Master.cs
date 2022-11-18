@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DataLayer.Helper;
+using DataLayer.Models;
+using System;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -12,7 +15,21 @@ namespace FrontPanel
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfMultiVendor";
         private string _antiXsrfTokenValue;
+        public static object MyCompanyName { get; private set; }
+        public static object MyLogo { get; private set; }
 
+        public static object Myfavicon { get; private set; }
+        public static object IsDonation { get; private set; }
+        public static object IsVendorChat { get; set; }
+        public static object IsEmailOnChat { get; set; }
+
+        public static object Title { get; set; }
+        public static object keywords { get; set; }
+        public static object description { get; set; }
+
+        public static object pagenum { get; set; }
+        public static object skiprows { get; set; }
+        private Entities db = new Entities();
         protected void Page_Init(object sender, EventArgs e)
         {
             // The code below helps to protect against XSRF attacks
@@ -70,37 +87,76 @@ namespace FrontPanel
         {
             if (!IsPostBack)
             {
-                this.Page.Title += Global.MyCompanyName.ToString();
+                Website_Setup_Helper ws = new Website_Setup_Helper();
 
-                //string isdonat=Global.IsDonation.ToString();
+                ws.getwebsiteinfo();
 
-                if (Global.IsDonation.ToString() == "True")
+                MyCompanyName = ws.companyname;
+                this.Page.Title += MyCompanyName;
+                MyLogo = ws.logo;
+
+                ///check if donation enable
+                ///
+
+                IsDonation = ws.Setup_Enable("Donation");
+                if (IsDonation.ToString() == "True")
                 {
                     dvdonation.Visible = true;
                     fundsreceivetotal_uc.getdonationtotal();
                 }
+                //Vendor Chat Enable or not
+                IsVendorChat = ws.Setup_Enable("IsVendorChat");
 
-                //favicon
-                hrfav.Href = Global.Myfavicon.ToString();
+                //Email Chat Enable or not
+                IsEmailOnChat = ws.Setup_Enable("ChatEmail");
 
+                ///pagenumber settings
+                ///
+
+                //My Favicon
+
+                Myfavicon = ws.favicon != null ? ws.favicon.ToString() : null;
+                hrfav.Href = Myfavicon.ToString();
+                ///meta tag
+                ///
+                Title = ws.title;
+                this.Page.Title += Title;
+
+
+                Currency cur = db.Currencies.FirstOrDefault(u => u.ISBase == true);
+
+                if (cur != null)
+                {
+                    Order_Helper.currencyid = cur.CurrencyId;
+                    Order_Helper.currency_code = cur.CurrencyName;
+                }
+
+                //get all active currencies
+                var q = (from c in db.Currencies
+                         where c.IsPublished == true
+                         select c);
+
+                foreach (var item in q)
+                {
+                    Order_Helper.getsetcurrencies += item.CurrencyName + ",";
+                }
+                
                 //meta tag
                 string page = Request.Url.Segments[Request.Url.Segments.Length - 1];
 
-                //Add Page Title.
-                this.Page.Title = Global.Title.ToString();
-
+                
                 //Add Keywords Meta Tag.
                 HtmlMeta keywords = new HtmlMeta();
                 keywords.HttpEquiv = "keywords";
                 keywords.Name = "keywords";
-                keywords.Content = Global.keywords.ToString();
+                keywords.Content = ws.keyword.ToString();
                 this.Page.Header.Controls.Add(keywords);
 
                 //Add Description Meta Tag.
                 HtmlMeta description = new HtmlMeta();
                 description.HttpEquiv = "description";
                 description.Name = "description";
-                description.Content = Global.description.ToString();
+                description.Content = ws.description;
                 this.Page.Header.Controls.Add(description);
 
                 //// get footer script
@@ -110,6 +166,7 @@ namespace FrontPanel
                 //header script
 
                 script_footer1.getdata("Header");
+                
             }
         }
 

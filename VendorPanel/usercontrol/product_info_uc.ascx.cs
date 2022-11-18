@@ -85,20 +85,8 @@ namespace VendorPanel.usercontrol
 
         protected void getcatbind()
         {
-            Website_Setup_Helper website_Setup_Helper = new Website_Setup_Helper();
-            var Url = HttpContext.Current.Request.Url;
-            var subdomain = website_Setup_Helper.GetSubDomain(Url);
-            var orgid = 0;
-            if (subdomain.Contains("localhost"))
-            {
-                orgid = 1;
-            }
-            else
-            {
-                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
-                orgid = orgObject.id;
-                //orgid = 1;
-            }
+            Product_Helper ph = new Product_Helper();
+            var orgid = ph.GetOrgID();
             var q = db.sp_getcat(orgid).Where(u => u.PARENT_NAMEID != 0);
 
             ListBox1.DataTextField = "catnames";

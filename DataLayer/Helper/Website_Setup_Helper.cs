@@ -26,7 +26,8 @@ namespace DataLayer.Helper
 
         public void getwebsiteinfo()
         {
-            Logo lo = db.Logoes.FirstOrDefault(x => x.LogoId == 1);
+            var orgid = ph.GetOrgID();
+            Logo lo = db.Logoes.FirstOrDefault(x => x.OrgId == orgid);
             if (lo != null)
             {
                 logo = lo.Logo1;

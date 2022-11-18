@@ -1,13 +1,16 @@
-﻿using System;
+﻿using DataLayer.Helper;
+using System;
 using System.Web;
 
 namespace FrontPanel.usercontrol
 {
     public partial class detail_vendor_uc : System.Web.UI.UserControl
     {
+        private Website_Setup_Helper wsh = new Website_Setup_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Global.IsVendorChat.ToString() == "True")
+            wsh.getwebsiteinfo();
+            if (wsh.Setup_Enable("IsVendorChat").ToString() == "True")
             {
                 LinkButton2.Visible = true;
                 dvvendorchat.Visible = true;
@@ -66,8 +69,9 @@ namespace FrontPanel.usercontrol
             string message = "Hello, how you doing? <br/> I want to discuss about this product <br/> " + "https://" + host + "/" + this.Page.RouteData.Values["URL"].ToString() + "/show";
 
             string chatid = cht.contactbnt(senderusername, receiverusername, message);
-
-            if (Global.IsEmailOnChat.ToString() == "True")
+            Website_Setup_Helper ws = new Website_Setup_Helper();
+            ws.getwebsiteinfo();
+            if (ws.Setup_Enable("ChatEmail").ToString() == "True")
             {
                 //if (Session["Email"] == null)
                 //{
