@@ -8,7 +8,7 @@ namespace FrontPanel.usercontrol
     public partial class header_searchbar : System.Web.UI.UserControl
     {
         private Entities db = new Entities();
-
+        private Product_Helper ph = new Product_Helper();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -19,6 +19,7 @@ namespace FrontPanel.usercontrol
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
+            var orgid = ph.GetOrgID();
             //Response.RedirectToRoute("Key", new { MainCategory = DropDownList1.SelectedValue,  Keyword = TextBox1.Text });
 
             if (DropDownList1.SelectedValue == "0" && TextBox1.Text == string.Empty)
@@ -29,7 +30,7 @@ namespace FrontPanel.usercontrol
 
             if (DropDownList1.SelectedValue == "0" && TextBox1.Text != string.Empty)
             {
-                Product_Basic p = db.Product_Basic.FirstOrDefault(u => u.URLPath == TextBox1.Text);
+                Product_Basic p = db.Product_Basic.FirstOrDefault(u => u.URLPath == TextBox1.Text && u.OrgId == orgid);
 
                 if (p != null)
                 {
@@ -65,9 +66,10 @@ namespace FrontPanel.usercontrol
 
         protected void getmaincat()
         {
+            var orgid = ph.GetOrgID();
             var q = (from c in db.category_master
 
-                     where c.parent_category_id == 0 && c.IsPublished == true
+                     where c.parent_category_id == 0 && c.IsPublished == true && c.OrgId == orgid
                      select new
                      {
                          Urlpath = c.category_id + "-" + c.URLPath,

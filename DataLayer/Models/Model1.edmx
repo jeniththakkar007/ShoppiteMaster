@@ -2084,7 +2084,7 @@
           <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_getproducts_By_StatusID" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_StatusID_Result)">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
             <Parameter Name="orgid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_getproducts_By_ProductId" IsComposable="true" ReturnType="Collection(AMMultivendor2Model.f_getproducts_By_ProductId_Result)">

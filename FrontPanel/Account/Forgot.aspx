@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Forgot password" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Forgot.aspx.cs" Inherits="FrontPanel.Account.ForgotPassword" Async="true" %>
+﻿<%@ Page Title="Forgot password" Language="C#" MasterPageFile="~/Login.Master" AutoEventWireup="true" CodeBehind="Forgot.aspx.cs" Inherits="FrontPanel.Account.ForgotPassword" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 

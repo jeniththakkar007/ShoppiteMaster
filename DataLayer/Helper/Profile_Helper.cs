@@ -69,7 +69,8 @@ public class Profile_Helper
 
     public void create_Profile(string username, string type, string shopname, string logo, string adminstatus, string status, string phone, string address, string lat, string lang)
     {
-        Users_Profile upudate = db.Users_Profile.FirstOrDefault(u => u.UserName == username);
+        var orgid = phd.GetOrgID();
+        Users_Profile upudate = db.Users_Profile.FirstOrDefault(u => u.UserName == username && u.OrgId == orgid);
         CreateURLPath_Helper ch = new CreateURLPath_Helper();
 
         Website_Setup_Helper wsh = new Website_Setup_Helper();
@@ -97,6 +98,7 @@ public class Profile_Helper
             up.Address = address;
             up.latitude = lat;
             up.longitude = lang;
+            up.OrgId = orgid;
             //up.ProfileGUID = Guid.NewGuid();
 
             db.Users_Profile.Add(up);
