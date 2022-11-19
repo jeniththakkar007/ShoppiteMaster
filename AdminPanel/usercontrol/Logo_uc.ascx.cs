@@ -9,9 +9,6 @@ namespace FrontPanel.usercontrol
         {
             if (!IsPostBack)
             {
-                Website_Setup_Helper ws = new Website_Setup_Helper();
-
-                ws.getwebsiteinfo();
                 /*ws.logo*/
 
                 Image1.ImageUrl = "~/images/shopitelogo.png";

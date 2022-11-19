@@ -179,6 +179,7 @@ public class Product_Helper
 
             if (subdomain.Contains("localhost"))
             {
+                website_Setup_Helper.LogError("Localhost");
                 orgid = 1;
             }
             else

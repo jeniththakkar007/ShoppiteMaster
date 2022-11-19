@@ -76,11 +76,11 @@ public class UserRegisterHelper
 
     public string login(string username, string password, bool rememberme,bool isAdmin = false)
     {
-        var orgid = ph.GetOrgID();
         string ps = this.eh.Encrypt(password);
         User userValidate = new User();
         if (!isAdmin)
         {
+            var orgid = ph.GetOrgID();
             userValidate = db.Users.FirstOrDefault(u => u.Username == username && u.Password == ps && u.OrgId == orgid);
         }
         else

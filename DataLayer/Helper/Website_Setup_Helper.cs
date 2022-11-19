@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Web;
 
 namespace DataLayer.Helper
 {
@@ -97,7 +98,7 @@ namespace DataLayer.Helper
                 int startNode = 0;
                 if (nodes[0] == "www") startNode = 1;
 
-                return string.Format("{0}.{1}", nodes[startNode], nodes[startNode]);
+                return string.Format("{0}", nodes[startNode]);
             }
 
             return null;
@@ -126,7 +127,7 @@ namespace DataLayer.Helper
             message += Environment.NewLine;
             message += "-----------------------------------------------------------";
             message += Environment.NewLine;
-            string path ="~/ErrorLog/ErrorLog.txt";
+            string path = HttpContext.Current.Server.MapPath("~/ErrorLog/ErrorLog.txt");
             using (StreamWriter writer = new StreamWriter(path, true))
             {
                 writer.WriteLine(message);
