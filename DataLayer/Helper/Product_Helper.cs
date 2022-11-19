@@ -183,7 +183,8 @@ public class Product_Helper
             }
             else
             {
-                var orgObject = db.organizations.Where(x => x.org_name == subdomain).FirstOrDefault();
+                website_Setup_Helper.LogError(subdomain);
+                var orgObject = db.organizations.Where(x => x.org_name.ToLower() == subdomain.ToLower()).FirstOrDefault();
                 orgid = orgObject.id;
             }
         }

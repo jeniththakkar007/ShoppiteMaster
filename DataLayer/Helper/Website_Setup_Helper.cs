@@ -1,5 +1,6 @@
 ﻿using DataLayer.Models;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace DataLayer.Helper
@@ -113,6 +114,23 @@ namespace DataLayer.Helper
                 bcc = es.BCC;
                 port = int.Parse(es.SMTPPort.ToString());
                 smtp = es.Host;
+            }
+        }
+        public void LogError(string msg)
+        {
+            string message = string.Format("Time: {0}", DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"));
+            message += Environment.NewLine;
+            message += "-----------------------------------------------------------";
+            message += Environment.NewLine;
+            message += string.Format("Message: {0}", msg);
+            message += Environment.NewLine;
+            message += "-----------------------------------------------------------";
+            message += Environment.NewLine;
+            string path ="~/ErrorLog/ErrorLog.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine(message);
+                writer.Close();
             }
         }
     }
