@@ -22,7 +22,7 @@ namespace DataLayer.Helper
         //Secret Access Key:
         //ZDN2WyruK7Q5ByJogX9hm4QA27MmbmUCDi8CA1hX
 
-        private IAmazonS3 client = new AmazonS3Client("AKIA6IUF7JEED5QSS6Z5", "IRaP1i51oge4I5g1jFFUx22TvD7VCAYBB7kBBhsH", RegionEndpoint.APSouth1);
+        private IAmazonS3 client = new AmazonS3Client("AKIA3UUP6IWI7KJAXGKJ", "PALQIEf3wRrDGYMioUyNPQceQGiTRoFQ/y403nck", RegionEndpoint.APSouth1);
 
         //IAmazonS3 client = new AmazonS3Client("AKIAJCYZXRDRE4KPC4TQ", "ZDN2WyruK7Q5ByJogX9hm4QA27MmbmUCDi8CA1hX", RegionEndpoint.USEast2);
 

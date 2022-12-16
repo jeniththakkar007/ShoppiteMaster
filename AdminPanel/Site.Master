@@ -213,7 +213,8 @@
                             <asp:DropDownList ID="ddlorganization" runat="server"
                                 CssClass="auto-style1 form-control" Font-Names="categories"
                                 Font-Size="Medium" Height="34px"
-                                Width="191px">
+                                AutoPostBack="True" 
+                                Width="191px" OnSelectedIndexChanged="ddlorganization_SelectedIndexChanged" >
                             </asp:DropDownList>
                         </li>
                     </ul>

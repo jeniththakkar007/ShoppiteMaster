@@ -17,13 +17,14 @@ namespace Adminweb.Admin
         //CheckFile cs = new CheckFile();
         protected void Page_Load(object sender, EventArgs e)
         {
-            FU1.Attributes["onchange"] = "UploadFile(this)";
-
-            FileUpload1.Attributes["onchange"] = "UploadFile1(this)";
-
-            FileUpload2.Attributes["onchange"] = "UploadFile2(this)";
+            
             if (!IsPostBack)
             {
+                FU1.Attributes["onchange"] = "UploadFile(this)";
+
+                FileUpload1.Attributes["onchange"] = "UploadFile1(this)";
+
+                FileUpload2.Attributes["onchange"] = "UploadFile2(this)";
                 Page.LoadComplete += new EventHandler(Page_PreRender);
             }
         }
@@ -46,9 +47,9 @@ namespace Adminweb.Admin
                         DataTable dt = new DataTable();
                         sda.Fill(dt);
                         string img = (string)dt.Rows[0]["Logo"];
-                        int width = (int)dt.Rows[0]["logowidth"];
-                        int height = (int)dt.Rows[0]["logoheight"];
-                        string companyname = (string)dt.Rows[0]["companyname"];
+                        int width = dt.Rows[0]["logowidth"] !=null ? Convert.ToInt32(dt.Rows[0]["logowidth"]):0;
+                        int height = dt.Rows[0]["logoheight"]!=null? Convert.ToInt32(dt.Rows[0]["logoheight"]):0;
+                        string companyname = dt.Rows[0]["companyname"]!=null?(string)dt.Rows[0]["companyname"]:"";
                         string address = (string)dt.Rows[0]["address"];
                         string supportcontact = (string)dt.Rows[0]["supportcontact"];
                         string FooterLogo = (string)dt.Rows[0]["FooterLogo"];
@@ -126,6 +127,7 @@ namespace Adminweb.Admin
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
+                    con.Open();
                     cmd.CommandText = strSQL;
                     cmd.Connection = con;
                     cmd.Parameters.AddWithValue("@Image", Image2.ImageUrl);
